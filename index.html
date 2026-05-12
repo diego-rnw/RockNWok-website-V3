@@ -1,0 +1,802 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Rock N' Wok — Wok Your Spirit</title>
+<meta name="description" content="Comida rápida de inspiración asiática en Puebla. 8 sucursales: Parque Puebla, UPAEP, Explanada, Vía San Ángel, Sonata, Galerías Serdán, Zócalo y Outlet. Pide en línea." />
+<meta name="keywords" content="comida asiática, wok, Puebla, restaurante, delivery, orange chicken, rock trío, pide en línea" />
+<meta name="author" content="Rock N' Wok" />
+<meta name="theme-color" content="#FFD60A" />
+<meta property="og:type" content="website" />
+<meta property="og:title" content="Rock N' Wok — Wok Your Spirit" />
+<meta property="og:description" content="Comida rápida de inspiración asiática. 8 sucursales en Puebla. Pide en línea o encuéntranos en Rappi y Uber Eats." />
+<meta property="og:image" content="assets/hero-interior.png" />
+<meta property="og:url" content="https://rockandwok.com" />
+<meta property="og:locale" content="es_MX" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Rock N' Wok — Wok Your Spirit" />
+<meta name="twitter:description" content="Comida rápida de inspiración asiática en Puebla. Pide en línea." />
+<meta name="twitter:image" content="assets/hero-interior.png" />
+<link rel="icon" type="image/x-icon" href="dist/favicon.ico" />
+<link rel="icon" type="image/png" sizes="32x32" href="dist/favicon-32x32.png" />
+<link rel="icon" type="image/png" sizes="16x16" href="dist/favicon-16x16.png" />
+<link rel="apple-touch-icon" href="dist/favicon-32x32.png" />
+<link rel="preload" as="image" href="assets/hero-interior.png" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Archivo:wght@400;500;600;700;800;900&family=Bowlby+One&display=swap" rel="stylesheet">
+<style>
+  /* ===== MONUMENT EXTENDED ===== */
+  @font-face{font-family:"Monument Extended";src:url('dist/fonts/monument/MonumentExtended-Black.otf') format('opentype');font-weight:900;font-style:normal;font-display:swap}
+  @font-face{font-family:"Monument Extended";src:url('dist/fonts/monument/MonumentExtended-Ultrabold.otf') format('opentype');font-weight:800;font-style:normal;font-display:swap}
+  @font-face{font-family:"Monument Extended";src:url('dist/fonts/monument/MonumentExtended-Bold.otf') format('opentype');font-weight:700;font-style:normal;font-display:swap}
+  @font-face{font-family:"Monument Extended";src:url('dist/fonts/monument/MonumentExtended-Regular.otf') format('opentype');font-weight:400;font-style:normal;font-display:swap}
+  @font-face{font-family:"Monument Extended";src:url('dist/fonts/monument/MonumentExtended-Light.otf') format('opentype');font-weight:300;font-style:normal;font-display:swap}
+  @font-face{font-family:"Monument Extended";src:url('dist/fonts/monument/MonumentExtended-Ultralight.otf') format('opentype');font-weight:200;font-style:normal;font-display:swap}
+  /* ===== GOTHAM ===== */
+  @font-face{font-family:"Gotham";src:url('dist/fonts/gotham/Gotham-Bold_0.otf') format('opentype');font-weight:700;font-style:normal;font-display:swap}
+  @font-face{font-family:"Gotham";src:url('dist/fonts/gotham/Gotham-BoldItalic.otf') format('opentype');font-weight:700;font-style:italic;font-display:swap}
+  @font-face{font-family:"Gotham";src:url('dist/fonts/gotham/Gotham-Medium.otf') format('opentype');font-weight:500;font-style:normal;font-display:swap}
+  @font-face{font-family:"Gotham";src:url('dist/fonts/gotham/Gotham-Book.otf') format('opentype');font-weight:400;font-style:normal;font-display:swap}
+  @font-face{font-family:"Gotham";src:url('dist/fonts/gotham/Gotham-BookItalic.otf') format('opentype');font-weight:400;font-style:italic;font-display:swap}
+  @font-face{font-family:"Gotham";src:url('dist/fonts/gotham/Gotham Light Regular.otf') format('opentype');font-weight:300;font-style:normal;font-display:swap}
+  @font-face{font-family:"Gotham";src:url('dist/fonts/gotham/GothamNarrow-Black.otf') format('opentype');font-weight:900;font-style:normal;font-display:swap}
+  @font-face{font-family:"Gotham Narrow";src:url('dist/fonts/gotham/GothamNarrow-Black.otf') format('opentype');font-weight:900;font-style:normal;font-display:swap}
+  @font-face{font-family:"Gotham Narrow";src:url('dist/fonts/gotham/GothamNarrow-Book.otf') format('opentype');font-weight:400;font-style:normal;font-display:swap}
+  @font-face{font-family:"Gotham Narrow";src:url('dist/fonts/gotham/GothamNarrow-Light.otf') format('opentype');font-weight:300;font-style:normal;font-display:swap}
+</style>
+<style>
+  :root{
+    --yellow:#FFD60A;
+    --yellow-2:#FFE03A;
+    --orange:#FF4E14;
+    --orange-2:#FF6A2C;
+    --ink:#0a0a0a;
+    --ink-2:#141414;
+    --paper:#f6f4ef;
+    --text:#111;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;padding:0;background:#000;color:#fff;font-family:"Gotham","Archivo",sans-serif;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+  img{display:block;max-width:100%}
+  a{color:inherit;text-decoration:none}
+  .wrap{max-width:1320px;margin:0 auto;padding:0 28px}
+
+  /* ============ SITE HEADER ============ */
+  .site-header{
+    position:fixed;top:0;left:0;right:0;z-index:50;
+    background:linear-gradient(to bottom, rgba(0,0,0,.85), rgba(0,0,0,0));
+    transition:background .25s ease;
+  }
+  .site-header.scrolled{background:rgba(0,0,0,.95);backdrop-filter:blur(6px)}
+
+  /* ============ NAV ============ */
+  .nav{
+    display:grid;grid-template-columns:auto auto 1fr;
+    align-items:center;
+    padding:0px 32px;
+  }
+
+  .nav .brand{display:flex;align-items:center;margin-left:32px}
+  .nav .brand img{height:38px;width:auto;display:block}
+  .nav-center{display:flex;align-items:center;margin-left:185px}
+  .nav-center a{display:flex;flex-direction:column;align-items:center}
+  .nav-center img{width:200px;display:block;transform-origin:bottom center;animation:maneki-swing 2.4s ease-in-out infinite}
+  @keyframes maneki-swing{
+    0%  {transform:rotate(-4deg)}
+    50% {transform:rotate(4deg)}
+    100%{transform:rotate(-4deg)}
+  }
+  .nav-right{display:flex;align-items:center;justify-content:flex-end}
+  .nav ul{list-style:none;display:flex;justify-content:space-evenly;align-items:center;width:100%;margin:0;padding:0 32px 0 0;font-family:"Gotham","Archivo",sans-serif;font-weight:900;font-size:18px;letter-spacing:.18em}
+  .nav ul a{position:relative;padding:6px 0}
+  .nav ul a::after{content:"";position:absolute;left:0;right:100%;bottom:-4px;height:2px;background:var(--yellow);transition:right .25s ease}
+  .nav ul a:hover::after{right:0}
+
+  /* ============ HERO ============ */
+  .hero{
+    position:relative;height:100vh;display:flex;align-items:center;justify-content:center;
+    overflow:hidden;background:#000;
+  }
+  .hero .bg{position:absolute;inset:0;background:url('assets/hero-interior.png') center/cover no-repeat;}
+  .hero .bg::after{content:"";position:absolute;inset:0;background:rgba(0,0,0,.45)}
+  .hero-inner{
+    position:relative;z-index:2;width:100%;
+    display:flex;flex-direction:column;align-items:center;justify-content:center;
+    text-align:center;padding:0;
+  }
+  .hero h1{
+    font-family:"Monument Extended","Archivo Black",sans-serif;
+    font-weight:800;
+    line-height:.68;letter-spacing:-.01em;margin:0;text-transform:uppercase;
+    width:100%;text-align:center;
+    position:relative;
+  }
+  /* Animación entrada hero */
+  @keyframes heroIn{
+    from{opacity:0;transform:translateY(48px)}
+    to  {opacity:1;transform:translateY(0)}
+  }
+  @keyframes heroOut{
+    from{opacity:1;transform:translateY(0)}
+    to  {opacity:0;transform:translateY(-32px)}
+  }
+
+  /* Capas: WOK atrás → YOUR en medio → SPIRIT al frente */
+  .hero h1 span{display:block;position:relative;animation:heroIn .9s cubic-bezier(.2,.8,.2,1) both}
+  .hero h1 .wok   {animation-delay:.1s}
+  .hero h1 .your  {animation-delay:.35s}
+  .hero h1 .spirit{animation-delay:.6s}
+  .hero h1 .wok   {z-index:1; color:var(--yellow); font-size:14.17vw;
+    /* Dir -45° | Offset 20 | Blur 100 | Opacidad 76% */
+    /* x = cos(-45°)*20 ≈ 14px  |  y = -sin(-45°)*20 ≈ 14px */
+    text-shadow: 14px 14px 100px rgba(0,0,0,.76);
+  }
+  .hero h1 .your  {z-index:2; color:#fff; font-size:10.2vw;
+    margin-top:-1.5vw;
+    text-shadow: 14px 14px 100px rgba(0,0,0,.76);
+  }
+  .hero h1 .spirit{z-index:3; color:var(--yellow); font-size:16.25vw; margin-top:0.8vw; /* 312px @ 1920 */
+    /* Dir 167° | Offset 79 | Blur 100 | Opacidad 55% */
+    /* x = cos(167°)*79 ≈ -77px  |  y = -sin(167°)*79 ≈ -18px */
+    text-shadow: -77px -18px 100px rgba(0,0,0,.55);
+  }
+  .hero-cta{
+    position:absolute;bottom:116px;right:230px;z-index:3;
+    display:inline-flex;align-items:center;gap:10px;padding:18px 32px;border-radius:99px;
+    background:var(--orange);color:#fff;font-family:"Gotham","Archivo",sans-serif;font-weight:900;letter-spacing:.18em;font-size:15px;
+    box-shadow:0 14px 40px rgba(255,78,20,.5);
+    transition:transform .2s ease, box-shadow .2s ease;
+  }
+  .hero-cta:hover{transform:translateY(-2px);box-shadow:0 18px 50px rgba(255,78,20,.7)}
+
+  /* ============ MARQUEE ============ */
+  .marquee{
+    background:var(--yellow);color:#000;border-block:2px solid #000;
+    overflow:hidden;position:relative;
+  }
+  .marquee-track{display:flex;gap:54px;padding:14px 0;white-space:nowrap;font-family:"Archivo Black",sans-serif;font-size:22px;letter-spacing:.06em;animation:scroll 28s linear infinite}
+  .marquee-track span{display:inline-flex;align-items:center;gap:54px}
+  .marquee-track svg{width:18px;height:18px}
+  @keyframes scroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+  @keyframes manekiFloat{
+    0%,100%{transform:translateX(-50%) translateY(0) rotate(-2deg)}
+    50%{transform:translateX(-50%) translateY(-12px) rotate(2deg)}
+  }
+
+  /* ============ SECTION GENERICS ============ */
+  section.block{padding:120px 0;position:relative}
+  .eyebrow{display:inline-flex;align-items:center;gap:12px;font-size:12px;letter-spacing:.32em;color:var(--yellow);text-transform:uppercase;font-weight:700;margin-bottom:20px}
+  .eyebrow::before{content:"";width:24px;height:1px;background:var(--yellow)}
+
+  /* ============ SUCURSALES ============ */
+  .sucursales{background:#fff;color:#000;height:calc(100vh - 80px);display:flex;align-items:stretch;position:relative;overflow:hidden}
+  .suc-layout{display:grid;grid-template-columns:1fr 2.2fr;gap:48px;align-items:start;width:100%;max-width:1320px;margin:0 auto;padding:32px 48px}
+  .suc-left{display:flex;flex-direction:column;height:100%}
+  .suc-title{
+    font-family:"Monument Extended","Archivo Black",sans-serif;
+    font-weight:900;font-size:clamp(32px,4.2vw,68px);
+    text-transform:uppercase;line-height:1;letter-spacing:-.02em;
+    color:#000;margin:0 0 40px;white-space:nowrap;
+  }
+  .suc-list{display:flex;flex-direction:column;justify-content:space-between;flex:1;max-height:72%}
+  .suc-item{
+    display:block;padding:0;cursor:pointer;
+    font-family:"Gotham","Archivo Black",sans-serif;font-weight:900;
+    font-size:clamp(14px,1.6vw,22px);text-transform:uppercase;letter-spacing:.02em;
+    color:#000;transition:color .2s ease;line-height:1.2;
+  }
+  .suc-item:hover{color:#555}
+  .suc-item.active{
+    display:inline-block;width:fit-content;min-width:180px;text-align:center;
+    background:#000;color:var(--yellow);
+    padding:5px 28px;border-radius:99px;margin:2px 0;
+    position:relative;z-index:1;
+  }
+  .suc-item.active:hover{color:var(--yellow)}
+
+  /* Gatito animado */
+  .suc-gatito-wrap{
+    position:absolute;
+    width:55px;
+    overflow:hidden;        /* todo lo que quede abajo queda cortado */
+    pointer-events:none;
+    z-index:0;
+  }
+  .suc-gatito{
+    display:block;
+    width:55px;
+    transform:translateY(100%);  /* empieza oculto dentro del wrap */
+    transition:transform .38s cubic-bezier(.2,.8,.2,1);
+  }
+  .suc-gatito.visible{
+    transform:translateY(0);
+  }
+
+  /* Collage derecho */
+  .suc-right{position:sticky;top:100px}
+  .suc-collage{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    grid-template-rows:1fr 1fr;
+    gap:4px;border-radius:20px;overflow:hidden;
+    aspect-ratio:4/3;background:#111;
+  }
+  .suc-photo{overflow:hidden;background:#222;position:relative}
+  .suc-photo img{width:100%;height:100%;object-fit:cover;display:block}
+  .suc-photo-placeholder{width:100%;height:100%;background:#1a1a1a;display:flex;align-items:center;justify-content:center;color:#444;font-size:12px;letter-spacing:.1em}
+  .suc-box-links{
+    background:var(--yellow);padding:28px 32px;
+    display:flex;flex-direction:column;justify-content:center;gap:12px;
+  }
+  .suc-box-links a{
+    font-family:"Gotham","Archivo Black",sans-serif;font-weight:900;
+    font-size:clamp(14px,1.4vw,20px);text-transform:uppercase;letter-spacing:.06em;
+    color:#000;text-decoration:none;display:block;
+    border-bottom:2px solid #000;padding-bottom:10px;
+    transition:opacity .2s;
+  }
+  .suc-box-links a:last-child{border-bottom:none;padding-bottom:0}
+  .suc-box-links a:hover{opacity:.6}
+  .suc-box-addr{
+    background:var(--yellow);padding:24px 28px;
+    display:flex;flex-direction:column;justify-content:center;gap:10px;
+  }
+  .suc-box-addr .addr-text{font-size:clamp(12px,1vw,15px);line-height:1.55;color:#000;font-weight:500}
+  .suc-box-addr .addr-phone{font-family:"Gotham","Archivo Black",sans-serif;font-weight:900;font-size:clamp(14px,1.2vw,18px);color:#000;margin-top:6px}
+
+
+  /* ============ FAVORITOS ============ */
+  .favoritos{
+    background:#fff;color:#000;
+    height:calc(100vh - 80px);
+    overflow:hidden;
+    padding:200px 48px 48px;
+    display:flex;align-items:stretch;
+    position:relative;
+  }
+  .fav-cards{
+    display:grid;grid-template-columns:repeat(3,1fr);gap:82px;
+    width:78%;margin:0 auto;
+  }
+  .fav-title{
+    position:absolute;top:80px;left:160px;
+    font-family:"Monument Extended",sans-serif;
+    font-weight:800;font-size:clamp(28px,3.2vw,52px);
+    line-height:1.05;text-transform:uppercase;
+    color:#000;margin:0;
+  }
+  .fav-maneki{
+    position:absolute;left:50%;transform:translateX(-50%);
+    top:30px;width:320px;z-index:2;pointer-events:none;
+  }
+  .fav-card{border-radius:20px;overflow:hidden;position:relative}
+  .fav-card img{width:100%;height:auto;display:block}
+  .fav-card:nth-child(1){z-index:1}
+  .fav-card:nth-child(2){z-index:3}
+  .fav-card:nth-child(3){z-index:1}
+
+  /* ============ CONTACTO ============ */
+  .contact{background:#000;position:relative;overflow:hidden}
+  .contact-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:80px;align-items:center}
+  .contact h2{font-family:"Archivo Black",sans-serif;font-size:clamp(56px,8vw,112px);line-height:.92;margin:0 0 32px;text-transform:uppercase;letter-spacing:-.02em}
+  .contact h2 em{font-style:normal;color:var(--yellow);display:block}
+  .contact .lede{font-family:"Archivo Black",sans-serif;font-size:32px;line-height:1.1;margin:0 0 40px;text-transform:uppercase}
+  .contact-illus{display:grid;place-items:center}
+  .contact-illus img{max-width:580px;width:100%;filter:drop-shadow(0 30px 60px rgba(255,214,10,.18))}
+  .contact-info{margin-top:32px}
+  .contact-info-label{font-weight:700;color:var(--yellow);margin:0 0 8px;font-size:15px}
+  .contact-info p{margin:0 0 6px;font-size:16px;color:#ccc;line-height:1.6}
+  .contact-info a{color:var(--yellow);font-weight:700;text-underline-offset:3px;text-decoration:underline}
+
+  /* ============ FOOTER ============ */
+  footer{background:#000;overflow:hidden}
+  .foot-main{
+    display:grid;grid-template-columns:1fr 1fr;
+    align-items:flex-start;
+    padding:48px 72px;
+  }
+  .foot-left{padding-bottom:0}
+  .foot-feliz{width:clamp(200px,28vw,400px);display:block}
+  .foot-right{padding-bottom:40px;text-align:right}
+  .foot-social-label{font-style:italic;font-size:clamp(14px,1.4vw,20px);color:#fff;margin:0 0 16px;line-height:1.3}
+  .foot-social-label span{color:var(--yellow)}
+  .socials{display:flex;gap:12px;margin-bottom:20px;justify-content:flex-end}
+  .socials a{width:42px;height:42px;border-radius:99px;border:1px solid rgba(255,255,255,.25);display:grid;place-items:center;transition:all .2s ease}
+  .socials a:hover{background:var(--yellow);border-color:var(--yellow);color:#000}
+  .socials svg{width:18px;height:18px}
+  .foot-legal{font-size:12px;color:#7e7e7e;line-height:1.8;margin:0}
+  .foot-legal a{color:#bdbdbd;text-decoration:underline;text-underline-offset:3px}
+  .foot-marquee{background:var(--yellow);color:#000;border-block-start:2px solid #000;overflow:hidden}
+  .foot-marquee .marquee-track{font-size:18px;padding:12px 0}
+
+  /* ============ HAMBURGER + MOBILE MENU ============ */
+  .nav-hamburger{
+    display:none;grid-template-columns:repeat(3,4px);grid-template-rows:repeat(3,4px);
+    gap:3px;background:none;border:none;cursor:pointer;padding:0;
+  }
+  .nav-hamburger span{display:block;width:4px;height:4px;background:#fff;border-radius:50%;transition:opacity .3s ease,transform .3s ease}
+  .nav-hamburger.open span{opacity:.4}
+  .nav-hamburger.open span:nth-child(1){opacity:1;transform:translate(10px,10px)}
+  .nav-hamburger.open span:nth-child(3){opacity:1;transform:translate(-10px,10px)}
+  .nav-hamburger.open span:nth-child(5){opacity:1;transform:scale(1.4)}
+  .nav-hamburger.open span:nth-child(7){opacity:1;transform:translate(10px,-10px)}
+  .nav-hamburger.open span:nth-child(9){opacity:1;transform:translate(-10px,-10px)}
+
+  .mobile-menu{
+    display:none;position:fixed;inset:0;background:#000;z-index:51;
+    flex-direction:column;align-items:center;justify-content:center;gap:0;
+    opacity:0;transition:opacity .3s ease;padding-top:80px;
+  }
+  .mobile-menu.open{opacity:1}
+  .mobile-menu nav{display:flex;flex-direction:column;align-items:center;gap:8px;width:100%}
+  .mm-link{
+    font-family:"Monument Extended","Archivo Black",sans-serif;font-weight:900;
+    font-size:clamp(28px,8vw,52px);letter-spacing:.08em;color:#fff;text-transform:uppercase;
+    padding:16px 40px;transition:color .2s ease;display:block;width:100%;text-align:center;
+  }
+  .mm-link:hover{color:var(--yellow)}
+  .mm-cta{
+    margin-top:32px;background:var(--yellow);color:#000;
+    font-family:"Gotham","Archivo",sans-serif;font-weight:900;letter-spacing:.18em;font-size:16px;
+    padding:18px 40px;border-radius:99px;transition:background .2s ease;
+  }
+  .mm-close{
+    position:absolute;top:24px;left:50%;transform:translateX(-50%);
+    background:none;border:none;cursor:pointer;
+    color:#fff;font-size:28px;line-height:1;padding:8px;opacity:.7;transition:opacity .2s ease;
+  }
+  .mm-close:hover{opacity:1}
+  .mm-bottom{margin-top:auto;display:flex;flex-direction:column;align-items:center;gap:20px;padding-bottom:48px}
+  .mm-maneki{display:block}
+  .mm-maneki img{width:240px;display:block;margin:0 auto;transform-origin:bottom center;animation:maneki-swing 2.4s ease-in-out infinite}
+  .mm-socials{display:flex;gap:20px}
+  .mm-social-link{width:44px;height:44px;border-radius:99px;border:1px solid rgba(255,255,255,.3);display:grid;place-items:center;color:#fff;transition:background .2s ease,border-color .2s ease}
+  .mm-social-link:hover{background:var(--yellow);border-color:var(--yellow);color:#000}
+
+  /* ============ RESPONSIVE ============ */
+
+  /* Tablet landscape */
+  @media (max-width: 1024px){
+    .suc-layout{grid-template-columns:1fr 1.6fr;padding:24px 28px}
+    .fav-layout{padding:48px 28px 28px}
+    .fav-cards{width:88%}
+    .foot-main{padding:40px 40px}
+  }
+
+  /* Tablet portrait */
+  @media (max-width: 900px){
+    /* Nav */
+    .nav{padding:12px 20px;grid-template-columns:1fr auto auto;align-items:center}
+    .nav ul{display:none}
+    .nav .brand{margin-left:0}
+    .nav .brand img{height:28px;margin-top:6px}
+    .nav-center{display:none}
+    .nav-hamburger{display:grid}
+
+    /* Hero */
+    .hero-cta{right:20px;bottom:28px;font-size:13px;padding:14px 24px}
+
+    /* Sucursales */
+    .sucursales{height:auto;min-height:100vh}
+    .suc-layout{grid-template-columns:1fr;gap:24px;padding:96px 20px 48px}
+    .suc-title{white-space:normal;font-size:clamp(36px,11vw,56px);margin-bottom:24px}
+    .suc-right{position:static;top:auto}
+    .suc-collage{grid-template-columns:1fr 1fr;gap:3px;border-radius:16px}
+    .suc-box-links{padding:20px 20px;gap:8px}
+    .suc-box-links a{font-size:14px;padding-bottom:8px}
+    .suc-box-addr{padding:16px 20px}
+    .suc-box-addr .addr-text{font-size:11px}
+    .suc-box-addr .addr-phone{font-size:13px}
+    .suc-item{font-size:clamp(15px,4.5vw,20px)}
+    .suc-gatito-wrap{display:none}
+
+    /* Favoritos */
+    .favoritos{
+      height:auto;min-height:auto;padding:80px 20px 48px;
+      display:flex;flex-direction:column;align-items:center;overflow:visible;
+    }
+    .fav-title{
+      position:static;left:auto;top:auto;
+      font-size:clamp(28px,8vw,42px);
+      text-align:center;margin-bottom:24px;
+    }
+    .fav-cards{
+      position:relative;
+      width:100%;grid-template-columns:1fr;gap:12px;margin:0;
+      padding-top:130px;
+    }
+    .fav-maneki{
+      position:absolute;top:0;left:50%;
+      width:260px;z-index:0;
+      animation:manekiFloat 3.2s ease-in-out infinite;
+    }
+    .fav-card:nth-child(2){position:relative;z-index:1}
+    .fav-card:nth-child(3){z-index:0}
+    .fav-card:nth-child(4){z-index:0}
+
+    /* Contacto */
+    .contact-grid{grid-template-columns:1fr;gap:40px}
+    .contact-illus img{max-width:320px;margin:0 auto}
+
+    /* Footer */
+    .foot-main{grid-template-columns:1fr;gap:32px;padding:40px 28px;text-align:center}
+    .foot-left{display:flex;justify-content:center}
+    .foot-right{text-align:center}
+    .socials{justify-content:center}
+    .foot-feliz{width:clamp(160px,50vw,280px)}
+  }
+
+  /* Mobile grande */
+  @media (max-width: 600px){
+    /* Hero — proporciones desktop mantenidas, SPIRIT como tope de ancho */
+    .hero h1{letter-spacing:-.02em}
+    .hero h1 .wok{font-size:23vw}
+    .hero h1 .your{font-size:17vw;margin-top:-3.5vw}
+    .hero h1 .spirit{font-size:24vw;margin-top:2vw}
+    .hero-cta{right:50%;transform:translateX(50%);bottom:40px}
+
+    /* Sucursales */
+    .suc-title{font-size:clamp(32px,9vw,48px)}
+    .suc-collage{grid-template-columns:1fr}
+    .suc-box-links{flex-direction:row;justify-content:space-around;align-items:center;padding:18px 16px}
+    .suc-box-links a{border-bottom:none;border-right:2px solid #000;padding-bottom:0;padding-right:16px;font-size:13px}
+    .suc-box-links a:last-child{border-right:none;padding-right:0}
+
+    /* Favoritos */
+    .fav-title{font-size:clamp(26px,7.5vw,38px)}
+    .fav-cards{grid-template-columns:1fr;gap:12px;padding-top:110px}
+    .fav-maneki{width:220px}
+
+    /* Contacto */
+    .contact h2{font-size:clamp(40px,12vw,80px)}
+    .contact .lede{font-size:22px}
+
+    /* Footer */
+    .foot-marquee .marquee-track{font-size:14px}
+  }
+
+  /* Mobile pequeño */
+  @media (max-width: 380px){
+    .hero h1 .wok{font-size:23vw}
+    .hero h1 .your{font-size:17vw;margin-top:-3.5vw}
+    .hero h1 .spirit{font-size:24vw;margin-top:2vw}
+    .nav .brand img{height:26px;margin-top:6px}
+    .nav-center img{width:136px}
+  }
+
+  /* Accesibilidad: sin animaciones */
+  @media (prefers-reduced-motion: reduce){
+    *,*::before,*::after{animation-duration:.01ms !important;animation-iteration-count:1 !important;transition-duration:.01ms !important}
+  }
+</style>
+</head>
+<body>
+
+<!-- ============ SITE HEADER ============ -->
+<div class="site-header" id="topnav">
+  <nav class="nav" data-screen-label="00 Nav">
+    <a href="#top" class="brand"><img src="assets/logo-rnw.svg" alt="Rock N' Wok" /></a>
+    <div class="nav-center">
+      <a href="https://pide.rockandwok.com" target="_blank" rel="noopener">
+        <img src="assets/maneki-pide.png" alt="Pide Aquí" />
+      </a>
+    </div>
+    <div class="nav-right">
+      <ul>
+        <li><a href="#menu">MENÚ</a></li>
+        <li><a href="#sucursales">SUCURSALES</a></li>
+        <li><a href="#contacto">CONTACTO</a></li>
+      </ul>
+      <button class="nav-hamburger" aria-label="Abrir menú" aria-expanded="false">
+        <span></span><span></span><span></span>
+        <span></span><span></span><span></span>
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+</div>
+
+<!-- Mobile menu overlay — fuera del site-header para evitar que backdrop-filter rompa position:fixed -->
+<div class="mobile-menu" id="mobileMenu" aria-hidden="true">
+  <button class="mm-close" aria-label="Cerrar menú">&#x2715;</button>
+  <nav>
+    <a href="#menu" class="mm-link">MENÚ</a>
+    <a href="#sucursales" class="mm-link">SUCURSALES</a>
+    <a href="#contacto" class="mm-link">CONTACTO</a>
+  </nav>
+  <div class="mm-bottom">
+    <a href="https://pide.rockandwok.com" target="_blank" rel="noopener" class="mm-maneki">
+      <img src="assets/maneki-pide.png" alt="Pide Aquí" />
+    </a>
+    <div class="mm-socials">
+      <a href="#" aria-label="Facebook" class="mm-social-link"><svg viewBox="0 0 24 24" fill="currentColor" width="22" height="22"><path d="M13 22v-8h3l.5-4H13V7.5c0-1.2.3-2 2-2h2V2.1c-.4-.1-1.5-.2-2.8-.2C11.4 1.9 9 4 9 7v3H6v4h3v8h4z"/></svg></a>
+      <a href="#" aria-label="Instagram" class="mm-social-link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" width="22" height="22"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg></a>
+    </div>
+  </div>
+</div>
+
+<!-- ============ HERO ============ -->
+<header class="hero" id="top" data-screen-label="01 Hero">
+  <div class="bg"></div>
+  <div class="hero-inner">
+    <h1>
+      <span class="y wok">WOK</span>
+      <span class="w your">YOUR</span>
+      <span class="y spirit">SPIRIT</span>
+    </h1>
+  </div>
+  <a href="https://pide.rockandwok.com" target="_blank" rel="noopener" class="hero-cta">PIDE AQUÍ</a>
+</header>
+
+<!-- ============ MARQUEE ============ -->
+<div class="marquee" aria-hidden="true">
+  <div class="marquee-track">
+    <span>
+      #WOKYOURSPIRIT
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.39 7.36H22l-6.18 4.49L18.21 21 12 16.51 5.79 21l2.39-7.15L2 9.36h7.61z"/></svg>
+      ROCKEANDO CON EL PLANETA
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.39 7.36H22l-6.18 4.49L18.21 21 12 16.51 5.79 21l2.39-7.15L2 9.36h7.61z"/></svg>
+      100% BIODEGRADABLE
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.39 7.36H22l-6.18 4.49L18.21 21 12 16.51 5.79 21l2.39-7.15L2 9.36h7.61z"/></svg>
+      #WOKYOURSPIRIT
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.39 7.36H22l-6.18 4.49L18.21 21 12 16.51 5.79 21l2.39-7.15L2 9.36h7.61z"/></svg>
+      LISTO EN 5 MIN
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.39 7.36H22l-6.18 4.49L18.21 21 12 16.51 5.79 21l2.39-7.15L2 9.36h7.61z"/></svg>
+    </span>
+    <span aria-hidden="true">
+      #WOKYOURSPIRIT
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.39 7.36H22l-6.18 4.49L18.21 21 12 16.51 5.79 21l2.39-7.15L2 9.36h7.61z"/></svg>
+      ROCKEANDO CON EL PLANETA
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.39 7.36H22l-6.18 4.49L18.21 21 12 16.51 5.79 21l2.39-7.15L2 9.36h7.61z"/></svg>
+      100% BIODEGRADABLE
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.39 7.36H22l-6.18 4.49L18.21 21 12 16.51 5.79 21l2.39-7.15L2 9.36h7.61z"/></svg>
+      #WOKYOURSPIRIT
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.39 7.36H22l-6.18 4.49L18.21 21 12 16.51 5.79 21l2.39-7.15L2 9.36h7.61z"/></svg>
+      LISTO EN 5 MIN
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.39 7.36H22l-6.18 4.49L18.21 21 12 16.51 5.79 21l2.39-7.15L2 9.36h7.61z"/></svg>
+    </span>
+  </div>
+</div>
+
+<!-- ============ SUCURSALES ============ -->
+<section class="sucursales" id="sucursales" data-screen-label="02 Sucursales">
+  <div class="suc-layout">
+    <!-- COLUMNA IZQUIERDA: lista -->
+    <div class="suc-left">
+      <h2 class="suc-title">SUCURSALES</h2>
+      <div class="suc-list" id="sucList">
+        <!-- items injected by JS -->
+      </div>
+    </div>
+    <!-- Gatito: wrapper clipa todo lo que quede por debajo de la pill -->
+    <div class="suc-gatito-wrap" id="sucGatitoWrap">
+      <img src="assets/gatito.svg" alt="" class="suc-gatito" id="sucGatito" />
+    </div>
+    <!-- COLUMNA DERECHA: collage + info -->
+    <div class="suc-right">
+      <div class="suc-collage">
+        <!-- Foto 1 -->
+        <div class="suc-photo" id="sPhoto1">
+          <div class="suc-photo-placeholder">FOTO 1</div>
+        </div>
+        <!-- Foto 2 -->
+        <div class="suc-photo" id="sPhoto2">
+          <div class="suc-photo-placeholder">FOTO 2</div>
+        </div>
+        <!-- Caja amarilla: Google Maps + Pide en línea -->
+        <div class="suc-box-links">
+          <a id="dMapsLink" href="#" target="_blank" rel="noopener">GOOGLE MAPS</a>
+          <a href="https://pide.rockandwok.com" target="_blank" rel="noopener">PIDE EN LÍNEA</a>
+        </div>
+        <!-- Caja amarilla: dirección -->
+        <div class="suc-box-addr">
+          <p class="addr-text" id="dAddr">Calzada Ignacio Zaragoza 410, Corredor Industrial la Ciénega, 72220 Heroica Puebla de Zaragoza, Pue., México.</p>
+          <p class="addr-phone" id="dPhone">T. +52 222 710 7136</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FAVORITOS ============ -->
+<section class="favoritos" data-screen-label="03 Favoritos">
+  <h2 class="fav-title">LOS FAVORITOS<br>DE MANEKI</h2>
+  <div class="fav-cards">
+    <img src="assets/maneki-cute.png" alt="Maneki" class="fav-maneki" loading="lazy" />
+    <div class="fav-card"><img src="assets/01-orange.webp" alt="Orange Chicken" loading="lazy" /></div>
+    <div class="fav-card"><img src="assets/2.webp" alt="Rock Trío" loading="lazy" /></div>
+    <div class="fav-card"><img src="assets/3.webp" alt="Postres" loading="lazy" /></div>
+  </div>
+</section>
+
+
+<!-- ============ CONTACTO ============ -->
+<section class="block contact" id="contacto" data-screen-label="04 Contacto">
+  <div class="wrap">
+    <div class="contact-grid">
+      <div>
+        <h2>¿QUIERES <em>DECIRNOS</em><span style="display:block">ALGO?</span></h2>
+        <p class="lede">Estamos para escucharte.</p>
+        <div class="contact-info">
+          <p class="contact-info-label">Mándanos un e-mail</p>
+          <p>¿Dudas, quejas o sugerencias?<br>Envíanos un correo a:<br>
+          <a href="mailto:direccionoperaciones@rockandwok.com">direccionoperaciones@rockandwok.com</a></p>
+        </div>
+      </div>
+      <div class="contact-illus">
+        <img src="assets/maneki-phone.png" alt="Maneki contestando el teléfono" loading="lazy" />
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer data-screen-label="05 Footer">
+  <div class="foot-main">
+    <div class="foot-left">
+      <img src="assets/feliz-ano.svg" alt="Feliz Año del Caballo 2026" class="foot-feliz" loading="lazy" />
+    </div>
+    <div class="foot-right">
+      <p class="foot-social-label">Síguenos en<br><span>nuestras redes</span></p>
+      <div class="socials">
+        <a href="#" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M13 22v-8h3l.5-4H13V7.5c0-1.2.3-2 2-2h2V2.1c-.4-.1-1.5-.2-2.8-.2C11.4 1.9 9 4 9 7v3H6v4h3v8h4z"/></svg></a>
+        <a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg></a>
+      </div>
+      <p class="foot-legal">
+        <a href="#">Aviso de Privacidad</a><br/>
+        Copyright 2026 Rock N' Wok<br/>
+        Todos los derechos reservados.
+      </p>
+    </div>
+  </div>
+  <div class="foot-marquee" aria-hidden="true">
+    <div class="marquee-track">
+      <span>#WOKYOURSPIRIT ✦ #WOKYOURSPIRIT ✦ #WOKYOURSPIRIT ✦ #WOKYOURSPIRIT ✦ #WOKYOURSPIRIT ✦ #WOKYOURSPIRIT ✦ </span>
+      <span aria-hidden="true">#WOKYOURSPIRIT ✦ #WOKYOURSPIRIT ✦ #WOKYOURSPIRIT ✦ #WOKYOURSPIRIT ✦ #WOKYOURSPIRIT ✦ #WOKYOURSPIRIT ✦ </span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Mobile hamburger menu
+  const hamburger = document.querySelector('.nav-hamburger');
+  const mobileMenu = document.getElementById('mobileMenu');
+  const mmLinks = document.querySelectorAll('.mm-link');
+  const mmClose = document.querySelector('.mm-close');
+  mmClose.addEventListener('click', () => toggleMenu(false));
+
+  function toggleMenu(open) {
+    hamburger.classList.toggle('open', open);
+    hamburger.setAttribute('aria-expanded', open);
+    mobileMenu.classList.toggle('open', open);
+    mobileMenu.setAttribute('aria-hidden', !open);
+    mobileMenu.style.display = open ? 'flex' : 'none';
+    document.body.style.overflow = open ? 'hidden' : '';
+  }
+
+  hamburger.addEventListener('click', () => {
+    const isOpen = hamburger.classList.contains('open');
+    toggleMenu(!isOpen);
+  });
+
+  mmLinks.forEach(link => link.addEventListener('click', () => toggleMenu(false)));
+
+  // Hero text exit on scroll
+  const heroSpans = document.querySelectorAll('.hero h1 span');
+  const heroObs = new IntersectionObserver(([e]) => {
+    heroSpans.forEach((s, i) => {
+      if (!e.isIntersecting) {
+        s.style.animation = `heroOut .6s cubic-bezier(.4,0,1,1) ${i * 0.08}s both`;
+      } else {
+        s.style.animation = `heroIn .9s cubic-bezier(.2,.8,.2,1) ${[.1,.35,.6][i]}s both`;
+      }
+    });
+  }, { threshold: 0.05 });
+  const heroEl = document.querySelector('.hero');
+  if (heroEl) heroObs.observe(heroEl);
+
+  // Nav scroll state
+  const nav = document.getElementById('topnav');
+  window.addEventListener('scroll', () => {
+    nav.classList.toggle('scrolled', window.scrollY > 30);
+  });
+
+
+  // Branches data
+  const branches = [
+    { name:"PARQUE PUEBLA", city:"Corredor Industrial", addr:"Calzada Ignacio Zaragoza 410, Corredor Industrial la Ciénega, 72220 Heroica Puebla de Zaragoza, Pue., México.", phone:"T. +52 222 710 7136", hours:"Lun — Dom · 11:00 — 22:30", q:"Parque Puebla, Calzada Ignacio Zaragoza 410, Puebla" },
+    { name:"UPAEP", city:"Centro · Universitario", addr:"21 Sur 1103, Santiago, 72410 Heroica Puebla de Zaragoza, Pue., México.", phone:"T. +52 222 229 9400", hours:"Lun — Dom · 10:30 — 22:00", q:"UPAEP Puebla" },
+    { name:"EXPLANADA", city:"Lomas de Angelópolis", addr:"Boulevard Vista Hermosa s/n, Vista Hermosa, 72830 Puebla, Pue., México.", phone:"T. +52 222 431 7700", hours:"Lun — Dom · 11:00 — 22:30", q:"Explanada Puebla" },
+    { name:"VÍA SAN ÁNGEL", city:"Angelópolis", addr:"Vía Atlixcáyotl 1504, Concepción la Cruz, 72197 Puebla, Pue., México.", phone:"T. +52 222 432 8800", hours:"Lun — Dom · 11:00 — 23:00", q:"Vía San Ángel Puebla" },
+    { name:"SONATA", city:"Lomas de Angelópolis", addr:"Avenida Sonata 1, Lomas de Angelópolis, 72830 Puebla, Pue., México.", phone:"T. +52 222 169 2200", hours:"Lun — Dom · 11:00 — 22:30", q:"Sonata Lomas Angelópolis" },
+    { name:"GALERÍAS SERDÁN", city:"Centro Comercial", addr:"Boulevard Hermanos Serdán 270, Amor, 72140 Puebla, Pue., México.", phone:"T. +52 222 226 1800", hours:"Lun — Dom · 11:00 — 22:00", q:"Galerías Serdán Puebla" },
+    { name:"ZÓCALO", city:"Centro Histórico", addr:"Av. Reforma 530, Centro Histórico, 72000 Puebla, Pue., México.", phone:"T. +52 222 232 0011", hours:"Lun — Dom · 10:00 — 22:00", q:"Zócalo Puebla" },
+    { name:"OUTLET", city:"Angelópolis", addr:"Boulevard del Niño Poblano 2510, Reserva Territorial Atlixcáyotl, 72830 Puebla, Pue., México.", phone:"T. +52 222 169 4400", hours:"Lun — Dom · 11:00 — 22:00", q:"Outlets Premium Puebla" }
+  ];
+
+  // Pills más largas para nombres cortos que se enciman con el gatito
+  const pillMinWidth = { "UPAEP": "260px", "SONATA": "260px", "ZÓCALO": "310px" };
+
+  const list = document.getElementById('sucList');
+  branches.forEach((b, i) => {
+    const el = document.createElement('div');
+    el.className = 'suc-item' + (i === 0 ? ' active' : '');
+    el.dataset.idx = i;
+    el.textContent = b.name;
+    if (pillMinWidth[b.name]) el.dataset.minWidth = pillMinWidth[b.name];
+    el.addEventListener('click', () => selectBranch(i));
+    list.appendChild(el);
+  });
+
+  const gatito = document.getElementById('sucGatito');
+  const gatitoWrap = document.getElementById('sucGatitoWrap');
+  let currentIdx = -1;
+
+  function positionGatito(itemEl) {
+    const suc = document.querySelector('.sucursales');
+    const rect = itemEl.getBoundingClientRect();
+    const secRect = suc.getBoundingClientRect();
+    const gH = gatito.offsetHeight || 55;
+    const gW = gatitoWrap.offsetWidth || 55;
+
+    // El wrap tiene overflow:hidden y su altura = altura del gatito
+    // Su borde inferior queda exactamente en el top de la pill
+    const halfH = gH * 0.68;
+    gatitoWrap.style.height = halfH + 'px';
+    gatitoWrap.style.left   = (rect.right - secRect.left - gW * 1.5) + 'px';
+    gatitoWrap.style.top    = (rect.top - secRect.top - halfH) + 'px';
+  }
+
+  function selectBranch(i) {
+    if (i === currentIdx) return;
+    const items = document.querySelectorAll('.suc-item');
+    const b = branches[i];
+
+    // Si hay uno activo, primero ocultar el gatito y luego cambiar
+    if (currentIdx >= 0 && gatito.classList.contains('visible')) {
+      gatito.classList.remove('visible');
+      setTimeout(() => {
+        doSelect(i, items, b);
+      }, 360);
+    } else {
+      doSelect(i, items, b);
+    }
+  }
+
+  function doSelect(i, items, b) {
+    currentIdx = i;
+    items.forEach((el,j) => {
+      el.classList.toggle('active', j===i);
+      el.style.minWidth = (j===i && el.dataset.minWidth) ? el.dataset.minWidth : '';
+    });
+    document.getElementById('dAddr').textContent = b.addr;
+    document.getElementById('dPhone').textContent = b.phone;
+    const mapsLink = document.getElementById('dMapsLink');
+    if(mapsLink) mapsLink.href = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(b.q)}`;
+
+    // Posicionar y mostrar gatito
+    const activeEl = items[i];
+    positionGatito(activeEl);
+    requestAnimationFrame(() => {
+      gatito.classList.add('visible');
+    });
+  }
+
+  selectBranch(0);
+
+  // Smooth anchor scroll
+  document.querySelectorAll('a[href^="#"]').forEach(a => {
+    a.addEventListener('click', e => {
+      const id = a.getAttribute('href');
+      if (id.length > 1) {
+        const t = document.querySelector(id);
+        if (t) { e.preventDefault(); window.scrollTo({top: t.getBoundingClientRect().top + window.scrollY - 60, behavior:'smooth'}); }
+      }
+    });
+  });
+</script>
+
+</body>
+</html>

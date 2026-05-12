@@ -1,0 +1,22 @@
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Carpetas de fuentes duplicadas (se usan las de dist/fonts/)
+01. Monument Extended/
+02. Gotham/
+
+# Archivos de trabajo / referencias no necesarias en producción
+uploads/
+
+# Editores
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Variables de entorno (por si se agregan en el futuro)
+.env
+.env.local
+.env.production
