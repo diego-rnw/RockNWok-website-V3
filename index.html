@@ -11,40 +11,45 @@
 <meta property="og:type" content="website" />
 <meta property="og:title" content="Rock N' Wok — Wok Your Spirit" />
 <meta property="og:description" content="Comida rápida de inspiración asiática. 8 sucursales en Puebla. Pide en línea o encuéntranos en Rappi y Uber Eats." />
-<meta property="og:image" content="assets/hero-interior.png" />
+<meta property="og:image" content="assets/hero-interior.webp" />
 <meta property="og:url" content="https://rockandwok.com" />
 <meta property="og:locale" content="es_MX" />
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:title" content="Rock N' Wok — Wok Your Spirit" />
 <meta name="twitter:description" content="Comida rápida de inspiración asiática en Puebla. Pide en línea." />
-<meta name="twitter:image" content="assets/hero-interior.png" />
+<meta name="twitter:image" content="assets/hero-interior.webp" />
 <link rel="icon" type="image/x-icon" href="dist/favicon.ico" />
 <link rel="icon" type="image/png" sizes="32x32" href="dist/favicon-32x32.png" />
 <link rel="icon" type="image/png" sizes="16x16" href="dist/favicon-16x16.png" />
 <link rel="apple-touch-icon" href="dist/favicon-32x32.png" />
-<link rel="preload" as="image" href="assets/hero-interior.png" />
+<!-- Preloads críticos: hero + fuentes above-the-fold -->
+<link rel="preload" as="image" href="assets/hero-interior.webp" fetchpriority="high" />
+<link rel="preload" as="font" type="font/woff2" href="dist/fonts/monument/MonumentExtended-Black.woff2" crossorigin />
+<link rel="preload" as="font" type="font/woff2" href="dist/fonts/monument/MonumentExtended-Ultrabold.woff2" crossorigin />
+<link rel="preload" as="font" type="font/woff2" href="dist/fonts/gotham/GothamNarrow-Black.woff2" crossorigin />
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Archivo:wght@400;500;600;700;800;900&family=Bowlby+One&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Archivo:wght@400;500;600;700;800;900&family=Bowlby+One&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+<noscript><link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Archivo:wght@400;500;600;700;800;900&family=Bowlby+One&display=swap" rel="stylesheet"></noscript>
 <style>
   /* ===== MONUMENT EXTENDED ===== */
-  @font-face{font-family:"Monument Extended";src:url('dist/fonts/monument/MonumentExtended-Black.otf') format('opentype');font-weight:900;font-style:normal;font-display:swap}
-  @font-face{font-family:"Monument Extended";src:url('dist/fonts/monument/MonumentExtended-Ultrabold.otf') format('opentype');font-weight:800;font-style:normal;font-display:swap}
-  @font-face{font-family:"Monument Extended";src:url('dist/fonts/monument/MonumentExtended-Bold.otf') format('opentype');font-weight:700;font-style:normal;font-display:swap}
-  @font-face{font-family:"Monument Extended";src:url('dist/fonts/monument/MonumentExtended-Regular.otf') format('opentype');font-weight:400;font-style:normal;font-display:swap}
-  @font-face{font-family:"Monument Extended";src:url('dist/fonts/monument/MonumentExtended-Light.otf') format('opentype');font-weight:300;font-style:normal;font-display:swap}
-  @font-face{font-family:"Monument Extended";src:url('dist/fonts/monument/MonumentExtended-Ultralight.otf') format('opentype');font-weight:200;font-style:normal;font-display:swap}
+  @font-face{font-family:"Monument Extended";src:url('dist/fonts/monument/MonumentExtended-Black.woff2') format('woff2'),url('dist/fonts/monument/MonumentExtended-Black.otf') format('opentype');font-weight:900;font-style:normal;font-display:swap}
+  @font-face{font-family:"Monument Extended";src:url('dist/fonts/monument/MonumentExtended-Ultrabold.woff2') format('woff2'),url('dist/fonts/monument/MonumentExtended-Ultrabold.otf') format('opentype');font-weight:800;font-style:normal;font-display:swap}
+  @font-face{font-family:"Monument Extended";src:url('dist/fonts/monument/MonumentExtended-Bold.woff2') format('woff2'),url('dist/fonts/monument/MonumentExtended-Bold.otf') format('opentype');font-weight:700;font-style:normal;font-display:swap}
+  @font-face{font-family:"Monument Extended";src:url('dist/fonts/monument/MonumentExtended-Regular.woff2') format('woff2'),url('dist/fonts/monument/MonumentExtended-Regular.otf') format('opentype');font-weight:400;font-style:normal;font-display:swap}
+  @font-face{font-family:"Monument Extended";src:url('dist/fonts/monument/MonumentExtended-Light.woff2') format('woff2'),url('dist/fonts/monument/MonumentExtended-Light.otf') format('opentype');font-weight:300;font-style:normal;font-display:swap}
+  @font-face{font-family:"Monument Extended";src:url('dist/fonts/monument/MonumentExtended-Ultralight.woff2') format('woff2'),url('dist/fonts/monument/MonumentExtended-Ultralight.otf') format('opentype');font-weight:200;font-style:normal;font-display:swap}
   /* ===== GOTHAM ===== */
-  @font-face{font-family:"Gotham";src:url('dist/fonts/gotham/Gotham-Bold_0.otf') format('opentype');font-weight:700;font-style:normal;font-display:swap}
-  @font-face{font-family:"Gotham";src:url('dist/fonts/gotham/Gotham-BoldItalic.otf') format('opentype');font-weight:700;font-style:italic;font-display:swap}
-  @font-face{font-family:"Gotham";src:url('dist/fonts/gotham/Gotham-Medium.otf') format('opentype');font-weight:500;font-style:normal;font-display:swap}
-  @font-face{font-family:"Gotham";src:url('dist/fonts/gotham/Gotham-Book.otf') format('opentype');font-weight:400;font-style:normal;font-display:swap}
-  @font-face{font-family:"Gotham";src:url('dist/fonts/gotham/Gotham-BookItalic.otf') format('opentype');font-weight:400;font-style:italic;font-display:swap}
-  @font-face{font-family:"Gotham";src:url('dist/fonts/gotham/Gotham Light Regular.otf') format('opentype');font-weight:300;font-style:normal;font-display:swap}
-  @font-face{font-family:"Gotham";src:url('dist/fonts/gotham/GothamNarrow-Black.otf') format('opentype');font-weight:900;font-style:normal;font-display:swap}
-  @font-face{font-family:"Gotham Narrow";src:url('dist/fonts/gotham/GothamNarrow-Black.otf') format('opentype');font-weight:900;font-style:normal;font-display:swap}
-  @font-face{font-family:"Gotham Narrow";src:url('dist/fonts/gotham/GothamNarrow-Book.otf') format('opentype');font-weight:400;font-style:normal;font-display:swap}
-  @font-face{font-family:"Gotham Narrow";src:url('dist/fonts/gotham/GothamNarrow-Light.otf') format('opentype');font-weight:300;font-style:normal;font-display:swap}
+  @font-face{font-family:"Gotham";src:url('dist/fonts/gotham/Gotham-Bold_0.woff2') format('woff2'),url('dist/fonts/gotham/Gotham-Bold_0.otf') format('opentype');font-weight:700;font-style:normal;font-display:swap}
+  @font-face{font-family:"Gotham";src:url('dist/fonts/gotham/Gotham-BoldItalic.woff2') format('woff2'),url('dist/fonts/gotham/Gotham-BoldItalic.otf') format('opentype');font-weight:700;font-style:italic;font-display:swap}
+  @font-face{font-family:"Gotham";src:url('dist/fonts/gotham/Gotham-Medium.woff2') format('woff2'),url('dist/fonts/gotham/Gotham-Medium.otf') format('opentype');font-weight:500;font-style:normal;font-display:swap}
+  @font-face{font-family:"Gotham";src:url('dist/fonts/gotham/Gotham-Book.woff2') format('woff2'),url('dist/fonts/gotham/Gotham-Book.otf') format('opentype');font-weight:400;font-style:normal;font-display:swap}
+  @font-face{font-family:"Gotham";src:url('dist/fonts/gotham/Gotham-BookItalic.woff2') format('woff2'),url('dist/fonts/gotham/Gotham-BookItalic.otf') format('opentype');font-weight:400;font-style:italic;font-display:swap}
+  @font-face{font-family:"Gotham";src:url('dist/fonts/gotham/Gotham Light Regular.woff2') format('woff2'),url('dist/fonts/gotham/Gotham Light Regular.otf') format('opentype');font-weight:300;font-style:normal;font-display:swap}
+  @font-face{font-family:"Gotham";src:url('dist/fonts/gotham/GothamNarrow-Black.woff2') format('woff2'),url('dist/fonts/gotham/GothamNarrow-Black.otf') format('opentype');font-weight:900;font-style:normal;font-display:swap}
+  @font-face{font-family:"Gotham Narrow";src:url('dist/fonts/gotham/GothamNarrow-Black.woff2') format('woff2'),url('dist/fonts/gotham/GothamNarrow-Black.otf') format('opentype');font-weight:900;font-style:normal;font-display:swap}
+  @font-face{font-family:"Gotham Narrow";src:url('dist/fonts/gotham/GothamNarrow-Book.woff2') format('woff2'),url('dist/fonts/gotham/GothamNarrow-Book.otf') format('opentype');font-weight:400;font-style:normal;font-display:swap}
+  @font-face{font-family:"Gotham Narrow";src:url('dist/fonts/gotham/GothamNarrow-Light.woff2') format('woff2'),url('dist/fonts/gotham/GothamNarrow-Light.otf') format('opentype');font-weight:300;font-style:normal;font-display:swap}
 </style>
 <style>
   :root{
@@ -99,7 +104,7 @@
     position:relative;height:100vh;display:flex;align-items:center;justify-content:center;
     overflow:hidden;background:#000;
   }
-  .hero .bg{position:absolute;inset:0;background:url('assets/hero-interior.png') center/cover no-repeat;}
+  .hero .bg{position:absolute;inset:0;background:url('assets/hero-interior.webp') center/cover no-repeat;}
   .hero .bg::after{content:"";position:absolute;inset:0;background:rgba(0,0,0,.45)}
   .hero-inner{
     position:relative;z-index:2;width:100%;
@@ -480,7 +485,7 @@
     <a href="#top" class="brand"><img src="assets/logo-rnw.svg" alt="Rock N' Wok" /></a>
     <div class="nav-center">
       <a href="https://pide.rockandwok.com" target="_blank" rel="noopener">
-        <img src="assets/maneki-pide.png" alt="Pide Aquí" />
+        <img src="assets/maneki-pide.webp" alt="Pide Aquí" />
       </a>
     </div>
     <div class="nav-right">
@@ -508,7 +513,7 @@
   </nav>
   <div class="mm-bottom">
     <a href="https://pide.rockandwok.com" target="_blank" rel="noopener" class="mm-maneki">
-      <img src="assets/maneki-pide.png" alt="Pide Aquí" />
+      <img src="assets/maneki-pide.webp" alt="Pide Aquí" />
     </a>
     <div class="mm-socials">
       <a href="#" aria-label="Facebook" class="mm-social-link"><svg viewBox="0 0 24 24" fill="currentColor" width="22" height="22"><path d="M13 22v-8h3l.5-4H13V7.5c0-1.2.3-2 2-2h2V2.1c-.4-.1-1.5-.2-2.8-.2C11.4 1.9 9 4 9 7v3H6v4h3v8h4z"/></svg></a>
@@ -604,7 +609,7 @@
 <section class="favoritos" data-screen-label="03 Favoritos">
   <h2 class="fav-title">LOS FAVORITOS<br>DE MANEKI</h2>
   <div class="fav-cards">
-    <img src="assets/maneki-cute.png" alt="Maneki" class="fav-maneki" loading="lazy" />
+    <img src="assets/maneki-cute.webp" alt="Maneki" class="fav-maneki" loading="lazy" />
     <div class="fav-card"><img src="assets/01-orange.webp" alt="Orange Chicken" loading="lazy" /></div>
     <div class="fav-card"><img src="assets/2.webp" alt="Rock Trío" loading="lazy" /></div>
     <div class="fav-card"><img src="assets/3.webp" alt="Postres" loading="lazy" /></div>
@@ -626,7 +631,7 @@
         </div>
       </div>
       <div class="contact-illus">
-        <img src="assets/maneki-phone.png" alt="Maneki contestando el teléfono" loading="lazy" />
+        <img src="assets/maneki-phone.webp" alt="Maneki contestando el teléfono" loading="lazy" />
       </div>
     </div>
   </div>
