@@ -27,6 +27,15 @@
 <link rel="preload" as="font" type="font/woff2" href="dist/fonts/monument/MonumentExtended-Black.woff2" crossorigin />
 <link rel="preload" as="font" type="font/woff2" href="dist/fonts/monument/MonumentExtended-Ultrabold.woff2" crossorigin />
 <link rel="preload" as="font" type="font/woff2" href="dist/fonts/gotham/GothamNarrow-Black.woff2" crossorigin />
+
+<!-- Preload fotos de sucursal principal (Parque Puebla) para renderizado inmediato -->
+<link rel="preload" as="image" href="assets/Pp 1.webp" />
+<link rel="preload" as="image" href="assets/Pp 2.webp" />
+<link rel="preload" as="image" href="assets/Pp 3.webp" />
+<link rel="preload" as="image" href="assets/Pp 4.webp" />
+<link rel="preload" as="image" href="assets/Pp 5.webp" />
+<link rel="preload" as="image" href="assets/Pp 6.webp" />
+<link rel="preload" as="image" href="assets/Pp 7.webp" />
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Archivo:wght@400;500;600;700;800;900&family=Bowlby+One&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
@@ -912,6 +921,20 @@
     { name:"OUTLET", city:"Angelópolis", addr:"Boulevard del Niño Poblano 2510, Reserva Territorial Atlixcáyotl, 72830 Puebla, Pue., México.", phone:"T. +52 222 169 4400", hours:"Lun — Dom · 11:00 — 22:00", q:"Outlets Premium Puebla", photos: ['assets/Out gral.webp','assets/Out 1.webp','assets/Out 2.webp','assets/Out 3.webp','assets/Out 4.webp','assets/Out 5.webp'] }
   ];
 
+  // Preload all branch photos in the background for instant rendering
+  window.addEventListener('load', () => {
+    setTimeout(() => {
+      branches.forEach(b => {
+        if(b.photos && b.photos.length > 0) {
+          b.photos.forEach(src => {
+            const img = new Image();
+            img.src = src;
+          });
+        }
+      });
+    }, 500); // Wait 500ms after page load so it doesn't block critical rendering
+  });
+
   // Pills más largas para nombres cortos que se enciman con el gatito
   const pillMinWidth = { "UPAEP": "260px", "SONATA": "260px", "ZÓCALO": "310px" };
 
@@ -1001,8 +1024,7 @@
         imgSrc = photos[p];
         const img = document.createElement('img');
         img.src = imgSrc;
-        img.loading = "lazy";
-        img.style.animationDelay = (p * 0.05) + 's';
+                img.style.animationDelay = (p * 0.05) + 's';
         art.appendChild(img);
       } else {
         const ph = document.createElement('div');
