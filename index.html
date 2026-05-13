@@ -161,8 +161,8 @@
     background:var(--yellow);color:#000;border-block:2px solid #000;
     overflow:hidden;position:relative;
   }
-  .marquee-track{display:flex;gap:54px;padding:14px 0;white-space:nowrap;font-family:"Archivo Black",sans-serif;font-size:22px;letter-spacing:.06em;animation:scroll 28s linear infinite}
-  .marquee-track span{display:inline-flex;align-items:center;gap:54px}
+  .marquee-track{display:flex;width:max-content;padding:14px 0;white-space:nowrap;font-family:"Archivo Black",sans-serif;font-size:22px;letter-spacing:.06em;animation:scroll 28s linear infinite}
+  .marquee-track span{display:inline-flex;align-items:center;gap:54px;padding-right:54px}
   .marquee-track svg{width:18px;height:18px}
   @keyframes scroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
   @keyframes manekiFloat{
@@ -177,7 +177,7 @@
 
   /* ============ SUCURSALES ============ */
   .sucursales{background:#fff;color:#000;height:calc(100vh - 80px);display:flex;align-items:stretch;position:relative;overflow:hidden}
-  .suc-layout{display:grid;grid-template-columns:1fr 2.2fr;gap:48px;align-items:start;width:100%;max-width:1320px;margin:0 auto;padding:32px 48px}
+  .suc-layout{display:grid;grid-template-columns:1fr 2.6fr;gap:48px;align-items:start;width:100%;max-width:1440px;margin:0 auto;padding:32px 48px}
   .suc-left{display:flex;flex-direction:column;height:100%}
   .suc-title{
     font-family:"Monument Extended","Archivo Black",sans-serif;
@@ -223,41 +223,125 @@
   .suc-right{position:sticky;top:100px}
   .suc-collage{
     display:grid;
-    grid-template-columns:1fr 1fr;
-    grid-template-rows:1fr 1fr;
     gap:4px;border-radius:20px;overflow:hidden;
     aspect-ratio:4/3;background:#111;
+    position:relative;
+    grid-auto-flow: dense;
   }
   .suc-photo{overflow:hidden;background:#222;position:relative}
-  .suc-photo img{width:100%;height:100%;object-fit:cover;display:block}
+  .suc-photo img{width:100%;height:100%;object-fit:cover;display:block;animation:heroIn .6s cubic-bezier(.2,.8,.2,1) both}
   .suc-photo-placeholder{width:100%;height:100%;background:#1a1a1a;display:flex;align-items:center;justify-content:center;color:#444;font-size:12px;letter-spacing:.1em}
+
+  /* Hover Overlay */
+  .suc-hover-overlay {
+    position: absolute;
+    inset: 0;
+    z-index: 50;
+    background: rgba(17,17,17,0.95);
+    padding: 24px;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.35s ease, transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+    transform: scale(0.9);
+  }
+  .suc-hover-overlay.active {
+    opacity: 1;
+    transform: scale(1);
+  }
+  .suc-hover-overlay img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    display: block;
+    filter: drop-shadow(0 20px 30px rgba(0,0,0,0.5));
+  }
+
+
+  /* Dynamic Collage Grid Layouts */
+  .collage-1 { grid-template-columns: repeat(5, 1fr); grid-template-rows: 2fr 0.8fr; }
+  .collage-1 .suc-photo:nth-of-type(1) { grid-column: span 5; }
+  .collage-1 .suc-box-links { grid-column: span 2; }
+  .collage-1 .suc-box-addr { grid-column: span 3; }
+  
+  .collage-2 { grid-template-columns: repeat(5, 1fr); grid-template-rows: 2fr 0.8fr; }
+  .collage-2 .suc-photo:nth-of-type(1) { grid-column: span 5; }
+  .collage-2 .suc-photo:nth-of-type(2) { grid-column: span 3; }
+  .collage-2 .suc-box-links { grid-column: span 1; }
+  .collage-2 .suc-box-addr { grid-column: span 1; }
+  
+  .collage-3 { grid-template-columns: repeat(5, 1fr); grid-template-rows: 1.5fr 0.8fr; }
+  .collage-3 .suc-photo:nth-of-type(1) { grid-column: span 3; }
+  .collage-3 .suc-photo:nth-of-type(2) { grid-column: span 2; }
+  .collage-3 .suc-photo:nth-of-type(3) { grid-column: span 3; }
+  .collage-3 .suc-box-links { grid-column: span 1; }
+  .collage-3 .suc-box-addr { grid-column: span 1; }
+  
+  .collage-4 { grid-template-columns: repeat(5, 1fr); grid-template-rows: 1.5fr 0.8fr; }
+  .collage-4 .suc-photo:nth-of-type(1) { grid-column: span 3; }
+  .collage-4 .suc-photo:nth-of-type(2) { grid-column: span 2; }
+  .collage-4 .suc-photo:nth-of-type(3) { grid-column: span 2; }
+  .collage-4 .suc-photo:nth-of-type(4) { grid-column: span 1; }
+  .collage-4 .suc-box-links { grid-column: span 1; }
+  .collage-4 .suc-box-addr { grid-column: span 1; }
+  
+  .collage-5 { grid-template-columns: repeat(5, 1fr); grid-template-rows: 1.5fr 1.2fr 0.8fr; }
+  .collage-5 .suc-photo:nth-of-type(1) { grid-column: span 3; grid-row: span 2; }
+  .collage-5 .suc-photo:nth-of-type(2) { grid-column: span 2; }
+  .collage-5 .suc-photo:nth-of-type(3) { grid-column: span 2; }
+  .collage-5 .suc-photo:nth-of-type(4) { grid-column: span 2; }
+  .collage-5 .suc-photo:nth-of-type(5) { grid-column: span 1; }
+  .collage-5 .suc-box-links { grid-column: span 1; }
+  .collage-5 .suc-box-addr { grid-column: span 1; }
+  
+  .collage-6 { grid-template-columns: repeat(5, 1fr); grid-template-rows: 1.5fr 1.2fr 0.8fr; }
+  .collage-6 .suc-photo:nth-of-type(1) { grid-column: span 3; }
+  .collage-6 .suc-photo:nth-of-type(2) { grid-column: span 2; }
+  .collage-6 .suc-photo:nth-of-type(3) { grid-column: span 2; }
+  .collage-6 .suc-photo:nth-of-type(4) { grid-column: span 3; }
+  .collage-6 .suc-photo:nth-of-type(5) { grid-column: span 2; }
+  .collage-6 .suc-photo:nth-of-type(6) { grid-column: span 1; }
+  .collage-6 .suc-box-links { grid-column: span 1; }
+  .collage-6 .suc-box-addr { grid-column: span 1; }
+  
+  .collage-7 { grid-template-columns: repeat(5, 1fr); grid-template-rows: 1.5fr 1.2fr 0.8fr; }
+  .collage-7 .suc-photo:nth-of-type(1) { grid-column: span 3; }
+  .collage-7 .suc-photo:nth-of-type(2) { grid-column: span 2; }
+  .collage-7 .suc-photo:nth-of-type(3) { grid-column: span 2; }
+  .collage-7 .suc-photo:nth-of-type(4) { grid-column: span 2; }
+  .collage-7 .suc-photo:nth-of-type(5) { grid-column: span 1; }
+  .collage-7 .suc-photo:nth-of-type(6) { grid-column: span 2; }
+  .collage-7 .suc-photo:nth-of-type(7) { grid-column: span 1; }
+  .collage-7 .suc-box-links { grid-column: span 1; }
+  .collage-7 .suc-box-addr { grid-column: span 1; }
   .suc-box-links{
-    background:var(--yellow);padding:28px 32px;
-    display:flex;flex-direction:column;justify-content:center;gap:12px;
+    background:var(--yellow);padding:12px 18px;
+    display:flex;flex-direction:column;justify-content:center;gap:6px;
   }
   .suc-box-links a{
     font-family:"Gotham","Archivo Black",sans-serif;font-weight:900;
-    font-size:clamp(14px,1.4vw,20px);text-transform:uppercase;letter-spacing:.06em;
+    font-size:clamp(11px,0.9vw,14px);text-transform:uppercase;letter-spacing:.06em;
     color:#000;text-decoration:none;display:block;
-    border-bottom:2px solid #000;padding-bottom:10px;
-    transition:opacity .2s;
+    border-bottom:2px solid #000;padding-bottom:6px;
+    transition:color .25s ease, border-color .25s ease;
   }
   .suc-box-links a:last-child{border-bottom:none;padding-bottom:0}
-  .suc-box-links a:hover{opacity:.6}
-  .suc-box-addr{
-    background:var(--yellow);padding:24px 28px;
-    display:flex;flex-direction:column;justify-content:center;gap:10px;
+  .suc-box-links a:hover{
+    color: var(--orange);
   }
-  .suc-box-addr .addr-text{font-size:clamp(12px,1vw,15px);line-height:1.55;color:#000;font-weight:500}
-  .suc-box-addr .addr-phone{font-family:"Gotham","Archivo Black",sans-serif;font-weight:900;font-size:clamp(14px,1.2vw,18px);color:#000;margin-top:6px}
+  .suc-box-addr{
+    background:var(--yellow);padding:12px 18px;
+    display:flex;flex-direction:column;justify-content:center;gap:4px;
+  }
+  .suc-box-addr .addr-text{font-size:clamp(10px,0.75vw,12px);line-height:1.4;color:#000;font-weight:500}
+  .suc-box-addr .addr-phone{font-family:"Gotham","Archivo Black",sans-serif;font-weight:900;font-size:clamp(11px,0.85vw,14px);color:#000;margin-top:4px}
 
 
   /* ============ FAVORITOS ============ */
   .favoritos{
     background:#fff;color:#000;
-    height:calc(100vh - 80px);
+    min-height:calc(100vh - 80px); height:auto;
     overflow:hidden;
-    padding:200px 48px 48px;
+    padding:220px 48px 48px;
     display:flex;align-items:stretch;
     position:relative;
   }
@@ -274,13 +358,60 @@
   }
   .fav-maneki{
     position:absolute;left:50%;transform:translateX(-50%);
-    top:30px;width:320px;z-index:2;pointer-events:none;
+    top:70px;width:320px;z-index:2;pointer-events:none;
   }
-  .fav-card{border-radius:20px;overflow:hidden;position:relative}
-  .fav-card img{width:100%;height:auto;display:block}
-  .fav-card:nth-child(1){z-index:1}
-  .fav-card:nth-child(2){z-index:3}
-  .fav-card:nth-child(3){z-index:1}
+  .fav-card{
+    perspective:1200px;
+    position:relative;
+    z-index:3;
+  }
+  .fav-card-inner{
+    position:relative;
+    width:100%;
+    height:100%;
+    transition:transform 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+    transform-style:preserve-3d;
+  }
+  .fav-card:hover .fav-card-inner{
+    transform:rotateY(180deg);
+  }
+  .fav-card-front, .fav-card-back{
+    -webkit-backface-visibility:hidden;
+    backface-visibility:hidden;
+    border-radius:20px;
+    overflow:hidden;
+  }
+  .fav-card-front{
+    position:relative;
+    width:100%;
+  }
+  .fav-card-front img{width:100%;height:auto;display:block}
+  .fav-card-back{
+    position:absolute;
+    top:0;left:0;width:100%;height:100%;
+    background:#fff;
+    transform:rotateY(180deg);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    box-shadow:inset 0 0 0 1px #eee;
+  }
+  .pide-btn-circle{
+    width:150px;height:150px;
+    background:var(--orange);color:#fff;
+    border-radius:50%;
+    display:flex;align-items:center;justify-content:center;
+    text-align:center;
+    font-family:"Gotham","Archivo",sans-serif;font-weight:900;
+    font-size:16px;line-height:1.2;letter-spacing:.05em;
+    text-decoration:none;
+    transition:transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.4s ease;
+    box-shadow:0 8px 24px rgba(255,78,20,0.4);
+  }
+  .pide-btn-circle:hover{
+    transform:scale(1.15);
+    box-shadow:0 12px 32px rgba(255,78,20,0.6);
+  }
 
   /* ============ CONTACTO ============ */
   .contact{background:#000;position:relative;overflow:hidden}
@@ -388,7 +519,22 @@
     .suc-layout{grid-template-columns:1fr;gap:24px;padding:96px 20px 48px}
     .suc-title{white-space:normal;font-size:clamp(36px,11vw,56px);margin-bottom:24px}
     .suc-right{position:static;top:auto}
-    .suc-collage{grid-template-columns:1fr 1fr;gap:3px;border-radius:16px}
+    .suc-collage{
+      display:grid !important;
+      grid-template-columns:1fr 1fr !important;
+      grid-template-rows:auto !important;
+      aspect-ratio:auto !important;
+      gap:6px;border-radius:16px;
+    }
+    .suc-collage > * {
+      grid-column: span 1 !important;
+      grid-row: span 1 !important;
+      aspect-ratio: 1/1;
+    }
+    .suc-collage .suc-box-links, .suc-collage .suc-box-addr {
+      grid-column: span 2 !important;
+      aspect-ratio: auto;
+    }
     .suc-box-links{padding:20px 20px;gap:8px}
     .suc-box-links a{font-size:14px;padding-bottom:8px}
     .suc-box-addr{padding:16px 20px}
@@ -417,9 +563,7 @@
       width:260px;z-index:0;
       animation:manekiFloat 3.2s ease-in-out infinite;
     }
-    .fav-card:nth-child(2){position:relative;z-index:1}
-    .fav-card:nth-child(3){z-index:0}
-    .fav-card:nth-child(4){z-index:0}
+    /* removed individual z-index overrides so all cards remain above maneki */
 
     /* Contacto */
     .contact-grid{grid-template-columns:1fr;gap:40px}
@@ -444,7 +588,7 @@
 
     /* Sucursales */
     .suc-title{font-size:clamp(32px,9vw,48px)}
-    .suc-collage{grid-template-columns:1fr}
+    /* removed single column override for collage */
     .suc-box-links{flex-direction:row;justify-content:space-around;align-items:center;padding:18px 16px}
     .suc-box-links a{border-bottom:none;border-right:2px solid #000;padding-bottom:0;padding-right:16px;font-size:13px}
     .suc-box-links a:last-child{border-right:none;padding-right:0}
@@ -565,6 +709,45 @@
   </div>
 </div>
 
+<!-- ============ FAVORITOS ============ -->
+<section class="favoritos" id="menu" data-screen-label="03 Favoritos">
+  <h2 class="fav-title">LOS FAVORITOS<br>DE MANEKI</h2>
+  <div class="fav-cards">
+    <img src="assets/maneki-cute.webp" alt="Maneki" class="fav-maneki" loading="lazy" />
+    <div class="fav-card">
+      <div class="fav-card-inner">
+        <div class="fav-card-front">
+          <img src="assets/01-orange.webp" alt="Orange Chicken" loading="lazy" />
+        </div>
+        <div class="fav-card-back">
+          <a href="https://pide.rockandwok.com" target="_blank" rel="noopener" class="pide-btn-circle">PIDE EN<br>LÍNEA</a>
+        </div>
+      </div>
+    </div>
+    <div class="fav-card">
+      <div class="fav-card-inner">
+        <div class="fav-card-front">
+          <img src="assets/2.webp" alt="Rock Trío" loading="lazy" />
+        </div>
+        <div class="fav-card-back">
+          <a href="https://pide.rockandwok.com" target="_blank" rel="noopener" class="pide-btn-circle">PIDE EN<br>LÍNEA</a>
+        </div>
+      </div>
+    </div>
+    <div class="fav-card">
+      <div class="fav-card-inner">
+        <div class="fav-card-front">
+          <img src="assets/3.webp" alt="Postres" loading="lazy" />
+        </div>
+        <div class="fav-card-back">
+          <a href="https://pide.rockandwok.com" target="_blank" rel="noopener" class="pide-btn-circle">PIDE EN<br>LÍNEA</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
 <!-- ============ SUCURSALES ============ -->
 <section class="sucursales" id="sucursales" data-screen-label="02 Sucursales">
   <div class="suc-layout">
@@ -582,14 +765,18 @@
     <!-- COLUMNA DERECHA: collage + info -->
     <div class="suc-right">
       <div class="suc-collage">
+        <!-- Overlay for hover -->
+        <div class="suc-hover-overlay" id="sucHoverOverlay">
+          <img id="sucHoverImg" src="" alt="">
+        </div>
         <!-- Foto 1 -->
-        <div class="suc-photo" id="sPhoto1">
+        <article class="suc-photo" id="sPhoto1">
           <div class="suc-photo-placeholder">FOTO 1</div>
-        </div>
+        </article>
         <!-- Foto 2 -->
-        <div class="suc-photo" id="sPhoto2">
+        <article class="suc-photo" id="sPhoto2">
           <div class="suc-photo-placeholder">FOTO 2</div>
-        </div>
+        </article>
         <!-- Caja amarilla: Google Maps + Pide en línea -->
         <div class="suc-box-links">
           <a id="dMapsLink" href="#" target="_blank" rel="noopener">GOOGLE MAPS</a>
@@ -604,18 +791,6 @@
     </div>
   </div>
 </section>
-
-<!-- ============ FAVORITOS ============ -->
-<section class="favoritos" data-screen-label="03 Favoritos">
-  <h2 class="fav-title">LOS FAVORITOS<br>DE MANEKI</h2>
-  <div class="fav-cards">
-    <img src="assets/maneki-cute.webp" alt="Maneki" class="fav-maneki" loading="lazy" />
-    <div class="fav-card"><img src="assets/01-orange.webp" alt="Orange Chicken" loading="lazy" /></div>
-    <div class="fav-card"><img src="assets/2.webp" alt="Rock Trío" loading="lazy" /></div>
-    <div class="fav-card"><img src="assets/3.webp" alt="Postres" loading="lazy" /></div>
-  </div>
-</section>
-
 
 <!-- ============ CONTACTO ============ -->
 <section class="block contact" id="contacto" data-screen-label="04 Contacto">
@@ -711,14 +886,14 @@
 
   // Branches data
   const branches = [
-    { name:"PARQUE PUEBLA", city:"Corredor Industrial", addr:"Calzada Ignacio Zaragoza 410, Corredor Industrial la Ciénega, 72220 Heroica Puebla de Zaragoza, Pue., México.", phone:"T. +52 222 710 7136", hours:"Lun — Dom · 11:00 — 22:30", q:"Parque Puebla, Calzada Ignacio Zaragoza 410, Puebla" },
-    { name:"UPAEP", city:"Centro · Universitario", addr:"21 Sur 1103, Santiago, 72410 Heroica Puebla de Zaragoza, Pue., México.", phone:"T. +52 222 229 9400", hours:"Lun — Dom · 10:30 — 22:00", q:"UPAEP Puebla" },
-    { name:"EXPLANADA", city:"Lomas de Angelópolis", addr:"Boulevard Vista Hermosa s/n, Vista Hermosa, 72830 Puebla, Pue., México.", phone:"T. +52 222 431 7700", hours:"Lun — Dom · 11:00 — 22:30", q:"Explanada Puebla" },
-    { name:"VÍA SAN ÁNGEL", city:"Angelópolis", addr:"Vía Atlixcáyotl 1504, Concepción la Cruz, 72197 Puebla, Pue., México.", phone:"T. +52 222 432 8800", hours:"Lun — Dom · 11:00 — 23:00", q:"Vía San Ángel Puebla" },
-    { name:"SONATA", city:"Lomas de Angelópolis", addr:"Avenida Sonata 1, Lomas de Angelópolis, 72830 Puebla, Pue., México.", phone:"T. +52 222 169 2200", hours:"Lun — Dom · 11:00 — 22:30", q:"Sonata Lomas Angelópolis" },
-    { name:"GALERÍAS SERDÁN", city:"Centro Comercial", addr:"Boulevard Hermanos Serdán 270, Amor, 72140 Puebla, Pue., México.", phone:"T. +52 222 226 1800", hours:"Lun — Dom · 11:00 — 22:00", q:"Galerías Serdán Puebla" },
-    { name:"ZÓCALO", city:"Centro Histórico", addr:"Av. Reforma 530, Centro Histórico, 72000 Puebla, Pue., México.", phone:"T. +52 222 232 0011", hours:"Lun — Dom · 10:00 — 22:00", q:"Zócalo Puebla" },
-    { name:"OUTLET", city:"Angelópolis", addr:"Boulevard del Niño Poblano 2510, Reserva Territorial Atlixcáyotl, 72830 Puebla, Pue., México.", phone:"T. +52 222 169 4400", hours:"Lun — Dom · 11:00 — 22:00", q:"Outlets Premium Puebla" }
+    { name:"PARQUE PUEBLA", city:"Corredor Industrial", addr:"Calzada Ignacio Zaragoza 410, Corredor Industrial la Ciénega, 72220 Heroica Puebla de Zaragoza, Pue., México.", phone:"T. +52 222 710 7136", hours:"Lun — Dom · 11:00 — 22:30", q:"Parque Puebla, Calzada Ignacio Zaragoza 410, Puebla", photos: ['assets/Pp 1.webp','assets/Pp 2.webp','assets/Pp 3.webp','assets/Pp 4.webp','assets/Pp 5.webp','assets/Pp 6.webp','assets/Pp 7.webp'] },
+    { name:"UPAEP", city:"Centro · Universitario", addr:"21 Sur 1103, Santiago, 72410 Heroica Puebla de Zaragoza, Pue., México.", phone:"T. +52 222 229 9400", hours:"Lun — Dom · 10:30 — 22:00", q:"UPAEP Puebla", photos: ['assets/Upa 1.webp','assets/Upa 2.webp','assets/Upa 3.webp'] },
+    { name:"EXPLANADA", city:"Lomas de Angelópolis", addr:"Boulevard Vista Hermosa s/n, Vista Hermosa, 72830 Puebla, Pue., México.", phone:"T. +52 222 431 7700", hours:"Lun — Dom · 11:00 — 22:30", q:"Explanada Puebla", photos: ['assets/Exp gral.webp','assets/Exp 1.webp','assets/Exp 2.webp','assets/Exp 3.webp','assets/Exp 4.webp','assets/Exp 5.webp','assets/Exp 6.webp'] },
+    { name:"VÍA SAN ÁNGEL", city:"Angelópolis", addr:"Vía Atlixcáyotl 1504, Concepción la Cruz, 72197 Puebla, Pue., México.", phone:"T. +52 222 432 8800", hours:"Lun — Dom · 11:00 — 23:00", q:"Vía San Ángel Puebla", photos: ['assets/Vsa gral.webp','assets/Vsa 1.webp','assets/Vsa 2.webp','assets/Vsa 3.webp','assets/Vsa 4.webp'] },
+    { name:"SONATA", city:"Lomas de Angelópolis", addr:"Avenida Sonata 1, Lomas de Angelópolis, 72830 Puebla, Pue., México.", phone:"T. +52 222 169 2200", hours:"Lun — Dom · 11:00 — 22:30", q:"Sonata Lomas Angelópolis", photos: ['assets/Son gral.webp','assets/Son 1.webp','assets/Son 2.webp','assets/Son 3.webp','assets/Son 4.webp','assets/Son 5.webp','assets/Son 6.webp'] },
+    { name:"GALERÍAS SERDÁN", city:"Centro Comercial", addr:"Boulevard Hermanos Serdán 270, Amor, 72140 Puebla, Pue., México.", phone:"T. +52 222 226 1800", hours:"Lun — Dom · 11:00 — 22:00", q:"Galerías Serdán Puebla", photos: ['assets/Gal 1.webp','assets/Gal 2.webp'] },
+    { name:"ZÓCALO", city:"Centro Histórico", addr:"Av. Reforma 530, Centro Histórico, 72000 Puebla, Pue., México.", phone:"T. +52 222 232 0011", hours:"Lun — Dom · 10:00 — 22:00", q:"Zócalo Puebla", photos: ['assets/Zoc 1.webp','assets/Zoc 2.webp','assets/Zoc 3.webp'] },
+    { name:"OUTLET", city:"Angelópolis", addr:"Boulevard del Niño Poblano 2510, Reserva Territorial Atlixcáyotl, 72830 Puebla, Pue., México.", phone:"T. +52 222 169 4400", hours:"Lun — Dom · 11:00 — 22:00", q:"Outlets Premium Puebla", photos: ['assets/Out gral.webp','assets/Out 1.webp','assets/Out 2.webp','assets/Out 3.webp','assets/Out 4.webp','assets/Out 5.webp'] }
   ];
 
   // Pills más largas para nombres cortos que se enciman con el gatito
@@ -781,7 +956,84 @@
     const mapsLink = document.getElementById('dMapsLink');
     if(mapsLink) mapsLink.href = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(b.q)}`;
 
-    // Posicionar y mostrar gatito
+    const collage = document.querySelector('.suc-collage');
+    
+    // Extract boxes to re-insert them randomly
+    const boxLinks = document.querySelector('.suc-box-links');
+    const boxAddr = document.querySelector('.suc-box-addr');
+    if(boxLinks) boxLinks.remove();
+    if(boxAddr) boxAddr.remove();
+    
+    // Clear old photos
+    collage.querySelectorAll('.suc-photo').forEach(el => el.remove());
+    
+    const photos = (b.photos && b.photos.length > 0) ? b.photos : [];
+    const count = Math.max(photos.length, 2);
+    
+    collage.className = 'suc-collage collage-' + Math.min(count, 7);
+    
+    const overlay = document.getElementById('sucHoverOverlay');
+    const overlayImg = document.getElementById('sucHoverImg');
+
+    const itemsArray = [];
+    for (let p = 0; p < count; p++) {
+      const art = document.createElement('article'); // Change to article for nth-of-type accuracy
+      art.className = 'suc-photo';
+      
+      let imgSrc = '';
+      if (photos[p]) {
+        imgSrc = photos[p];
+        const img = document.createElement('img');
+        img.src = imgSrc;
+        img.loading = "lazy";
+        img.style.animationDelay = (p * 0.05) + 's';
+        art.appendChild(img);
+      } else {
+        const ph = document.createElement('div');
+        ph.className = 'suc-photo-placeholder';
+        ph.textContent = 'FOTO ' + (p + 1);
+        art.appendChild(ph);
+      }
+      
+      // Hover Expansion Effect
+      art.addEventListener('mouseenter', () => {
+        if (!imgSrc) return;
+        const cRect = collage.getBoundingClientRect();
+        const aRect = art.getBoundingClientRect();
+        const originX = ((aRect.left + aRect.width/2) - cRect.left) / cRect.width * 100;
+        const originY = ((aRect.top + aRect.height/2) - cRect.top) / cRect.height * 100;
+        
+        overlay.style.transformOrigin = `${originX}% ${originY}%`;
+        overlayImg.src = imgSrc;
+        overlay.classList.add('active');
+      });
+      art.addEventListener('mouseleave', () => {
+        overlay.classList.remove('active');
+      });
+      
+      itemsArray.push(art);
+    }
+    
+    // Randomize Yellow Boxes Placement
+    let pos1 = Math.floor(Math.random() * (count + 1));
+    let pos2;
+    do {
+      pos2 = Math.floor(Math.random() * (count + 2));
+    } while (Math.abs(pos1 - pos2) <= 1 && count > 1);
+    
+    const positions = [
+      { el: boxLinks, pos: pos1 },
+      { el: boxAddr, pos: pos2 }
+    ].sort((a, b) => b.pos - a.pos); // insert higher index first
+    
+    positions.forEach(item => {
+      if(item.el) itemsArray.splice(item.pos, 0, item.el);
+    });
+    
+    const frag = document.createDocumentFragment();
+    itemsArray.forEach(el => frag.appendChild(el));
+    collage.appendChild(frag);
+
     const activeEl = items[i];
     positionGatito(activeEl);
     requestAnimationFrame(() => {
