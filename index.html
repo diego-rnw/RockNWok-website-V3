@@ -11,19 +11,19 @@
 <meta property="og:type" content="website" />
 <meta property="og:title" content="Rock N' Wok — Wok Your Spirit" />
 <meta property="og:description" content="Comida rápida de inspiración asiática. 8 sucursales en Puebla. Pide en línea o encuéntranos en Rappi y Uber Eats." />
-<meta property="og:image" content="assets/hero-interior.webp" />
+<meta property="og:image" content="assets/hero-image.png" />
 <meta property="og:url" content="https://rockandwok.com" />
 <meta property="og:locale" content="es_MX" />
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:title" content="Rock N' Wok — Wok Your Spirit" />
 <meta name="twitter:description" content="Comida rápida de inspiración asiática en Puebla. Pide en línea." />
-<meta name="twitter:image" content="assets/hero-interior.webp" />
+<meta name="twitter:image" content="assets/hero-image.png" />
 <link rel="icon" type="image/x-icon" href="dist/favicon.ico" />
 <link rel="icon" type="image/png" sizes="32x32" href="dist/favicon-32x32.png" />
 <link rel="icon" type="image/png" sizes="16x16" href="dist/favicon-16x16.png" />
 <link rel="apple-touch-icon" href="dist/favicon-32x32.png" />
 <!-- Preloads críticos: hero + fuentes above-the-fold -->
-<link rel="preload" as="image" href="assets/hero-interior.webp" fetchpriority="high" />
+<link rel="preload" as="image" href="assets/hero-image.png" fetchpriority="high" />
 <link rel="preload" as="font" type="font/woff2" href="dist/fonts/monument/MonumentExtended-Black.woff2" crossorigin />
 <link rel="preload" as="font" type="font/woff2" href="dist/fonts/monument/MonumentExtended-Ultrabold.woff2" crossorigin />
 <link rel="preload" as="font" type="font/woff2" href="dist/fonts/gotham/GothamNarrow-Black.woff2" crossorigin />
@@ -104,7 +104,7 @@
     position:relative;height:100vh;display:flex;align-items:center;justify-content:center;
     overflow:hidden;background:#000;
   }
-  .hero .bg{position:absolute;inset:0;background:url('assets/hero-interior.webp') center/cover no-repeat;}
+  .hero .bg{position:absolute;inset:0;background:url('assets/hero-image.png') center/cover no-repeat;}
   .hero .bg::after{content:"";position:absolute;inset:0;background:rgba(0,0,0,.45)}
   .hero-inner{
     position:relative;z-index:2;width:100%;
@@ -420,7 +420,23 @@
   .contact h2 em{font-style:normal;color:var(--yellow);display:block}
   .contact .lede{font-family:"Archivo Black",sans-serif;font-size:32px;line-height:1.1;margin:0 0 40px;text-transform:uppercase}
   .contact-illus{display:grid;place-items:center}
-  .contact-illus img{max-width:580px;width:100%;filter:drop-shadow(0 30px 60px rgba(255,214,10,.18))}
+  @keyframes manekiRing {
+    0% { transform: rotate(0deg) scale(1); }
+    2% { transform: rotate(-4deg) scale(1.02); }
+    4% { transform: rotate(4deg) scale(1.02); }
+    6% { transform: rotate(-4deg) scale(1.02); }
+    8% { transform: rotate(4deg) scale(1.02); }
+    10% { transform: rotate(-2deg) scale(1.01); }
+    12% { transform: rotate(2deg) scale(1.01); }
+    14% { transform: rotate(0deg) scale(1); }
+    100% { transform: rotate(0deg) scale(1); }
+  }
+  .contact-illus img{
+    max-width:580px;width:100%;
+    filter:drop-shadow(0 30px 60px rgba(255,214,10,.18));
+    transform-origin: bottom center;
+    animation: manekiRing 4s infinite;
+  }
   .contact-info{margin-top:32px}
   .contact-info-label{font-weight:700;color:var(--yellow);margin:0 0 8px;font-size:15px}
   .contact-info p{margin:0 0 6px;font-size:16px;color:#ccc;line-height:1.6}
