@@ -23,7 +23,7 @@
 <link rel="icon" type="image/png" sizes="16x16" href="dist/favicon-16x16.png" />
 <link rel="apple-touch-icon" href="dist/favicon-32x32.png" />
 <!-- Preloads críticos: hero + fuentes above-the-fold -->
-<link rel="preload" as="image" href="assets/hero-image.png" fetchpriority="high" />
+<link rel="preload" as="image" href="assets/ImageHero_02.jpg" fetchpriority="high" />
 <link rel="preload" as="font" type="font/woff2" href="dist/fonts/monument/MonumentExtended-Black.woff2" crossorigin />
 <link rel="preload" as="font" type="font/woff2" href="dist/fonts/monument/MonumentExtended-Ultrabold.woff2" crossorigin />
 <link rel="preload" as="font" type="font/woff2" href="dist/fonts/gotham/GothamNarrow-Black.woff2" crossorigin />
@@ -87,23 +87,26 @@
 
   /* ============ NAV ============ */
   .nav{
-    display:grid;grid-template-columns:auto auto 1fr;
+    display:grid;grid-template-columns:1fr auto 1fr;
     align-items:center;
-    padding:0px 32px;
+    padding:0px 48px;
   }
 
-  .nav .brand{display:flex;align-items:center;margin-left:32px}
-  .nav .brand img{height:38px;width:auto;display:block}
-  .nav-center{display:flex;align-items:center;margin-left:185px}
+  .nav .brand{display:flex;align-items:center;margin-left:0;justify-self:start}
+  .nav .brand img{height:52px;width:auto;display:block}
+  
+  .nav ul{list-style:none;display:flex;justify-content:center;gap:60px;align-items:center;margin:0;padding:0;font-family:"Gotham","Archivo",sans-serif;font-weight:900;font-size:16px;letter-spacing:.12em;justify-self:center}
+
+  .nav-center{display:flex;align-items:center;margin-left:0;justify-self:end}
   .nav-center a{display:flex;flex-direction:column;align-items:center}
   .nav-center img{width:200px;display:block;transform-origin:bottom center;animation:maneki-swing 2.4s ease-in-out infinite}
+  
   @keyframes maneki-swing{
     0%  {transform:rotate(-4deg)}
     50% {transform:rotate(4deg)}
     100%{transform:rotate(-4deg)}
   }
   .nav-right{display:flex;align-items:center;justify-content:flex-end}
-  .nav ul{list-style:none;display:flex;justify-content:space-evenly;align-items:center;width:100%;margin:0;padding:0 32px 0 0;font-family:"Gotham","Archivo",sans-serif;font-weight:900;font-size:18px;letter-spacing:.18em}
   .nav ul a{position:relative;padding:6px 0}
   .nav ul a::after{content:"";position:absolute;left:0;right:100%;bottom:-4px;height:2px;background:var(--yellow);transition:right .25s ease}
   .nav ul a:hover::after{right:0}
@@ -113,12 +116,13 @@
     position:relative;height:100vh;display:flex;align-items:center;justify-content:center;
     overflow:hidden;background:#000;
   }
-  .hero .bg{position:absolute;inset:0;background:url('assets/hero-image.png') center/cover no-repeat;}
+  .hero .bg{position:absolute;inset:0;background:url('assets/ImageHero_02.jpg') center/cover no-repeat;}
   .hero .bg::after{content:"";position:absolute;inset:0;background:rgba(0,0,0,.45)}
   .hero-inner{
     position:relative;z-index:2;width:100%;
     display:flex;flex-direction:column;align-items:center;justify-content:center;
     text-align:center;padding:0;
+    margin-top: 8vh;
   }
   .hero h1{
     font-family:"Monument Extended","Archivo Black",sans-serif;
@@ -142,28 +146,28 @@
   .hero h1 .wok   {animation-delay:.1s}
   .hero h1 .your  {animation-delay:.35s}
   .hero h1 .spirit{animation-delay:.6s}
-  .hero h1 .wok   {z-index:1; color:var(--yellow); font-size:14.17vw;
+  .hero h1 .wok   {z-index:1; color:var(--yellow); font-size:12.7vw;
     /* Dir -45° | Offset 20 | Blur 100 | Opacidad 76% */
     /* x = cos(-45°)*20 ≈ 14px  |  y = -sin(-45°)*20 ≈ 14px */
     text-shadow: 14px 14px 100px rgba(0,0,0,.76);
   }
-  .hero h1 .your  {z-index:2; color:#fff; font-size:10.2vw;
+  .hero h1 .your  {z-index:2; color:#fff; font-size:9.2vw;
     margin-top:-1.5vw;
     text-shadow: 14px 14px 100px rgba(0,0,0,.76);
   }
-  .hero h1 .spirit{z-index:3; color:var(--yellow); font-size:16.25vw; margin-top:0.8vw; /* 312px @ 1920 */
+  .hero h1 .spirit{z-index:3; color:var(--yellow); font-size:14.6vw; margin-top:0.7vw; /* 312px @ 1920 */
     /* Dir 167° | Offset 79 | Blur 100 | Opacidad 55% */
     /* x = cos(167°)*79 ≈ -77px  |  y = -sin(167°)*79 ≈ -18px */
     text-shadow: -77px -18px 100px rgba(0,0,0,.55);
   }
   .hero-cta{
-    position:absolute;bottom:116px;right:230px;z-index:3;
+    position:absolute;bottom:60px;left:50%;transform:translateX(-50%);z-index:3;
     display:inline-flex;align-items:center;gap:10px;padding:18px 32px;border-radius:99px;
     background:var(--orange);color:#fff;font-family:"Gotham","Archivo",sans-serif;font-weight:900;letter-spacing:.18em;font-size:15px;
     box-shadow:0 14px 40px rgba(255,78,20,.5);
     transition:transform .2s ease, box-shadow .2s ease;
   }
-  .hero-cta:hover{transform:translateY(-2px);box-shadow:0 18px 50px rgba(255,78,20,.7)}
+  .hero-cta:hover{transform:translate(-50%, -2px);box-shadow:0 18px 50px rgba(255,78,20,.7)}
 
   /* ============ MARQUEE ============ */
   .marquee{
@@ -185,16 +189,16 @@
   .eyebrow::before{content:"";width:24px;height:1px;background:var(--yellow)}
 
   /* ============ SUCURSALES ============ */
-  .sucursales{background:#fff;color:#000;height:calc(100vh - 80px);display:flex;align-items:stretch;position:relative;overflow:hidden}
-  .suc-layout{display:grid;grid-template-columns:1fr 2.6fr;gap:48px;align-items:start;width:100%;max-width:1440px;margin:0 auto;padding:32px 48px}
+  .sucursales{background:#fff;color:#000;min-height:calc(100vh - 80px);height:auto;display:flex;align-items:stretch;position:relative;overflow:hidden}
+  .suc-layout{display:grid;grid-template-columns:1fr 2.6fr;gap:48px;align-items:start;width:100%;max-width:1440px;margin:0 auto;padding:120px 48px 240px calc(48px + (100vw - 96px) * 0.04)}
   .suc-left{display:flex;flex-direction:column;height:100%}
   .suc-title{
     font-family:"Monument Extended","Archivo Black",sans-serif;
-    font-weight:900;font-size:clamp(32px,4.2vw,68px);
+    font-weight:900;font-size:clamp(28px,3.2vw,52px);
     text-transform:uppercase;line-height:1;letter-spacing:-.02em;
     color:#000;margin:0 0 40px;white-space:nowrap;
   }
-  .suc-list{display:flex;flex-direction:column;justify-content:space-between;flex:1;max-height:72%}
+  .suc-list{display:flex;flex-direction:column;justify-content:space-between;flex:1;max-height:88%}
   .suc-item{
     display:block;padding:0;cursor:pointer;
     font-family:"Gotham","Archivo Black",sans-serif;font-weight:900;
@@ -233,7 +237,9 @@
   .suc-collage{
     display:grid;
     gap:4px;border-radius:20px;overflow:hidden;
-    aspect-ratio:4/3;background:#111;
+    max-height: calc(100vh - 160px);
+    aspect-ratio: 16/10;
+    background:#111;
     position:relative;
     grid-auto-flow: dense;
   }
@@ -272,11 +278,11 @@
   .collage-1 .suc-box-links { grid-column: span 2; }
   .collage-1 .suc-box-addr { grid-column: span 3; }
   
-  .collage-2 { grid-template-columns: repeat(5, 1fr); grid-template-rows: 2fr 0.8fr; }
-  .collage-2 .suc-photo:nth-of-type(1) { grid-column: span 5; }
-  .collage-2 .suc-photo:nth-of-type(2) { grid-column: span 3; }
-  .collage-2 .suc-box-links { grid-column: span 1; }
-  .collage-2 .suc-box-addr { grid-column: span 1; }
+  .collage-2 { grid-template-columns: repeat(5, 1fr); grid-template-rows: 2.2fr 0.6fr; }
+  .collage-2 .suc-photo:nth-of-type(1) { grid-column: span 3; }
+  .collage-2 .suc-photo:nth-of-type(2) { grid-column: span 2; }
+  .collage-2 .suc-box-links { grid-column: span 2; }
+  .collage-2 .suc-box-addr { grid-column: span 3; }
   
   .collage-3 { grid-template-columns: repeat(5, 1fr); grid-template-rows: 1.5fr 0.8fr; }
   .collage-3 .suc-photo:nth-of-type(1) { grid-column: span 3; }
@@ -293,14 +299,14 @@
   .collage-4 .suc-box-links { grid-column: span 1; }
   .collage-4 .suc-box-addr { grid-column: span 1; }
   
-  .collage-5 { grid-template-columns: repeat(5, 1fr); grid-template-rows: 1.5fr 1.2fr 0.8fr; }
-  .collage-5 .suc-photo:nth-of-type(1) { grid-column: span 3; grid-row: span 2; }
+  .collage-5 { grid-template-columns: repeat(5, 1fr); grid-template-rows: 1.4fr 1.2fr 0.7fr; }
+  .collage-5 .suc-photo:nth-of-type(1) { grid-column: span 3; }
   .collage-5 .suc-photo:nth-of-type(2) { grid-column: span 2; }
   .collage-5 .suc-photo:nth-of-type(3) { grid-column: span 2; }
   .collage-5 .suc-photo:nth-of-type(4) { grid-column: span 2; }
   .collage-5 .suc-photo:nth-of-type(5) { grid-column: span 1; }
-  .collage-5 .suc-box-links { grid-column: span 1; }
-  .collage-5 .suc-box-addr { grid-column: span 1; }
+  .collage-5 .suc-box-links { grid-column: span 2; }
+  .collage-5 .suc-box-addr { grid-column: span 3; }
   
   .collage-6 { grid-template-columns: repeat(5, 1fr); grid-template-rows: 1.5fr 1.2fr 0.8fr; }
   .collage-6 .suc-photo:nth-of-type(1) { grid-column: span 3; }
@@ -350,24 +356,24 @@
     background:#fff;color:#000;
     min-height:calc(100vh - 80px); height:auto;
     overflow:hidden;
-    padding:220px 48px 48px;
+    padding:220px 48px 120px;
     display:flex;align-items:stretch;
     position:relative;
   }
   .fav-cards{
-    display:grid;grid-template-columns:repeat(3,1fr);gap:82px;
-    width:78%;margin:0 auto;
+    display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(48px,6vw,96px);
+    width:90%;margin:0 auto;
   }
   .fav-title{
-    position:absolute;top:80px;left:160px;
+    position:absolute;top:150px;left:calc(48px + (100% - 96px) * 0.05);
     font-family:"Monument Extended",sans-serif;
-    font-weight:800;font-size:clamp(28px,3.2vw,52px);
+    font-weight:900;font-size:clamp(24px,2.8vw,46px);
     line-height:1.05;text-transform:uppercase;
     color:#000;margin:0;
   }
   .fav-maneki{
-    position:absolute;left:50%;transform:translateX(-50%);
-    top:70px;width:320px;z-index:2;pointer-events:none;
+    position:absolute;left:50%;top:0;transform:translate(-50%, -58%);
+    width:280px;z-index:-1;pointer-events:none;
   }
   .fav-card{
     perspective:1200px;
@@ -425,9 +431,9 @@
   /* ============ CONTACTO ============ */
   .contact{background:#000;position:relative;overflow:hidden}
   .contact-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:80px;align-items:center}
-  .contact h2{font-family:"Archivo Black",sans-serif;font-size:clamp(56px,8vw,112px);line-height:.92;margin:0 0 32px;text-transform:uppercase;letter-spacing:-.02em}
+  .contact h2{font-family:"Monument Extended",sans-serif;font-weight:900;font-size:clamp(44px,6.5vw,92px);line-height:.92;margin:0 0 32px;text-transform:uppercase;letter-spacing:-.02em}
   .contact h2 em{font-style:normal;color:var(--yellow);display:block}
-  .contact .lede{font-family:"Archivo Black",sans-serif;font-size:32px;line-height:1.1;margin:0 0 40px;text-transform:uppercase}
+  .contact .lede{font-family:"Monument Extended",sans-serif;font-weight:700;font-size:22px;line-height:1.1;margin:0 0 40px;text-transform:uppercase}
   .contact-illus{display:grid;place-items:center}
   @keyframes manekiRing {
     0% { transform: rotate(0deg) scale(1); }
@@ -461,7 +467,7 @@
   .foot-left{padding-bottom:0}
   .foot-feliz{width:clamp(200px,28vw,400px);display:block}
   .foot-right{padding-bottom:40px;text-align:right}
-  .foot-social-label{font-style:italic;font-size:clamp(14px,1.4vw,20px);color:#fff;margin:0 0 16px;line-height:1.3}
+  .foot-social-label{font-family:"Gotham",sans-serif;font-weight:900;font-style:normal;font-size:clamp(14px,1.4vw,20px);color:#fff;margin:0 0 16px;line-height:1.3}
   .foot-social-label span{color:var(--yellow)}
   .socials{display:flex;gap:12px;margin-bottom:20px;justify-content:flex-end}
   .socials a{width:42px;height:42px;border-radius:99px;border:1px solid rgba(255,255,255,.25);display:grid;place-items:center;transition:all .2s ease}
@@ -520,7 +526,7 @@
 
   /* Tablet landscape */
   @media (max-width: 1024px){
-    .suc-layout{grid-template-columns:1fr 1.6fr;padding:24px 28px}
+    .suc-layout{grid-template-columns:1fr 1.6fr;padding:64px 28px 64px}
     .fav-layout{padding:48px 28px 28px}
     .fav-cards{width:88%}
     .foot-main{padding:40px 40px}
@@ -532,16 +538,16 @@
     .nav{padding:12px 20px;grid-template-columns:1fr auto auto;align-items:center}
     .nav ul{display:none}
     .nav .brand{margin-left:0}
-    .nav .brand img{height:28px;margin-top:6px}
+    .nav .brand img{height:42px;margin-top:0px}
     .nav-center{display:none}
     .nav-hamburger{display:grid}
 
     /* Hero */
-    .hero-cta{right:20px;bottom:28px;font-size:13px;padding:14px 24px}
+    .hero-cta{right:auto;bottom:28px;font-size:13px;padding:14px 24px}
 
     /* Sucursales */
     .sucursales{height:auto;min-height:100vh}
-    .suc-layout{grid-template-columns:1fr;gap:24px;padding:96px 20px 48px}
+    .suc-layout{grid-template-columns:1fr;gap:24px;padding:96px 20px 96px}
     .suc-title{white-space:normal;font-size:clamp(36px,11vw,56px);margin-bottom:24px}
     .suc-right{position:static;top:auto}
     .suc-collage{
@@ -609,7 +615,7 @@
     .hero h1 .wok{font-size:23vw}
     .hero h1 .your{font-size:17vw;margin-top:-3.5vw}
     .hero h1 .spirit{font-size:24vw;margin-top:2vw}
-    .hero-cta{right:50%;transform:translateX(50%);bottom:40px}
+    .hero-cta{bottom:24px}
 
     /* Sucursales */
     .suc-title{font-size:clamp(32px,9vw,48px)}
@@ -636,7 +642,7 @@
     .hero h1 .wok{font-size:23vw}
     .hero h1 .your{font-size:17vw;margin-top:-3.5vw}
     .hero h1 .spirit{font-size:24vw;margin-top:2vw}
-    .nav .brand img{height:26px;margin-top:6px}
+    .nav .brand img{height:36px;margin-top:0px}
     .nav-center img{width:136px}
   }
 
@@ -652,17 +658,16 @@
 <div class="site-header" id="topnav">
   <nav class="nav" data-screen-label="00 Nav">
     <a href="#top" class="brand"><img src="assets/logo-rnw.svg" alt="Rock N' Wok" /></a>
+    <ul>
+        <li><a href="#menu">NOVEDADES</a></li>
+        <li><a href="#sucursales">SUCURSALES</a></li>
+        <li><a href="#contacto">CONTACTO</a></li>
+      </ul>
     <div class="nav-center">
       <a href="https://pide.rockandwok.com" target="_blank" rel="noopener">
         <img src="assets/maneki-pide.webp" alt="Pide Aquí" />
       </a>
     </div>
-    <div class="nav-right">
-      <ul>
-        <li><a href="#menu">MENÚ</a></li>
-        <li><a href="#sucursales">SUCURSALES</a></li>
-        <li><a href="#contacto">CONTACTO</a></li>
-      </ul>
       <button class="nav-hamburger" aria-label="Abrir menú" aria-expanded="false">
         <span></span><span></span><span></span>
         <span></span><span></span><span></span>
@@ -676,7 +681,7 @@
 <div class="mobile-menu" id="mobileMenu" aria-hidden="true">
   <button class="mm-close" aria-label="Cerrar menú">&#x2715;</button>
   <nav>
-    <a href="#menu" class="mm-link">MENÚ</a>
+    <a href="#menu" class="mm-link">NOVEDADES</a>
     <a href="#sucursales" class="mm-link">SUCURSALES</a>
     <a href="#contacto" class="mm-link">CONTACTO</a>
   </nav>
@@ -736,9 +741,8 @@
 
 <!-- ============ FAVORITOS ============ -->
 <section class="favoritos" id="menu" data-screen-label="03 Favoritos">
-  <h2 class="fav-title">LOS FAVORITOS<br>DE MANEKI</h2>
+  <h2 class="fav-title">LAS NOVEDADES DE MANEKI</h2>
   <div class="fav-cards">
-    <img src="assets/maneki-cute.webp" alt="Maneki" class="fav-maneki" loading="lazy" />
     <div class="fav-card">
       <div class="fav-card-inner">
         <div class="fav-card-front">
@@ -760,6 +764,7 @@
       </div>
     </div>
     <div class="fav-card">
+      <img src="assets/maneki-cute.webp" alt="Maneki" class="fav-maneki" loading="lazy" />
       <div class="fav-card-inner">
         <div class="fav-card-front">
           <img src="assets/3.webp" alt="Postres" loading="lazy" />
@@ -914,10 +919,10 @@
     { name:"PARQUE PUEBLA", city:"Corredor Industrial", addr:"Calzada Ignacio Zaragoza 410, Corredor Industrial la Ciénega, 72220 Heroica Puebla de Zaragoza, Pue., México.", phone:"T. +52 222 710 7136", hours:"Lun — Dom · 11:00 — 22:30", q:"Parque Puebla, Calzada Ignacio Zaragoza 410, Puebla", photos: ['assets/Pp 1.webp','assets/Pp 2.webp','assets/Pp 3.webp','assets/Pp 4.webp','assets/Pp 5.webp','assets/Pp 6.webp','assets/Pp 7.webp'] },
     { name:"UPAEP", city:"Centro · Universitario", addr:"21 Sur 1103, Santiago, 72410 Heroica Puebla de Zaragoza, Pue., México.", phone:"T. +52 222 229 9400", hours:"Lun — Dom · 10:30 — 22:00", q:"UPAEP Puebla", photos: ['assets/Upa 1.webp','assets/Upa 2.webp','assets/Upa 3.webp'] },
     { name:"EXPLANADA", city:"Lomas de Angelópolis", addr:"Boulevard Vista Hermosa s/n, Vista Hermosa, 72830 Puebla, Pue., México.", phone:"T. +52 222 431 7700", hours:"Lun — Dom · 11:00 — 22:30", q:"Explanada Puebla", photos: ['assets/Exp gral.webp','assets/Exp 1.webp','assets/Exp 2.webp','assets/Exp 3.webp','assets/Exp 4.webp','assets/Exp 5.webp','assets/Exp 6.webp'] },
-    { name:"VÍA SAN ÁNGEL", city:"Angelópolis", addr:"Vía Atlixcáyotl 1504, Concepción la Cruz, 72197 Puebla, Pue., México.", phone:"T. +52 222 432 8800", hours:"Lun — Dom · 11:00 — 23:00", q:"Vía San Ángel Puebla", photos: ['assets/Vsa gral.webp','assets/Vsa 1.webp','assets/Vsa 2.webp','assets/Vsa 3.webp','assets/Vsa 4.webp'] },
-    { name:"SONATA", city:"Lomas de Angelópolis", addr:"Avenida Sonata 1, Lomas de Angelópolis, 72830 Puebla, Pue., México.", phone:"T. +52 222 169 2200", hours:"Lun — Dom · 11:00 — 22:30", q:"Sonata Lomas Angelópolis", photos: ['assets/Son gral.webp','assets/Son 1.webp','assets/Son 2.webp','assets/Son 3.webp','assets/Son 4.webp','assets/Son 5.webp','assets/Son 6.webp'] },
+    { name:"VÍA SAN ÁNGEL", city:"Angelópolis", addr:"Vía Atlixcáyotl 1504, Concepción la Cruz, 72197 Puebla, Pue., México.", phone:"T. +52 222 432 8800", hours:"Lun — Dom · 11:00 — 23:00", q:"Vía San Ángel Puebla", photos: ['assets/Vsa 1.webp','assets/Vsa 3.webp'] },
+    { name:"SONATA", city:"Lomas de Angelópolis", addr:"Avenida Sonata 1, Lomas de Angelópolis, 72830 Puebla, Pue., México.", phone:"T. +52 222 169 2200", hours:"Lun — Dom · 11:00 — 22:30", q:"Sonata Lomas Angelópolis", photos: ['assets/Son gral.webp','assets/Son 1.webp','assets/Son 3.webp','assets/Son 4.webp','assets/Son 5.webp'], photoPositions: ['center 20%', null, 'center 40%'] },
     { name:"GALERÍAS SERDÁN", city:"Centro Comercial", addr:"Boulevard Hermanos Serdán 270, Amor, 72140 Puebla, Pue., México.", phone:"T. +52 222 226 1800", hours:"Lun — Dom · 11:00 — 22:00", q:"Galerías Serdán Puebla", photos: ['assets/Gal 1.webp','assets/Gal 2.webp'] },
-    { name:"ZÓCALO", city:"Centro Histórico", addr:"Av. Reforma 530, Centro Histórico, 72000 Puebla, Pue., México.", phone:"T. +52 222 232 0011", hours:"Lun — Dom · 10:00 — 22:00", q:"Zócalo Puebla", photos: ['assets/Zoc 1.webp','assets/Zoc 2.webp','assets/Zoc 3.webp'] },
+    { name:"ZÓCALO", city:"Centro Histórico", addr:"Av. Reforma 530, Centro Histórico, 72000 Puebla, Pue., México.", phone:"T. +52 222 232 0011", hours:"Lun — Dom · 10:00 — 22:00", q:"Zócalo Puebla", photos: ['assets/Zoc 4.webp','assets/Zoc 1.webp','assets/Zoc 5.webp','assets/Zoc 6.webp'] },
     { name:"OUTLET", city:"Angelópolis", addr:"Boulevard del Niño Poblano 2510, Reserva Territorial Atlixcáyotl, 72830 Puebla, Pue., México.", phone:"T. +52 222 169 4400", hours:"Lun — Dom · 11:00 — 22:00", q:"Outlets Premium Puebla", photos: ['assets/Out gral.webp','assets/Out 1.webp','assets/Out 2.webp','assets/Out 3.webp','assets/Out 4.webp','assets/Out 5.webp'] }
   ];
 
@@ -1024,7 +1029,8 @@
         imgSrc = photos[p];
         const img = document.createElement('img');
         img.src = imgSrc;
-                img.style.animationDelay = (p * 0.05) + 's';
+        img.style.animationDelay = (p * 0.05) + 's';
+        if (b.photoPositions && b.photoPositions[p]) img.style.objectPosition = b.photoPositions[p];
         art.appendChild(img);
       } else {
         const ph = document.createElement('div');
@@ -1052,24 +1058,10 @@
       itemsArray.push(art);
     }
     
-    // Randomize Yellow Boxes Placement
-    let pos1 = Math.floor(Math.random() * (count + 1));
-    let pos2;
-    do {
-      pos2 = Math.floor(Math.random() * (count + 2));
-    } while (Math.abs(pos1 - pos2) <= 1 && count > 1);
-    
-    const positions = [
-      { el: boxLinks, pos: pos1 },
-      { el: boxAddr, pos: pos2 }
-    ].sort((a, b) => b.pos - a.pos); // insert higher index first
-    
-    positions.forEach(item => {
-      if(item.el) itemsArray.splice(item.pos, 0, item.el);
-    });
-    
     const frag = document.createDocumentFragment();
     itemsArray.forEach(el => frag.appendChild(el));
+    if(boxLinks) frag.appendChild(boxLinks);
+    if(boxAddr) frag.appendChild(boxAddr);
     collage.appendChild(frag);
 
     const activeEl = items[i];
