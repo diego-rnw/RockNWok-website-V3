@@ -1080,14 +1080,14 @@
 
   // Branches data
   const branches = [
-    { name:"PARQUE PUEBLA", city:"Corredor Industrial", addr:"Calzada Ignacio Zaragoza 410, Corredor Industrial la Ciénega, 72220 Heroica Puebla de Zaragoza, Pue., México.", phone:"T. +52 222 710 7136", hours:"Lun — Dom · 11:00 — 22:30", q:"Parque Puebla, Calzada Ignacio Zaragoza 410, Puebla", photos: ['assets/Pp 1.webp','assets/Pp 2.webp','assets/Pp 3.webp','assets/Pp 4.webp','assets/Pp 5.webp','assets/Pp 6.webp','assets/Pp 7.webp'] },
-    { name:"UPAEP", city:"Centro · Universitario", addr:"21 Sur 1103, Santiago, 72410 Heroica Puebla de Zaragoza, Pue., México.", phone:"T. +52 222 229 9400", hours:"Lun — Dom · 10:30 — 22:00", q:"UPAEP Puebla", photos: ['assets/Upa 1.webp','assets/Upa 2.webp','assets/Upa 3.webp'] },
-    { name:"EXPLANADA", city:"Lomas de Angelópolis", addr:"Boulevard Vista Hermosa s/n, Vista Hermosa, 72830 Puebla, Pue., México.", phone:"T. +52 222 431 7700", hours:"Lun — Dom · 11:00 — 22:30", q:"Explanada Puebla", photos: ['assets/Exp gral.webp','assets/Exp 1.webp','assets/Exp 2.webp','assets/Exp 3.webp','assets/Exp 4.webp','assets/Exp 5.webp','assets/Exp 6.webp'] },
-    { name:"VÍA SAN ÁNGEL", city:"Angelópolis", addr:"Vía Atlixcáyotl 1504, Concepción la Cruz, 72197 Puebla, Pue., México.", phone:"T. +52 222 432 8800", hours:"Lun — Dom · 11:00 — 23:00", q:"Vía San Ángel Puebla", photos: ['assets/Vsa 1.webp','assets/Vsa 3.webp'] },
-    { name:"SONATA", city:"Lomas de Angelópolis", addr:"Avenida Sonata 1, Lomas de Angelópolis, 72830 Puebla, Pue., México.", phone:"T. +52 222 169 2200", hours:"Lun — Dom · 11:00 — 22:30", q:"Sonata Lomas Angelópolis", photos: ['assets/Son gral.webp','assets/Son 1.webp','assets/Son 3.webp','assets/Son 4.webp','assets/Son 5.webp'], photoPositions: ['center 20%', null, 'center 40%'] },
-    { name:"GALERÍAS SERDÁN", city:"Centro Comercial", addr:"Boulevard Hermanos Serdán 270, Amor, 72140 Puebla, Pue., México.", phone:"T. +52 222 226 1800", hours:"Lun — Dom · 11:00 — 22:00", q:"Galerías Serdán Puebla", photos: ['assets/Gal 1.webp','assets/Gal 2.webp'] },
-    { name:"ZÓCALO", city:"Centro Histórico", addr:"Av. Reforma 530, Centro Histórico, 72000 Puebla, Pue., México.", phone:"T. +52 222 232 0011", hours:"Lun — Dom · 10:00 — 22:00", q:"Zócalo Puebla", photos: ['assets/Zoc 4.webp','assets/Zoc 1.webp','assets/Zoc 5.webp','assets/Zoc 6.webp'] },
-    { name:"OUTLET", city:"Angelópolis", addr:"Boulevard del Niño Poblano 2510, Reserva Territorial Atlixcáyotl, 72830 Puebla, Pue., México.", phone:"T. +52 222 169 4400", hours:"Lun — Dom · 11:00 — 22:00", q:"Outlets Premium Puebla", photos: ['assets/Out gral.webp','assets/Out 1.webp','assets/Out 2.webp','assets/Out 3.webp','assets/Out 4.webp','assets/Out 5.webp'] }
+    { name:"PARQUE PUEBLA",   city:"Corredor Industrial",      addr:"Parque Puebla. Calzada Ignacio Zaragoza 410, Corredor Industrial la Ciénega, 72220 Heroica Puebla de Zaragoza, Pue.", phone:"T. +52 222 710 7136", hours:"Lun — Dom · 11:00 — 22:30", mapsUrl:"https://maps.app.goo.gl/LAnAdMcS6VmKyGm3A", photos: ['assets/Pp 1.webp','assets/Pp 2.webp','assets/Pp 3.webp','assets/Pp 4.webp','assets/Pp 5.webp','assets/Pp 6.webp','assets/Pp 7.webp'] },
+    { name:"UPAEP",           city:"Centro · Universitario",   addr:"Calle 21 Sur 1112-A, La Paz, 72160 Heroica Puebla de Zaragoza, Pue.", phone:"T. +52 222 229 9400", hours:"Lun — Dom · 10:30 — 22:00", mapsUrl:"https://maps.app.goo.gl/iEvsgnqaAAqNkuJd8", photos: ['assets/Upa 1.webp','assets/Upa 2.webp','assets/Upa 3.webp'] },
+    { name:"EXPLANADA",       city:"Lomas de Angelópolis",     addr:"Calle Alejandra 512. Local E25, Santiago Momoxpan, Alvaro Obregón, 72775 Pue.", phone:"T. +52 222 431 7700", hours:"Lun — Dom · 11:00 — 22:30", mapsUrl:"https://maps.app.goo.gl/yAtc3ppQAn26zpka6", photos: ['assets/Exp gral.webp','assets/exp 1.webp','assets/Exp 2.webp','assets/Exp 3.webp','assets/Exp 4.webp','assets/Exp 5.webp','assets/Exp 6.webp'] },
+    { name:"VÍA SAN ÁNGEL",  city:"Angelópolis",              addr:"Vía Atlixcáyotl 1504. Local FF3 Col, Reserva Territorial Atlixcáyotl, 72810 San Bernardino Tlaxcalancingo, Pue.", phone:"T. +52 222 432 8800", hours:"Lun — Dom · 11:00 — 23:00", mapsUrl:"https://maps.app.goo.gl/yT6PueCAEKv5sCAG9", photos: ['assets/Vsa 1.webp','assets/Vsa 3.webp'] },
+    { name:"SONATA",          city:"Lomas de Angelópolis",     addr:"Vía Atlixcáyotl 1504. Local FF3 Col, Reserva Territorial Atlixcáyotl, 72810 San Bernardino Tlaxcalancingo, Pue.", phone:"T. +52 222 169 2200", hours:"Lun — Dom · 11:00 — 22:30", mapsUrl:"https://maps.app.goo.gl/csgMHwQ3zaVyH2fv8", photos: ['assets/Son gral.webp','assets/Son 1.webp','assets/Son 3.webp','assets/Son 4.webp','assets/Son 5.webp'], photoPositions: ['center 20%', null, 'center 40%'] },
+    { name:"GALERÍAS SERDÁN", city:"Centro Comercial",         addr:"Vía Atlixcáyotl 1504. Local FF3 Col, Reserva Territorial Atlixcáyotl, 72810 San Bernardino Tlaxcalancingo, Pue.", phone:"T. +52 222 226 1800", hours:"Lun — Dom · 11:00 — 22:00", mapsUrl:"https://maps.app.goo.gl/eDHYA8M6kEkeYhxK6", photos: ['assets/Gal 1.webp','assets/Gal 2.webp'] },
+    { name:"ZÓCALO",          city:"Centro Histórico",         addr:"Portal Hidalgo 6-Primer piso, Centro histórico de Puebla, 72090 Heroica Puebla de Zaragoza, Pue.", phone:"T. +52 222 232 0011", hours:"Lun — Dom · 10:00 — 22:00", mapsUrl:"https://maps.app.goo.gl/2ZHsMBUEaLGYeGHQ9", photos: ['assets/Zoc 4.webp','assets/Zoc 1.webp','assets/Zoc 5.webp','assets/Zoc 6.webp'] },
+    { name:"OUTLET",          city:"Angelópolis",              addr:"Outlet Puebla Premiere, Autop. México - Puebla Km. 115-local F-11, 72686 San Francisco Ocotlán, Pue.", phone:"T. +52 222 169 4400", hours:"Lun — Dom · 11:00 — 22:00", mapsUrl:"https://maps.app.goo.gl/Ko3SpmFYaXs8av4TA", photos: ['assets/Out gral.webp','assets/Out 1.webp','assets/Out 2.webp','assets/Out 3.webp','assets/Out 4.webp','assets/Out 5.webp'] }
   ];
 
   // Preload all branch photos in the background for instant rendering
@@ -1162,12 +1162,12 @@
     document.getElementById('dAddr').textContent = b.addr;
     document.getElementById('dPhone').textContent = b.phone;
     const mapsLink = document.getElementById('dMapsLink');
-    if(mapsLink) mapsLink.href = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(b.q)}`;
+    if(mapsLink) mapsLink.href = b.mapsUrl;
 
     const collage = document.getElementById('sucCollage') || document.querySelector('.suc-collage');
 
-    // Clear old photos only (info boxes are now outside the collage in mobile)
-    collage.querySelectorAll('.suc-photo').forEach(el => el.remove());
+    // Clear photos and info boxes from previous selection
+    collage.querySelectorAll('.suc-photo, .suc-box-links, .suc-box-addr').forEach(el => el.remove());
 
     const photos = (b.photos && b.photos.length > 0) ? b.photos : [];
     const count = Math.max(photos.length, 2);
@@ -1209,22 +1209,26 @@
       itemsArray.push(art);
     }
 
-    // Desktop: also add info boxes inside collage (grid layout)
+    // Desktop: insertar cajas amarillas en posición variable según sucursal
     if (window.innerWidth > 900) {
-      const boxLinks = document.querySelector('.suc-info-btns');
-      const boxAddr  = document.querySelector('.suc-info-addr');
-      const blClone = boxLinks ? boxLinks.cloneNode(true) : null;
-      const baClone = boxAddr  ? boxAddr.cloneNode(true)  : null;
-      const frag = document.createDocumentFragment();
-      itemsArray.forEach(el => frag.appendChild(el));
-      if(blClone) frag.appendChild(blClone);
-      if(baClone) frag.appendChild(baClone);
-      collage.appendChild(frag);
-    } else {
-      const frag = document.createDocumentFragment();
-      itemsArray.forEach(el => frag.appendChild(el));
-      collage.appendChild(frag);
+      const blBox = document.createElement('div');
+      blBox.className = 'suc-box-links';
+      blBox.innerHTML = `<a href="${b.mapsUrl}" target="_blank" rel="noopener">GOOGLE MAPS</a><a href="https://pide.rockandwok.com" target="_blank" rel="noopener">PIDE EN LÍNEA</a>`;
+      const baBox = document.createElement('div');
+      baBox.className = 'suc-box-addr';
+      baBox.innerHTML = `<p class="addr-text">${b.addr}</p><p class="addr-phone">${b.phone}</p>`;
+
+      // Posición de inserción varía por sucursal
+      // n = al final, 1 = después de foto 1, Math.ceil(n/2) = a la mitad
+      const n = itemsArray.length;
+      const insertPositions = [n, 1, Math.ceil(n/2), n, n, n, n, 1];
+      const insertAt = insertPositions[i] ?? n;
+      itemsArray.splice(insertAt, 0, blBox, baBox);
     }
+
+    const frag = document.createDocumentFragment();
+    itemsArray.forEach(el => frag.appendChild(el));
+    collage.appendChild(frag);
 
     const activeEl = items[i];
     positionGatito(activeEl);
