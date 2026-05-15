@@ -1258,11 +1258,11 @@
     });
   }
 
-  selectBranch(0);
-
   // ── Carrusel infinito sucursales (mobile) ──────────────────────────────
   const collageEl = document.getElementById('sucCollage');
   let sucCarInst  = null;
+
+  selectBranch(0);
 
   function initSucCarousel() {
     const isMobile = window.innerWidth <= 900;
@@ -1288,10 +1288,6 @@
     const SLOT    = SLIDE_W + GAP;
     const wW      = wrapEl.offsetWidth || 380;
 
-    // Posicionar el track ANTES de crear clones — idx 1 = primera foto original
-    const initialOffset = (wW - SLIDE_W) / 2 - 1 * SLOT;
-    collageEl.style.transform = 'translateX(' + initialOffset + 'px)';
-
     const origSlides = Array.from(collageEl.querySelectorAll('.suc-photo:not(.suc-photo-clone)'));
     const n = origSlides.length;
     if (n === 0) return;
@@ -1307,7 +1303,6 @@
     const cloneLast  = origSlides[n-1].cloneNode(true);
     cloneFirst.classList.add('suc-photo-clone');
     cloneLast.classList.add('suc-photo-clone');
-    // Forzar visibilidad en clones
     [cloneFirst, cloneLast].forEach(sl => {
       const im = sl.querySelector('img');
       if (im) { im.style.animation = 'none'; im.style.opacity = '1'; im.style.transform = 'none'; }
@@ -1315,6 +1310,8 @@
     collageEl.insertBefore(cloneLast, origSlides[0]);
     collageEl.appendChild(cloneFirst);
 
+    // Track ahora: [cloneLast][foto1][foto2]...[fotoN][cloneFirst]
+    // idx 0 = cloneLast, 1..n = originales, n+1 = cloneFirst
     let idx = 1;
 
     function posTo(index, animated) {
@@ -1322,6 +1319,9 @@
       collageEl.style.transition = animated ? 'transform 0.42s cubic-bezier(0.25,0.46,0.45,0.94)' : 'none';
       collageEl.style.transform  = 'translateX(' + offset + 'px)';
     }
+
+    // Posicionar inmediatamente (síncrono, antes de paint)
+    posTo(idx, false);
 
     function goTo(newIdx) { idx = newIdx; posTo(idx, true); }
 
