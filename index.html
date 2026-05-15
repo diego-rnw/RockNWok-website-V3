@@ -1192,7 +1192,13 @@
         imgSrc = photos[p];
         const img = document.createElement('img');
         img.src = imgSrc;
-        if (window.innerWidth > 900) img.style.animationDelay = (p * 0.05) + 's';
+        if (window.innerWidth > 900) {
+          img.style.animationDelay = (p * 0.05) + 's';
+        } else {
+          img.style.animation = 'none';
+          img.style.opacity = '1';
+          img.style.transform = 'none';
+        }
         if (b.photoPositions && b.photoPositions[p]) img.style.objectPosition = b.photoPositions[p];
         art.appendChild(img);
       } else {
