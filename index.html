@@ -1273,40 +1273,52 @@
       wrapEl.removeEventListener('touchend',   sucCarInst.onTe);
       wrapEl.removeEventListener('touchcancel',sucCarInst.onCancel);
       collageEl.removeEventListener('transitionend', sucCarInst.onTrEnd);
-      collageEl.style.transform  = '';
-      collageEl.style.transition = 'none';
       sucCarInst = null;
     }
+    // Reset transform siempre
+    collageEl.style.transition = 'none';
+    collageEl.style.transform  = '';
 
     if (!isMobile) return;
+
+    const SLIDE_W = 255;
+    const GAP     = 10;
+    const SLOT    = SLIDE_W + GAP;
+    const wW      = wrapEl.offsetWidth || 380;
+
+    // Posicionar el track ANTES de crear clones — idx 1 = primera foto original
+    const initialOffset = (wW - SLIDE_W) / 2 - 1 * SLOT;
+    collageEl.style.transform = 'translateX(' + initialOffset + 'px)';
 
     const origSlides = Array.from(collageEl.querySelectorAll('.suc-photo:not(.suc-photo-clone)'));
     const n = origSlides.length;
     if (n === 0) return;
+
+    // Forzar visibilidad en imágenes originales
+    origSlides.forEach(sl => {
+      const im = sl.querySelector('img');
+      if (im) { im.style.animation = 'none'; im.style.opacity = '1'; im.style.transform = 'none'; }
+    });
 
     // Clones para efecto infinito
     const cloneFirst = origSlides[0].cloneNode(true);
     const cloneLast  = origSlides[n-1].cloneNode(true);
     cloneFirst.classList.add('suc-photo-clone');
     cloneLast.classList.add('suc-photo-clone');
-    // Forzar visibilidad en clones e imágenes originales (evita flash de heroIn)
-    [cloneFirst, cloneLast, ...origSlides].forEach(sl => {
+    // Forzar visibilidad en clones
+    [cloneFirst, cloneLast].forEach(sl => {
       const im = sl.querySelector('img');
       if (im) { im.style.animation = 'none'; im.style.opacity = '1'; im.style.transform = 'none'; }
     });
     collageEl.insertBefore(cloneLast, origSlides[0]);
     collageEl.appendChild(cloneFirst);
 
-    const SLIDE_W = 255;
-    const GAP     = 10;
-    const SLOT    = SLIDE_W + GAP;
     let idx = 1;
 
     function posTo(index, animated) {
-      const wW = wrapEl.offsetWidth || 380;
       const offset = (wW - SLIDE_W) / 2 - index * SLOT;
       collageEl.style.transition = animated ? 'transform 0.42s cubic-bezier(0.25,0.46,0.45,0.94)' : 'none';
-      collageEl.style.transform  = `translateX(${offset}px)`;
+      collageEl.style.transform  = 'translateX(' + offset + 'px)';
     }
 
     function goTo(newIdx) { idx = newIdx; posTo(idx, true); }
@@ -1316,7 +1328,6 @@
       else if (idx === n+1) { idx = 1; posTo(idx, false); }
     };
 
-    // Touch en el WRAPPER (tiene dimensiones reales en dispositivo)
     let txStart = 0;
     let touching = false;
     const onTs = e => { txStart = e.touches[0].clientX; touching = true; };
@@ -1336,7 +1347,6 @@
     collageEl.addEventListener('transitionend', onTrEnd);
 
     sucCarInst = { onTs, onTe, onCancel, onTrEnd };
-    requestAnimationFrame(() => requestAnimationFrame(() => posTo(idx, false)));
   }
 
   window.addEventListener('resize', initSucCarousel);
