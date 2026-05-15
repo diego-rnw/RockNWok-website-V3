@@ -1192,7 +1192,7 @@
         imgSrc = photos[p];
         const img = document.createElement('img');
         img.src = imgSrc;
-        img.style.animationDelay = (p * 0.05) + 's';
+        if (window.innerWidth > 900) img.style.animationDelay = (p * 0.05) + 's';
         if (b.photoPositions && b.photoPositions[p]) img.style.objectPosition = b.photoPositions[p];
         art.appendChild(img);
       } else {
