@@ -601,11 +601,18 @@
       background:linear-gradient(180deg,rgba(0,0,0,0) 50%,rgba(0,0,0,0.45) 100%);
       pointer-events:none;
     }
-    .suc-collage .suc-photo img{
+    .suc-photo img,
+    .suc-collage .suc-photo img,
+    .suc-photo-clone img{
       width:100% !important;height:100% !important;
       object-fit:cover !important;
-      animation:none !important;opacity:1 !important;transform:none !important;
+      animation:none !important;
+      animation-delay:0s !important;
+      animation-fill-mode:none !important;
+      opacity:1 !important;
+      transform:none !important;
       display:block;
+      visibility:visible !important;
     }
 
     /* Info box debajo del carrusel (mobile) */
@@ -1282,6 +1289,11 @@
     const cloneLast  = origSlides[n-1].cloneNode(true);
     cloneFirst.classList.add('suc-photo-clone');
     cloneLast.classList.add('suc-photo-clone');
+    // Forzar visibilidad en clones e imágenes originales (evita flash de heroIn)
+    [cloneFirst, cloneLast, ...origSlides].forEach(sl => {
+      const im = sl.querySelector('img');
+      if (im) { im.style.animation = 'none'; im.style.opacity = '1'; im.style.transform = 'none'; }
+    });
     collageEl.insertBefore(cloneLast, origSlides[0]);
     collageEl.appendChild(cloneFirst);
 
