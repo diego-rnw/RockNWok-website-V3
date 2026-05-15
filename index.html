@@ -1277,7 +1277,6 @@
       collageEl.removeEventListener('transitionend', sucCarInst.onTrEnd);
       sucCarInst = null;
     }
-    // Reset transform siempre
     collageEl.style.transition = 'none';
     collageEl.style.transform  = '';
 
@@ -1288,67 +1287,85 @@
     const SLOT    = SLIDE_W + GAP;
     const wW      = wrapEl.offsetWidth || 380;
 
-    const origSlides = Array.from(collageEl.querySelectorAll('.suc-photo:not(.suc-photo-clone)'));
-    const n = origSlides.length;
+    var origSlides = Array.from(collageEl.querySelectorAll('.suc-photo:not(.suc-photo-clone)'));
+    var n = origSlides.length;
     if (n === 0) return;
 
-    // Forzar visibilidad en imágenes originales
-    origSlides.forEach(sl => {
-      const im = sl.querySelector('img');
-      if (im) { im.style.animation = 'none'; im.style.opacity = '1'; im.style.transform = 'none'; }
-    });
+    // Forzar visibilidad en TODAS las imágenes
+    function fixImg(el) {
+      var im = el.querySelector('img');
+      if (im) { im.style.cssText += ';animation:none!important;opacity:1!important;transform:none!important'; }
+    }
+    origSlides.forEach(fixImg);
 
-    // Clones para efecto infinito
-    const cloneFirst = origSlides[0].cloneNode(true);
-    const cloneLast  = origSlides[n-1].cloneNode(true);
-    cloneFirst.classList.add('suc-photo-clone');
-    cloneLast.classList.add('suc-photo-clone');
-    [cloneFirst, cloneLast].forEach(sl => {
-      const im = sl.querySelector('img');
-      if (im) { im.style.animation = 'none'; im.style.opacity = '1'; im.style.transform = 'none'; }
-    });
-    collageEl.insertBefore(cloneLast, origSlides[0]);
-    collageEl.appendChild(cloneFirst);
+    // Clonar TODAS las fotos antes y después (buffer completo en ambas direcciones)
+    // Track: [clon_1..clon_N] [orig_1..orig_N] [clon_1..clon_N]
+    var beforeFrag = document.createDocumentFragment();
+    var afterFrag  = document.createDocumentFragment();
+    for (var c = 0; c < n; c++) {
+      var bClone = origSlides[c].cloneNode(true);
+      bClone.classList.add('suc-photo-clone');
+      fixImg(bClone);
+      beforeFrag.appendChild(bClone);
 
-    // Track ahora: [cloneLast][foto1][foto2]...[fotoN][cloneFirst]
-    // idx 0 = cloneLast, 1..n = originales, n+1 = cloneFirst
-    let idx = 1;
+      var aClone = origSlides[c].cloneNode(true);
+      aClone.classList.add('suc-photo-clone');
+      fixImg(aClone);
+      afterFrag.appendChild(aClone);
+    }
+    collageEl.insertBefore(beforeFrag, origSlides[0]);
+    collageEl.appendChild(afterFrag);
 
-    function posTo(index, animated) {
-      const offset = (wW - SLIDE_W) / 2 - index * SLOT;
-      collageEl.style.transition = animated ? 'transform 0.42s cubic-bezier(0.25,0.46,0.45,0.94)' : 'none';
+    // Track ahora tiene 3*n slides: [clones_antes(0..n-1)] [originales(n..2n-1)] [clones_despues(2n..3n-1)]
+    // idx del primer original = n
+    var idx = n; // primera foto original
+
+    function posTo(index, anim) {
+      var offset = (wW - SLIDE_W) / 2 - index * SLOT;
+      collageEl.style.transition = anim ? 'transform 0.4s cubic-bezier(0.25,0.46,0.45,0.94)' : 'none';
       collageEl.style.transform  = 'translateX(' + offset + 'px)';
     }
 
-    // Posicionar inmediatamente (síncrono, antes de paint)
+    // Posicionar inmediatamente — síncrono, sin requestAnimationFrame
     posTo(idx, false);
 
-    function goTo(newIdx) { idx = newIdx; posTo(idx, true); }
+    function goTo(newIdx) {
+      idx = newIdx;
+      posTo(idx, true);
+    }
 
-    const onTrEnd = () => {
-      if (idx === 0)        { idx = n; posTo(idx, false); }
-      else if (idx === n+1) { idx = 1; posTo(idx, false); }
+    // Al terminar la transición, si estamos en zona de clones, saltar al original equivalente
+    var onTrEnd = function() {
+      if (idx < n) {
+        // Estamos en clones de antes — saltar al original equivalente
+        idx = idx + n;
+        posTo(idx, false);
+      } else if (idx >= 2 * n) {
+        // Estamos en clones de después — saltar al original equivalente
+        idx = idx - n;
+        posTo(idx, false);
+      }
     };
 
-    let txStart = 0;
-    let touching = false;
-    const onTs = e => { txStart = e.touches[0].clientX; touching = true; };
-    const onTe = e => {
+    var txStart = 0;
+    var touching = false;
+    var onTs = function(e) { txStart = e.touches[0].clientX; touching = true; };
+    var onTe = function(e) {
       if (!touching) return;
       touching = false;
-      const t = e.changedTouches[0];
+      var t = e.changedTouches[0];
       if (!t) return;
-      const diff = txStart - t.clientX;
+      var diff = txStart - t.clientX;
       if (Math.abs(diff) > 25) goTo(idx + (diff > 0 ? 1 : -1));
     };
-    const onCancel = () => { touching = false; txStart = 0; };
+    var onCancel = function() { touching = false; txStart = 0; };
 
     wrapEl.addEventListener('touchstart',  onTs,     { passive: true });
     wrapEl.addEventListener('touchend',    onTe,     { passive: true });
     wrapEl.addEventListener('touchcancel', onCancel, { passive: true });
     collageEl.addEventListener('transitionend', onTrEnd);
 
-    sucCarInst = { onTs, onTe, onCancel, onTrEnd };
+    sucCarInst = { onTs: onTs, onTe: onTe, onCancel: onCancel, onTrEnd: onTrEnd };
   }
 
   window.addEventListener('resize', initSucCarousel);
