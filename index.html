@@ -234,6 +234,8 @@
 
   /* Collage derecho */
   .suc-right{position:sticky;top:100px}
+  .suc-info-mobile{display:none}
+  .suc-carousel-wrap{display:contents}
   .suc-collage{
     display:grid;
     gap:4px;border-radius:20px;overflow:hidden;
@@ -546,55 +548,206 @@
     .hero-cta{right:auto;bottom:28px;font-size:13px;padding:14px 24px}
 
     /* Sucursales */
-    .sucursales{height:auto;min-height:100vh}
+    .sucursales{height:auto;min-height:100vh;overflow:visible}
     .suc-layout{grid-template-columns:1fr;gap:24px;padding:96px 20px 96px}
     .suc-title{white-space:normal;font-size:clamp(36px,11vw,56px);margin-bottom:24px}
     .suc-right{position:static;top:auto}
+    /* Sucursales — carrusel infinito mobile (base 380px) */
+    .suc-right{margin:0 -20px;position:relative}
+    .suc-info-mobile{display:flex}
+
+    /* Wrapper: clipa el track, muestra peek lateral */
+    .suc-carousel-wrap{
+      position:relative;
+      overflow:hidden;
+      height:210px;
+    }
+
+    /* Flechas flotando sobre el carrusel */
+
+    /* Track: flex, sin overflow, se mueve con transform */
     .suc-collage{
-      display:grid !important;
-      grid-template-columns:1fr 1fr !important;
-      grid-template-rows:auto !important;
+      display:flex !important;
+      flex-direction:row !important;
+      overflow:visible !important;
+      gap:10px !important;
+      padding:0 !important;
+      border-radius:0 !important;
       aspect-ratio:auto !important;
-      gap:6px;border-radius:16px;
+      height:210px !important;
+      max-height:none !important;
+      background:transparent !important;
+      will-change:transform;
     }
-    .suc-collage > * {
-      grid-column: span 1 !important;
-      grid-row: span 1 !important;
-      aspect-ratio: 1/1;
+    .suc-hover-overlay{display:none !important}
+
+    /* Cada slide: 255px × 210px */
+    .suc-collage .suc-photo{
+      flex:0 0 255px !important;
+      width:255px !important;
+      height:210px !important;
+      grid-column:auto !important;
+      grid-row:auto !important;
+      border-radius:10px !important;
+      overflow:hidden;
+      background:#111;
+      position:relative;
     }
-    .suc-collage .suc-box-links, .suc-collage .suc-box-addr {
-      grid-column: span 2 !important;
-      aspect-ratio: auto;
+    .suc-collage .suc-photo::after{
+      content:'';position:absolute;inset:0;
+      background:linear-gradient(180deg,rgba(0,0,0,0) 50%,rgba(0,0,0,0.45) 100%);
+      pointer-events:none;
     }
-    .suc-box-links{padding:20px 20px;gap:8px}
-    .suc-box-links a{font-size:14px;padding-bottom:8px}
-    .suc-box-addr{padding:16px 20px}
-    .suc-box-addr .addr-text{font-size:11px}
-    .suc-box-addr .addr-phone{font-size:13px}
-    .suc-item{font-size:clamp(15px,4.5vw,20px)}
+    .suc-collage .suc-photo img{
+      width:100% !important;height:100% !important;
+      object-fit:cover !important;
+      animation:none !important;opacity:1 !important;transform:none !important;
+      display:block;
+    }
+
+    /* Info box debajo del carrusel (mobile) */
+    /* Info mobile: usa padding lateral para compensar el margin:-20px del suc-right */
+    .suc-info-mobile{
+      display:flex;
+      flex-direction:column;
+      gap:8px;
+      padding:10px 20px 0;
+      box-sizing:border-box;
+      /* ancho explícito = viewport 380px */
+      width:380px;
+      max-width:100vw;
+    }
+    /* Botones negros */
+    .suc-info-btns{
+      display:flex;
+      align-items:stretch;
+      background:#000;
+      color:var(--yellow);
+      border-radius:12px;
+      overflow:hidden;
+    }
+    .suc-btn{
+      flex:1;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      gap:6px;
+      padding:14px 8px;
+      color:var(--yellow) !important;
+      font-family:"Gotham","Archivo Black",sans-serif;
+      font-weight:900;
+      font-size:11px;
+      text-transform:uppercase;
+      letter-spacing:.03em;
+      white-space:nowrap;
+      min-width:0;
+    }
+    .suc-btn svg{width:13px;height:13px;stroke:var(--yellow) !important;fill:none;flex-shrink:0}
+    .suc-btn-divider{
+      width:1px;
+      background:rgba(255,255,255,0.2);
+      margin:10px 0;
+      flex-shrink:0;
+    }
+    /* Tarjeta dirección */
+    .suc-info-addr{
+      background:var(--yellow);
+      border-radius:12px;
+      padding:14px 16px;
+      display:flex;
+      flex-direction:column;
+      gap:4px;
+    }
+    .suc-info-addr .addr-text{
+      font-size:11px;
+      line-height:1.5;
+      color:#000;
+      font-weight:500;
+    }
+    .suc-info-addr .addr-phone{
+      font-family:"Gotham","Archivo Black",sans-serif;
+      font-weight:900;
+      font-size:12px;
+      color:#000;
+      margin-top:2px;
+    }
+    /* Sucursales — pill carousel móvil */
+    .suc-list{
+      flex-direction:row;
+      flex-wrap:nowrap;
+      overflow-x:auto;
+      overflow-y:visible;
+      scroll-snap-type:x proximity;
+      -webkit-overflow-scrolling:touch;
+      gap:8px;
+      padding:4px 0 16px;
+      max-height:none;
+      justify-content:flex-start;
+      scrollbar-width:none;
+      -ms-overflow-style:none;
+    }
+    .suc-list::-webkit-scrollbar{display:none}
+    .suc-item{
+      flex-shrink:0;
+      scroll-snap-align:start;
+      font-size:clamp(13px,3.8vw,16px);
+      white-space:nowrap;
+      border:2px solid #000;
+      border-radius:99px;
+      padding:9px 20px;
+    }
+    .suc-item.active{
+      min-width:auto !important;
+      border-color:#000;
+    }
     .suc-gatito-wrap{display:none}
 
-    /* Favoritos */
+    /* Favoritos — infinite carousel móvil */
     .favoritos{
-      height:auto;min-height:auto;padding:80px 20px 48px;
-      display:flex;flex-direction:column;align-items:center;overflow:visible;
+      height:auto;min-height:auto;padding:80px 0 80px;
+      display:flex;flex-direction:column;align-items:center;overflow:hidden;
+      position:relative;isolation:isolate;
     }
     .fav-title{
       position:static;left:auto;top:auto;
       font-size:clamp(28px,8vw,42px);
-      text-align:center;margin-bottom:24px;
-    }
-    .fav-cards{
-      position:relative;
-      width:100%;grid-template-columns:1fr;gap:12px;margin:0;
-      padding-top:130px;
+      text-align:center;margin-bottom:16px;
+      padding:0 20px;
     }
     .fav-maneki{
-      position:absolute;top:0;left:50%;
-      width:260px;z-index:0;
+      position:absolute;left:50%;transform:translateX(-50%);
+      top:160px;
+      width:220px;z-index:-1;
       animation:manekiFloat 3.2s ease-in-out infinite;
     }
-    /* removed individual z-index overrides so all cards remain above maneki */
+    .fav-card{
+      position:relative;z-index:1;
+    }
+    .fav-cards{
+      display:flex;flex-direction:row;
+      overflow:visible;
+      width:100%;margin-top:85px;padding:0;
+      grid-template-columns:unset;
+      gap:0;
+      will-change:transform;
+    }
+    .fav-card{
+      flex:0 0 72%;
+      margin:0 4%;
+      flex-shrink:0;
+    }
+    .fav-arrows{
+      display:flex;justify-content:center;gap:32px;margin-top:20px;
+    }
+    .fav-arrow{
+      width:32px;height:32px;border-radius:50%;
+      background:transparent;color:#999;
+      border:1.5px solid #ccc;cursor:pointer;
+      display:flex;align-items:center;justify-content:center;
+      font-size:13px;line-height:1;
+      transition:color .2s ease, border-color .2s ease;
+    }
+    .fav-arrow:hover{color:#000;border-color:#000;}
 
     /* Contacto */
     .contact-grid{grid-template-columns:1fr;gap:40px}
@@ -625,9 +778,9 @@
     .suc-box-links a:last-child{border-right:none;padding-right:0}
 
     /* Favoritos */
-    .fav-title{font-size:clamp(26px,7.5vw,38px)}
-    .fav-cards{grid-template-columns:1fr;gap:12px;padding-top:110px}
-    .fav-maneki{width:220px}
+    .fav-title{font-size:clamp(22px,7vw,34px)}
+    .fav-maneki{width:180px}
+    .fav-card{flex:0 0 78%;margin:0 4%}
 
     /* Contacto */
     .contact h2{font-size:clamp(40px,12vw,80px)}
@@ -794,26 +947,37 @@
     </div>
     <!-- COLUMNA DERECHA: collage + info -->
     <div class="suc-right">
-      <div class="suc-collage">
-        <!-- Overlay for hover -->
-        <div class="suc-hover-overlay" id="sucHoverOverlay">
-          <img id="sucHoverImg" src="" alt="">
+      <!-- Carrusel de fotos (mobile: infinito, desktop: collage grid) -->
+      <div class="suc-carousel-wrap" id="sucCarouselWrap">
+        <div class="suc-collage" id="sucCollage">
+          <!-- Overlay for hover (desktop) -->
+          <div class="suc-hover-overlay" id="sucHoverOverlay">
+            <img id="sucHoverImg" src="" alt="">
+          </div>
+          <!-- Foto 1 -->
+          <article class="suc-photo" id="sPhoto1">
+            <div class="suc-photo-placeholder">FOTO 1</div>
+          </article>
+          <!-- Foto 2 -->
+          <article class="suc-photo" id="sPhoto2">
+            <div class="suc-photo-placeholder">FOTO 2</div>
+          </article>
         </div>
-        <!-- Foto 1 -->
-        <article class="suc-photo" id="sPhoto1">
-          <div class="suc-photo-placeholder">FOTO 1</div>
-        </article>
-        <!-- Foto 2 -->
-        <article class="suc-photo" id="sPhoto2">
-          <div class="suc-photo-placeholder">FOTO 2</div>
-        </article>
-        <!-- Caja amarilla: Google Maps + Pide en línea -->
-        <div class="suc-box-links">
-          <a id="dMapsLink" href="#" target="_blank" rel="noopener">GOOGLE MAPS</a>
-          <a href="https://pide.rockandwok.com" target="_blank" rel="noopener">PIDE EN LÍNEA</a>
+      </div>
+      <!-- Info: dirección y links (fuera del carrusel de fotos) -->
+      <div class="suc-info-mobile">
+        <div class="suc-info-btns">
+          <a id="dMapsLink" href="#" target="_blank" rel="noopener" class="suc-btn">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+            GOOGLE MAPS
+          </a>
+          <div class="suc-btn-divider"></div>
+          <a href="https://pide.rockandwok.com" target="_blank" rel="noopener" class="suc-btn">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg>
+            PIDE EN LÍNEA
+          </a>
         </div>
-        <!-- Caja amarilla: dirección -->
-        <div class="suc-box-addr">
+        <div class="suc-info-addr">
           <p class="addr-text" id="dAddr">Calzada Ignacio Zaragoza 410, Corredor Industrial la Ciénega, 72220 Heroica Puebla de Zaragoza, Pue., México.</p>
           <p class="addr-phone" id="dPhone">T. +52 222 710 7136</p>
         </div>
@@ -1000,30 +1164,24 @@
     const mapsLink = document.getElementById('dMapsLink');
     if(mapsLink) mapsLink.href = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(b.q)}`;
 
-    const collage = document.querySelector('.suc-collage');
-    
-    // Extract boxes to re-insert them randomly
-    const boxLinks = document.querySelector('.suc-box-links');
-    const boxAddr = document.querySelector('.suc-box-addr');
-    if(boxLinks) boxLinks.remove();
-    if(boxAddr) boxAddr.remove();
-    
-    // Clear old photos
+    const collage = document.getElementById('sucCollage') || document.querySelector('.suc-collage');
+
+    // Clear old photos only (info boxes are now outside the collage in mobile)
     collage.querySelectorAll('.suc-photo').forEach(el => el.remove());
-    
+
     const photos = (b.photos && b.photos.length > 0) ? b.photos : [];
     const count = Math.max(photos.length, 2);
-    
+
+    // Desktop: restore grid class
     collage.className = 'suc-collage collage-' + Math.min(count, 7);
-    
+
     const overlay = document.getElementById('sucHoverOverlay');
     const overlayImg = document.getElementById('sucHoverImg');
 
     const itemsArray = [];
     for (let p = 0; p < count; p++) {
-      const art = document.createElement('article'); // Change to article for nth-of-type accuracy
+      const art = document.createElement('article');
       art.className = 'suc-photo';
-      
       let imgSrc = '';
       if (photos[p]) {
         imgSrc = photos[p];
@@ -1038,40 +1196,215 @@
         ph.textContent = 'FOTO ' + (p + 1);
         art.appendChild(ph);
       }
-      
-      // Hover Expansion Effect
+      // Desktop hover
       art.addEventListener('mouseenter', () => {
-        if (!imgSrc) return;
+        if (!imgSrc || window.innerWidth <= 900) return;
         const cRect = collage.getBoundingClientRect();
         const aRect = art.getBoundingClientRect();
-        const originX = ((aRect.left + aRect.width/2) - cRect.left) / cRect.width * 100;
-        const originY = ((aRect.top + aRect.height/2) - cRect.top) / cRect.height * 100;
-        
-        overlay.style.transformOrigin = `${originX}% ${originY}%`;
+        overlay.style.transformOrigin = `${((aRect.left+aRect.width/2)-cRect.left)/cRect.width*100}% ${((aRect.top+aRect.height/2)-cRect.top)/cRect.height*100}%`;
         overlayImg.src = imgSrc;
         overlay.classList.add('active');
       });
-      art.addEventListener('mouseleave', () => {
-        overlay.classList.remove('active');
-      });
-      
+      art.addEventListener('mouseleave', () => overlay.classList.remove('active'));
       itemsArray.push(art);
     }
-    
-    const frag = document.createDocumentFragment();
-    itemsArray.forEach(el => frag.appendChild(el));
-    if(boxLinks) frag.appendChild(boxLinks);
-    if(boxAddr) frag.appendChild(boxAddr);
-    collage.appendChild(frag);
+
+    // Desktop: also add info boxes inside collage (grid layout)
+    if (window.innerWidth > 900) {
+      const boxLinks = document.querySelector('.suc-info-btns');
+      const boxAddr  = document.querySelector('.suc-info-addr');
+      const blClone = boxLinks ? boxLinks.cloneNode(true) : null;
+      const baClone = boxAddr  ? boxAddr.cloneNode(true)  : null;
+      const frag = document.createDocumentFragment();
+      itemsArray.forEach(el => frag.appendChild(el));
+      if(blClone) frag.appendChild(blClone);
+      if(baClone) frag.appendChild(baClone);
+      collage.appendChild(frag);
+    } else {
+      const frag = document.createDocumentFragment();
+      itemsArray.forEach(el => frag.appendChild(el));
+      collage.appendChild(frag);
+    }
 
     const activeEl = items[i];
     positionGatito(activeEl);
     requestAnimationFrame(() => {
       gatito.classList.add('visible');
+      initSucCarousel();
     });
   }
 
   selectBranch(0);
+
+  // ── Carrusel infinito sucursales (mobile) ──────────────────────────────
+  const collageEl = document.getElementById('sucCollage');
+  let sucCarInst  = null;
+
+  function initSucCarousel() {
+    const isMobile = window.innerWidth <= 900;
+
+    // Cleanup clones anteriores
+    if (sucCarInst) {
+      collageEl.querySelectorAll('.suc-photo-clone').forEach(c => c.remove());
+      collageEl.style.transform = '';
+      collageEl.style.transition = 'none';
+      sucCarInst = null;
+    }
+
+    if (!isMobile) return;
+
+    const origSlides = Array.from(collageEl.querySelectorAll('.suc-photo:not(.suc-photo-clone)'));
+    const n = origSlides.length;
+    if (n === 0) return;
+
+    // Clones: [cloneLast, ...originals..., cloneFirst]
+    const cloneFirst = origSlides[0].cloneNode(true);
+    const cloneLast  = origSlides[n-1].cloneNode(true);
+    cloneFirst.classList.add('suc-photo-clone');
+    cloneLast.classList.add('suc-photo-clone');
+    collageEl.insertBefore(cloneLast, origSlides[0]);
+    collageEl.appendChild(cloneFirst);
+
+    const SLIDE_W = 255;
+    const GAP     = 10;
+    const SLOT    = SLIDE_W + GAP;
+
+    let idx = 1; // empieza en orig[0] (índice 1 por el cloneLast)
+
+    function posTo(index, animated) {
+      const wrapW = document.getElementById('sucCarouselWrap').offsetWidth || 380;
+      const offset = (wrapW - SLIDE_W) / 2 - index * SLOT;
+      collageEl.style.transition = animated ? 'transform 0.42s cubic-bezier(0.25,0.46,0.45,0.94)' : 'none';
+      collageEl.style.transform  = `translateX(${offset}px)`;
+    }
+
+    function goTo(newIdx) {
+      idx = newIdx;
+      posTo(idx, true);
+    }
+
+    collageEl.addEventListener('transitionend', () => {
+      if (idx === 0)        { idx = n;   posTo(idx, false); }
+      else if (idx === n+1) { idx = 1;   posTo(idx, false); }
+    });
+
+    // Touch swipe
+    let tx = 0;
+    const onTs = e => { tx = e.touches[0].clientX; };
+    const onTe = e => {
+      const diff = tx - e.changedTouches[0].clientX;
+      if (Math.abs(diff) > 40) goTo(idx + (diff > 0 ? 1 : -1));
+    };
+    collageEl.addEventListener('touchstart', onTs, { passive: true });
+    collageEl.addEventListener('touchend',   onTe);
+
+    sucCarInst = { onTs, onTe };
+    requestAnimationFrame(() => requestAnimationFrame(() => posTo(idx, false)));
+  }
+
+  window.addEventListener('resize', initSucCarousel);
+
+  // Infinite carousel — Novedades de Maneki
+  let favInst = null;
+
+  function initFavCarousel() {
+    const isMobile = window.innerWidth <= 900;
+    const favoritos = document.querySelector('.favoritos');
+    const track = document.querySelector('.fav-cards');
+    const maneki = document.querySelector('.fav-maneki');
+    const origCards = Array.from(document.querySelectorAll('.fav-card:not(.fav-card-clone)'));
+    const n = origCards.length;
+
+    // Cleanup
+    if (favInst) {
+      track.querySelectorAll('.fav-card-clone').forEach(c => c.remove());
+      track.removeEventListener('touchstart', favInst.ts);
+      track.removeEventListener('touchend', favInst.te);
+      track.style.transform = '';
+      track.style.transition = '';
+      favInst = null;
+    }
+    if (!isMobile) {
+      document.querySelector('.fav-arrows')?.remove();
+      // Maneki de vuelta al tercer card
+      if (maneki && origCards[2] && maneki.parentElement !== origCards[2]) {
+        origCards[2].insertBefore(maneki, origCards[2].firstChild);
+      }
+      return;
+    }
+
+    // Maneki: asegurar que esté directo en favoritos (no dentro de un card)
+    if (maneki && maneki.parentElement !== favoritos) {
+      favoritos.appendChild(maneki);
+    }
+
+    // Clones: [cloneLast, orig0, orig1, orig2, cloneFirst]
+    const cloneFirst = origCards[0].cloneNode(true);
+    const cloneLast  = origCards[n - 1].cloneNode(true);
+    cloneFirst.classList.add('fav-card-clone');
+    cloneLast.classList.add('fav-card-clone');
+    track.insertBefore(cloneLast, origCards[0]);
+    track.appendChild(cloneFirst);
+
+    let idx = 1; // empieza en orig0
+
+    function positionTo(i, animated) {
+      const cW = favoritos.offsetWidth;
+      const cardPct = window.innerWidth <= 600 ? 0.78 : 0.72;
+      const marginPct = 0.04;
+      const slotW = cW * (cardPct + marginPct * 2);
+      const cardW = cW * cardPct;
+      const offset = -(i * slotW + cW * marginPct) + (cW - cardW) / 2;
+      track.style.transition = animated ? 'transform 0.42s cubic-bezier(0.25, 0.46, 0.45, 0.94)' : 'none';
+      track.style.transform = `translateX(${offset}px)`;
+    }
+
+    function goTo(newIdx) {
+      idx = newIdx;
+      positionTo(idx, true);
+    }
+
+    track.addEventListener('transitionend', () => {
+      if (idx === 0)       { idx = n;     positionTo(idx, false); }
+      else if (idx === n+1){ idx = 1;     positionTo(idx, false); }
+    });
+
+    // Touch
+    let tx = 0;
+    const ts = e => { tx = e.touches[0].clientX; };
+    const te = e => {
+      const diff = tx - e.changedTouches[0].clientX;
+      if (Math.abs(diff) > 40) goTo(idx + (diff > 0 ? 1 : -1));
+    };
+    track.addEventListener('touchstart', ts, { passive: true });
+    track.addEventListener('touchend', te);
+    favInst = { ts, te };
+
+    // Flechas
+    let arrows = document.querySelector('.fav-arrows');
+    if (!arrows) {
+      arrows = document.createElement('div');
+      arrows.className = 'fav-arrows';
+      const btnPrev = document.createElement('button');
+      btnPrev.className = 'fav-arrow';
+      btnPrev.setAttribute('aria-label', 'Anterior');
+      btnPrev.innerHTML = '&#8592;';
+      btnPrev.addEventListener('click', () => goTo(idx - 1));
+      const btnNext = document.createElement('button');
+      btnNext.className = 'fav-arrow';
+      btnNext.setAttribute('aria-label', 'Siguiente');
+      btnNext.innerHTML = '&#8594;';
+      btnNext.addEventListener('click', () => goTo(idx + 1));
+      arrows.appendChild(btnPrev);
+      arrows.appendChild(btnNext);
+      favoritos.appendChild(arrows);
+    }
+
+    requestAnimationFrame(() => positionTo(idx, false));
+  }
+
+  initFavCarousel();
+  window.addEventListener('resize', initFavCarousel);
 
   // Smooth anchor scroll
   document.querySelectorAll('a[href^="#"]').forEach(a => {
