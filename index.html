@@ -561,6 +561,7 @@
       position:relative;
       overflow:hidden;
       height:210px;
+      touch-action:pan-y;
     }
 
     /* Flechas flotando sobre el carrusel */
@@ -679,6 +680,7 @@
       overflow-y:visible;
       scroll-snap-type:x proximity;
       -webkit-overflow-scrolling:touch;
+      touch-action:pan-x;
       gap:8px;
       padding:4px 0 16px;
       max-height:none;
@@ -1247,10 +1249,13 @@
   function initSucCarousel() {
     const isMobile = window.innerWidth <= 900;
 
-    // Cleanup clones anteriores
+    // Cleanup completo: clones + listeners anteriores
     if (sucCarInst) {
       collageEl.querySelectorAll('.suc-photo-clone').forEach(c => c.remove());
-      collageEl.style.transform = '';
+      collageEl.removeEventListener('touchstart', sucCarInst.onTs);
+      collageEl.removeEventListener('touchend',   sucCarInst.onTe);
+      collageEl.removeEventListener('transitionend', sucCarInst.onTrEnd);
+      collageEl.style.transform  = '';
       collageEl.style.transition = 'none';
       sucCarInst = null;
     }
@@ -1273,7 +1278,9 @@
     const GAP     = 10;
     const SLOT    = SLIDE_W + GAP;
 
-    let idx = 1; // empieza en orig[0] (índice 1 por el cloneLast)
+    let idx = 1;
+    let touching = false;
+    let txStart = 0;
 
     function posTo(index, animated) {
       const wrapW = document.getElementById('sucCarouselWrap').offsetWidth || 380;
@@ -1287,22 +1294,28 @@
       posTo(idx, true);
     }
 
-    collageEl.addEventListener('transitionend', () => {
-      if (idx === 0)        { idx = n;   posTo(idx, false); }
-      else if (idx === n+1) { idx = 1;   posTo(idx, false); }
-    });
-
-    // Touch swipe
-    let tx = 0;
-    const onTs = e => { tx = e.touches[0].clientX; };
-    const onTe = e => {
-      const diff = tx - e.changedTouches[0].clientX;
-      if (Math.abs(diff) > 40) goTo(idx + (diff > 0 ? 1 : -1));
+    const onTrEnd = () => {
+      if (idx === 0)        { idx = n; posTo(idx, false); }
+      else if (idx === n+1) { idx = 1; posTo(idx, false); }
     };
-    collageEl.addEventListener('touchstart', onTs, { passive: true });
-    collageEl.addEventListener('touchend',   onTe);
 
-    sucCarInst = { onTs, onTe };
+    // Touch: registrar inicio y calcular delta en touchend
+    const onTs = e => {
+      touching = true;
+      txStart = e.touches[0].clientX;
+    };
+    const onTe = e => {
+      if (!touching) return;
+      touching = false;
+      const diff = txStart - e.changedTouches[0].clientX;
+      if (Math.abs(diff) > 30) goTo(idx + (diff > 0 ? 1 : -1));
+    };
+
+    collageEl.addEventListener('transitionend', onTrEnd);
+    collageEl.addEventListener('touchstart', onTs, { passive: true });
+    collageEl.addEventListener('touchend',   onTe, { passive: true });
+
+    sucCarInst = { onTs, onTe, onTrEnd };
     requestAnimationFrame(() => requestAnimationFrame(() => posTo(idx, false)));
   }
 
