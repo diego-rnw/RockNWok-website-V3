@@ -1248,12 +1248,14 @@
 
   function initSucCarousel() {
     const isMobile = window.innerWidth <= 900;
+    const wrapEl = document.getElementById('sucCarouselWrap');
 
-    // Cleanup completo: clones + listeners anteriores
+    // Cleanup completo
     if (sucCarInst) {
       collageEl.querySelectorAll('.suc-photo-clone').forEach(c => c.remove());
-      collageEl.removeEventListener('touchstart', sucCarInst.onTs);
-      collageEl.removeEventListener('touchend',   sucCarInst.onTe);
+      wrapEl.removeEventListener('touchstart', sucCarInst.onTs);
+      wrapEl.removeEventListener('touchend',   sucCarInst.onTe);
+      wrapEl.removeEventListener('touchcancel',sucCarInst.onCancel);
       collageEl.removeEventListener('transitionend', sucCarInst.onTrEnd);
       collageEl.style.transform  = '';
       collageEl.style.transition = 'none';
@@ -1266,7 +1268,7 @@
     const n = origSlides.length;
     if (n === 0) return;
 
-    // Clones: [cloneLast, ...originals..., cloneFirst]
+    // Clones para efecto infinito
     const cloneFirst = origSlides[0].cloneNode(true);
     const cloneLast  = origSlides[n-1].cloneNode(true);
     cloneFirst.classList.add('suc-photo-clone');
@@ -1277,45 +1279,42 @@
     const SLIDE_W = 255;
     const GAP     = 10;
     const SLOT    = SLIDE_W + GAP;
-
     let idx = 1;
-    let touching = false;
-    let txStart = 0;
 
     function posTo(index, animated) {
-      const wrapW = document.getElementById('sucCarouselWrap').offsetWidth || 380;
-      const offset = (wrapW - SLIDE_W) / 2 - index * SLOT;
+      const wW = wrapEl.offsetWidth || 380;
+      const offset = (wW - SLIDE_W) / 2 - index * SLOT;
       collageEl.style.transition = animated ? 'transform 0.42s cubic-bezier(0.25,0.46,0.45,0.94)' : 'none';
       collageEl.style.transform  = `translateX(${offset}px)`;
     }
 
-    function goTo(newIdx) {
-      idx = newIdx;
-      posTo(idx, true);
-    }
+    function goTo(newIdx) { idx = newIdx; posTo(idx, true); }
 
     const onTrEnd = () => {
       if (idx === 0)        { idx = n; posTo(idx, false); }
       else if (idx === n+1) { idx = 1; posTo(idx, false); }
     };
 
-    // Touch: registrar inicio y calcular delta en touchend
-    const onTs = e => {
-      touching = true;
-      txStart = e.touches[0].clientX;
-    };
+    // Touch en el WRAPPER (tiene dimensiones reales en dispositivo)
+    let txStart = 0;
+    let touching = false;
+    const onTs = e => { txStart = e.touches[0].clientX; touching = true; };
     const onTe = e => {
       if (!touching) return;
       touching = false;
-      const diff = txStart - e.changedTouches[0].clientX;
-      if (Math.abs(diff) > 30) goTo(idx + (diff > 0 ? 1 : -1));
+      const t = e.changedTouches[0];
+      if (!t) return;
+      const diff = txStart - t.clientX;
+      if (Math.abs(diff) > 25) goTo(idx + (diff > 0 ? 1 : -1));
     };
+    const onCancel = () => { touching = false; txStart = 0; };
 
+    wrapEl.addEventListener('touchstart',  onTs,     { passive: true });
+    wrapEl.addEventListener('touchend',    onTe,     { passive: true });
+    wrapEl.addEventListener('touchcancel', onCancel, { passive: true });
     collageEl.addEventListener('transitionend', onTrEnd);
-    collageEl.addEventListener('touchstart', onTs, { passive: true });
-    collageEl.addEventListener('touchend',   onTe, { passive: true });
 
-    sucCarInst = { onTs, onTe, onTrEnd };
+    sucCarInst = { onTs, onTe, onCancel, onTrEnd };
     requestAnimationFrame(() => requestAnimationFrame(() => posTo(idx, false)));
   }
 
