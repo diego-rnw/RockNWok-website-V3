@@ -547,22 +547,26 @@
     /* Hero */
     .hero-cta{right:auto;bottom:28px;font-size:13px;padding:14px 24px}
 
+    /* Permite scroll horizontal nativo en hijos — compatible iOS Safari + Android Chrome */
+    html,body{overflow-x:visible}
+
     /* Sucursales */
     .sucursales{height:auto;min-height:100vh;overflow:visible}
-    .suc-layout{grid-template-columns:1fr;gap:24px;padding:96px 20px 96px}
+    .suc-layout{grid-template-columns:1fr;gap:24px;padding:96px 20px 96px;overflow:visible}
+    .suc-left{overflow:visible}
     .suc-title{white-space:normal;font-size:clamp(36px,11vw,56px);margin-bottom:24px}
     .suc-right{position:static;top:auto}
     /* Sucursales — carrusel infinito mobile (base 380px) */
     .suc-right{margin:0 -20px;position:relative}
     .suc-info-mobile{display:flex}
 
-    /* Wrapper: clipa el track, muestra peek lateral */
+    /* Wrapper: clipa el carrusel de fotos, JS maneja swipe horizontal */
     .suc-carousel-wrap{
       display:block;
       position:relative;
       overflow:hidden;
       height:210px;
-      touch-action:pan-y;
+      touch-action:none;
     }
 
     /* Flechas flotando sobre el carrusel */
@@ -675,16 +679,17 @@
     }
     /* Sucursales — pill carousel móvil */
     .suc-list{
+      display:flex;
       flex-direction:row;
       flex-wrap:nowrap;
       overflow-x:auto;
       overflow-y:visible;
-      scroll-snap-type:x proximity;
       -webkit-overflow-scrolling:touch;
       touch-action:pan-x;
       gap:8px;
       padding:4px 0 16px;
       max-height:none;
+      width:100%;
       justify-content:flex-start;
       scrollbar-width:none;
       -ms-overflow-style:none;
