@@ -547,13 +547,14 @@
     /* Hero */
     .hero-cta{right:auto;bottom:28px;font-size:13px;padding:14px 24px}
 
-    /* Permite scroll horizontal nativo en hijos — compatible iOS Safari + Android Chrome */
-    html,body{overflow-x:visible}
+    /* Fix iOS Safari: solo html clipa, body libre para que hijos puedan hacer scroll horizontal */
+    html{overflow-x:hidden}
+    body{overflow-x:visible}
 
     /* Sucursales */
     .sucursales{height:auto;min-height:100vh;overflow:visible}
     .suc-layout{grid-template-columns:1fr;gap:24px;padding:96px 20px 96px;overflow:visible}
-    .suc-left{overflow:visible}
+    .suc-left{overflow:visible;height:auto}
     .suc-title{white-space:normal;font-size:clamp(36px,11vw,56px);margin-bottom:24px}
     .suc-right{position:static;top:auto}
     /* Sucursales — carrusel infinito mobile (base 380px) */
@@ -682,7 +683,8 @@
       display:flex;
       flex-direction:row;
       flex-wrap:nowrap;
-      overflow-x:auto;
+      flex:none;
+      overflow-x:scroll;
       overflow-y:visible;
       -webkit-overflow-scrolling:touch;
       touch-action:pan-x;
