@@ -23,8 +23,8 @@
 <link rel="icon" type="image/png" sizes="16x16" href="dist/favicon-16x16.png" />
 <link rel="apple-touch-icon" href="dist/favicon-32x32.png" />
 <!-- Preloads críticos: hero + fuentes above-the-fold -->
-<link rel="preload" as="image" href="assets/ImageHero_02.jpg" fetchpriority="high" />
-<link rel="preload" as="image" href="assets/mexrock1.png" />
+<link rel="preload" as="image" href="assets/ImageHero_02.webp" fetchpriority="high" />
+<link rel="preload" as="image" href="assets/mexrock1.webp" fetchpriority="high" />
 <link rel="preload" as="font" type="font/woff2" href="dist/fonts/monument/MonumentExtended-Black.woff2" crossorigin />
 <link rel="preload" as="font" type="font/woff2" href="dist/fonts/monument/MonumentExtended-Ultrabold.woff2" crossorigin />
 <link rel="preload" as="font" type="font/woff2" href="dist/fonts/gotham/GothamNarrow-Black.woff2" crossorigin />
@@ -100,7 +100,7 @@
 
   .nav-center{display:flex;align-items:center;margin-left:0;justify-self:end}
   .nav-center a{display:flex;flex-direction:column;align-items:center}
-  .nav-center img{width:200px;display:block;transform-origin:bottom center;animation:maneki-swing 2.4s ease-in-out infinite}
+  .nav-center img{width:150px;display:block;transform-origin:bottom center;animation:maneki-swing 2.4s ease-in-out infinite}
   
   @keyframes maneki-swing{
     0%  {transform:rotate(-4deg)}
@@ -411,6 +411,14 @@
     position:absolute;left:50%;top:0;transform:translate(-50%, -58%);
     width:280px;z-index:-1;pointer-events:none;
   }
+  @keyframes maneki-excited{
+    0%,100%{transform:translate(-50%,-58%)}
+    25%{transform:translate(-50%,-66%)}
+    75%{transform:translate(-50%,-52%)}
+  }
+  .fav-cards:has(.fav-card:hover) .fav-maneki{
+    animation:maneki-excited 0.5s ease-in-out infinite;
+  }
   .fav-card{
     perspective:1200px;
     position:relative;
@@ -483,7 +491,7 @@
     100% { transform: rotate(0deg) scale(1); }
   }
   .contact-illus img{
-    max-width:1080px;width:100%;
+    max-width:1080px;width:130%;
     filter:drop-shadow(0 30px 60px rgba(255,214,10,.18));
     transform-origin: bottom center;
     animation: manekiRing 4s infinite;
@@ -873,7 +881,7 @@
       </ul>
     <div class="nav-center">
       <a href="https://pide.rockandwok.com" target="_blank" rel="noopener">
-        <img src="assets/maneki-pide.webp" alt="Pide Aquí" />
+        <img src="assets/maneki-pide-3d.webp" alt="Pide Aquí" />
       </a>
     </div>
       <button class="nav-hamburger" aria-label="Abrir menú" aria-expanded="false">
@@ -895,7 +903,7 @@
   </nav>
   <div class="mm-bottom">
     <a href="https://pide.rockandwok.com" target="_blank" rel="noopener" class="mm-maneki">
-      <img src="assets/maneki-pide.webp" alt="Pide Aquí" />
+      <img src="assets/maneki-pide-3d.webp" alt="Pide Aquí" />
     </a>
     <div class="mm-socials">
       <a href="#" aria-label="Facebook" class="mm-social-link"><svg viewBox="0 0 24 24" fill="currentColor" width="22" height="22"><path d="M13 22v-8h3l.5-4H13V7.5c0-1.2.3-2 2-2h2V2.1c-.4-.1-1.5-.2-2.8-.2C11.4 1.9 9 4 9 7v3H6v4h3v8h4z"/></svg></a>
@@ -907,13 +915,13 @@
 <!-- ============ HERO ============ -->
 <header class="hero" id="top" data-screen-label="01 Hero">
   <div class="bg">
-    <div class="bg-slide active" style="background-image:url('assets/ImageHero_02.jpg')"></div>
-    <div class="bg-slide" style="background-image:url('assets/mexrock0.png')"></div>
-    <div class="bg-slide" style="background-image:url('assets/mexrock1.png')"></div>
-    <div class="bg-slide" style="background-image:url('assets/mexrock2.png')"></div>
-    <div class="bg-slide" style="background-image:url('assets/mexrock3.png')"></div>
-    <div class="bg-slide" style="background-image:url('assets/mexrock4.png')"></div>
-    <div class="bg-slide" style="background-image:url('assets/mexrock5.png')"></div>
+    <div class="bg-slide active" style="background-image:url('assets/ImageHero_02.webp')"></div>
+    <div class="bg-slide" style="background-image:url('assets/mexrock0.webp')"></div>
+    <div class="bg-slide" style="background-image:url('assets/mexrock1.webp')"></div>
+    <div class="bg-slide" style="background-image:url('assets/mexrock2.webp')"></div>
+    <div class="bg-slide" style="background-image:url('assets/mexrock3.webp')"></div>
+    <div class="bg-slide" style="background-image:url('assets/mexrock4.webp')"></div>
+    <div class="bg-slide" style="background-image:url('assets/mexrock5.webp')"></div>
   </div>
   <div class="hero-inner">
     <h1>
@@ -981,7 +989,7 @@
       </div>
     </div>
     <div class="fav-card">
-      <img src="assets/maneki-cute.webp" alt="Maneki" class="fav-maneki" loading="lazy" />
+      <img src="assets/maneki-cute-3d.webp" alt="Maneki" class="fav-maneki" loading="lazy" />
       <div class="fav-card-inner">
         <div class="fav-card-front">
           <img src="assets/3.webp" alt="Postres" loading="lazy" />
@@ -1007,7 +1015,7 @@
     </div>
     <!-- Gatito: wrapper clipa todo lo que quede por debajo de la pill -->
     <div class="suc-gatito-wrap" id="sucGatitoWrap">
-      <img src="assets/gatito.svg" alt="" class="suc-gatito" id="sucGatito" />
+      <img src="assets/gatito-3d.webp" alt="" class="suc-gatito" id="sucGatito" loading="lazy" />
     </div>
     <!-- COLUMNA DERECHA: collage + info -->
     <div class="suc-right">
@@ -1063,7 +1071,7 @@
         </div>
       </div>
       <div class="contact-illus">
-        <img src="assets/maneki_phone.png" alt="Maneki contestando el teléfono" loading="lazy" />
+        <img src="assets/maneki_phone.webp" alt="Maneki contestando el teléfono" loading="lazy" />
       </div>
     </div>
   </div>
@@ -1073,7 +1081,7 @@
 <footer data-screen-label="05 Footer">
   <div class="foot-main">
     <div class="foot-left">
-      <img src="assets/Logotipo_año_del_caballo_horizontal.png" alt="Feliz Año del Caballo 2026" class="foot-feliz" loading="lazy" />
+      <img src="assets/Logotipo_año_del_caballo_horizontal.webp" alt="Feliz Año del Caballo 2026" class="foot-feliz" loading="lazy" />
     </div>
     <div class="foot-right">
       <p class="foot-social-label">Síguenos en<br><span>nuestras redes</span></p>
