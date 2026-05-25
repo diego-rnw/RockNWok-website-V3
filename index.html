@@ -155,18 +155,43 @@
   .hero h1 .your  {animation-delay:.35s}
   .hero h1 .spirit{animation-delay:.6s}
   .hero h1 .wok   {z-index:1; color:var(--yellow); font-size:12.7vw;
-    /* Dir -45° | Offset 20 | Blur 100 | Opacidad 76% */
-    /* x = cos(-45°)*20 ≈ 14px  |  y = -sin(-45°)*20 ≈ 14px */
-    text-shadow: 14px 14px 100px rgba(0,0,0,.76);
+    text-shadow:
+      1px 1px 0 rgba(160,120,0,.8),
+      2px 2px 0 rgba(140,100,0,.7),
+      3px 3px 0 rgba(120,80,0,.6),
+      4px 4px 0 rgba(100,60,0,.55),
+      5px 5px 0 rgba(80,40,0,.5),
+      7px 7px 2px rgba(0,0,0,.45),
+      12px 12px 12px rgba(0,0,0,.4),
+      18px 18px 50px rgba(0,0,0,.65),
+      26px 26px 100px rgba(0,0,0,.75);
   }
   .hero h1 .your  {z-index:2; color:#fff; font-size:9.2vw;
     margin-top:-1.5vw;
-    text-shadow: 14px 14px 100px rgba(0,0,0,.76);
+    text-shadow:
+      1px 1px 0 rgba(160,160,160,.6),
+      2px 2px 0 rgba(120,120,120,.5),
+      3px 3px 0 rgba(90,90,90,.45),
+      4px 4px 0 rgba(60,60,60,.4),
+      5px 5px 0 rgba(40,40,40,.35),
+      7px 7px 2px rgba(0,0,0,.45),
+      12px 12px 12px rgba(0,0,0,.4),
+      18px 18px 50px rgba(0,0,0,.65),
+      26px 26px 100px rgba(0,0,0,.75);
   }
-  .hero h1 .spirit{z-index:3; color:var(--yellow); font-size:14.6vw; margin-top:0.7vw; /* 312px @ 1920 */
-    /* Dir 167° | Offset 79 | Blur 100 | Opacidad 55% */
-    /* x = cos(167°)*79 ≈ -77px  |  y = -sin(167°)*79 ≈ -18px */
-    text-shadow: -77px -18px 100px rgba(0,0,0,.55);
+  .hero h1 .spirit{z-index:3; color:var(--yellow); font-size:14.6vw; margin-top:0.7vw;
+    text-shadow:
+      1px 1px 0 rgba(160,120,0,.8),
+      2px 2px 0 rgba(140,100,0,.7),
+      3px 3px 0 rgba(120,80,0,.6),
+      4px 4px 0 rgba(100,60,0,.55),
+      5px 5px 0 rgba(80,40,0,.5),
+      6px 6px 0 rgba(60,20,0,.45),
+      7px 7px 0 rgba(40,10,0,.4),
+      9px 9px 3px rgba(0,0,0,.45),
+      14px 14px 14px rgba(0,0,0,.4),
+      22px 22px 50px rgba(0,0,0,.65),
+      32px 32px 100px rgba(0,0,0,.8);
   }
   .hero-cta{
     position:absolute;bottom:60px;left:50%;transform:translateX(-50%);z-index:3;
@@ -256,6 +281,7 @@
   .suc-photo{overflow:hidden;background:#222;position:relative}
   .suc-photo img{width:100%;height:100%;object-fit:cover;display:block;animation:heroIn .6s cubic-bezier(.2,.8,.2,1) both}
   .suc-photo-placeholder{width:100%;height:100%;background:#1a1a1a;display:flex;align-items:center;justify-content:center;color:#444;font-size:12px;letter-spacing:.1em}
+  .suc-coming-soon{grid-column:1/-1;grid-row:1/-1;background:var(--yellow);display:flex;align-items:center;justify-content:center;font-family:"Monument Extended",sans-serif;font-weight:900;font-size:clamp(24px,4vw,64px);color:#000;letter-spacing:.05em;text-transform:uppercase;border-radius:20px}
 
   /* Hover Overlay */
   .suc-hover-overlay {
@@ -478,12 +504,18 @@
   .foot-left{padding-bottom:0}
   .foot-feliz{width:clamp(280px,38vw,560px);display:block}
   .foot-right{padding-bottom:40px;text-align:right}
-  .foot-social-label{font-family:"Gotham",sans-serif;font-weight:900;font-style:normal;font-size:clamp(14px,1.4vw,20px);color:#fff;margin:0 0 16px;line-height:1.3}
+  .foot-social-label{font-family:"Gotham",sans-serif;font-weight:900;font-style:normal;font-size:clamp(18px,2vw,28px);color:#fff;margin:0 0 16px;line-height:1.3}
   .foot-social-label span{color:var(--yellow)}
   .socials{display:flex;gap:12px;margin-bottom:20px;justify-content:flex-end}
   .socials a{width:42px;height:42px;border-radius:99px;border:1px solid rgba(255,255,255,.25);display:grid;place-items:center;transition:all .2s ease}
   .socials a:hover{background:var(--yellow);border-color:var(--yellow);color:#000}
   .socials svg{width:18px;height:18px}
+  .ig-counter{display:inline-flex;align-items:center;gap:10px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.15);border-radius:99px;padding:8px 18px 8px 12px;margin-bottom:20px;transition:all .2s ease}
+  .ig-counter:hover{background:rgba(255,255,255,.14);border-color:var(--yellow)}
+  .ig-counter-icon{width:22px;height:22px;color:var(--yellow);flex-shrink:0}
+  .ig-counter-info{display:flex;flex-direction:column;line-height:1.1}
+  .ig-counter-number{font-family:"Monument Extended",sans-serif;font-weight:900;font-size:clamp(16px,1.6vw,22px);color:var(--yellow);letter-spacing:.02em}
+  .ig-counter-label{font-family:"Gotham",sans-serif;font-weight:500;font-size:clamp(9px,.8vw,12px);color:rgba(255,255,255,.6);letter-spacing:.08em;text-transform:uppercase}
   .foot-legal{font-size:12px;color:#7e7e7e;line-height:1.8;margin:0}
   .foot-legal a{color:#bdbdbd;text-decoration:underline;text-underline-offset:3px}
   .foot-marquee{background:var(--yellow);color:#000;border-block-start:2px solid #000;overflow:hidden}
@@ -778,6 +810,7 @@
     /* Footer */
     .foot-main{grid-template-columns:1fr;gap:32px;padding:40px 28px;text-align:center}
     .foot-left{display:flex;justify-content:center}
+    .ig-counter{justify-content:center}
     .foot-right{text-align:center}
     .socials{justify-content:center}
     .foot-feliz{width:clamp(220px,65vw,380px)}
@@ -999,8 +1032,7 @@
       <div class="suc-info-mobile">
         <div class="suc-info-btns">
           <a id="dMapsLink" href="#" target="_blank" rel="noopener" class="suc-btn">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
-            GOOGLE MAPS
+            📍 GOOGLE MAPS
           </a>
           <div class="suc-btn-divider"></div>
           <a href="https://pide.rockandwok.com" target="_blank" rel="noopener" class="suc-btn">
@@ -1048,6 +1080,13 @@
       <div class="socials">
         <a href="#" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M13 22v-8h3l.5-4H13V7.5c0-1.2.3-2 2-2h2V2.1c-.4-.1-1.5-.2-2.8-.2C11.4 1.9 9 4 9 7v3H6v4h3v8h4z"/></svg></a>
         <a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg></a>
+      </div>
+      <div class="ig-counter">
+        <svg class="ig-counter-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg>
+        <div class="ig-counter-info">
+          <span class="ig-counter-number" id="igFollowers">—</span>
+          <span class="ig-counter-label">seguidores</span>
+        </div>
       </div>
       <p class="foot-legal">
         <a href="#">Aviso de Privacidad</a><br/>
@@ -1157,7 +1196,8 @@
     { name:"SONATA",          city:"Lomas de Angelópolis",     addr:"Vía Atlixcáyotl 1504. Local FF3 Col, Reserva Territorial Atlixcáyotl, 72810 San Bernardino Tlaxcalancingo, Pue.", phone:"T. +52 222 169 2200", hours:"Lun — Dom · 11:00 — 22:30", mapsUrl:"https://maps.app.goo.gl/csgMHwQ3zaVyH2fv8", photos: ['assets/Son gral.webp','assets/Son 1.webp','assets/Son 3.webp','assets/Son 4.webp','assets/Son 5.webp'], photoPositions: ['center 20%', null, 'center 40%'] },
     { name:"GALERÍAS SERDÁN", city:"Centro Comercial",         addr:"Vía Atlixcáyotl 1504. Local FF3 Col, Reserva Territorial Atlixcáyotl, 72810 San Bernardino Tlaxcalancingo, Pue.", phone:"T. +52 222 226 1800", hours:"Lun — Dom · 11:00 — 22:00", mapsUrl:"https://maps.app.goo.gl/eDHYA8M6kEkeYhxK6", photos: ['assets/Gal 1.webp','assets/Gal 2.webp'] },
     { name:"ZÓCALO",          city:"Centro Histórico",         addr:"Portal Hidalgo 6-Primer piso, Centro histórico de Puebla, 72090 Heroica Puebla de Zaragoza, Pue.", phone:"T. +52 222 232 0011", hours:"Lun — Dom · 10:00 — 22:00", mapsUrl:"https://maps.app.goo.gl/2ZHsMBUEaLGYeGHQ9", photos: ['assets/Zoc 4.webp','assets/Zoc 1.webp','assets/Zoc 5.webp','assets/Zoc 6.webp'] },
-    { name:"OUTLET",          city:"Angelópolis",              addr:"Outlet Puebla Premiere, Autop. México - Puebla Km. 115-local F-11, 72686 San Francisco Ocotlán, Pue.", phone:"T. +52 222 169 4400", hours:"Lun — Dom · 11:00 — 22:00", mapsUrl:"https://maps.app.goo.gl/Ko3SpmFYaXs8av4TA", photos: ['assets/Out gral.webp','assets/Out 1.webp','assets/Out 2.webp','assets/Out 3.webp','assets/Out 4.webp','assets/Out 5.webp'] }
+    { name:"OUTLET",          city:"Angelópolis",              addr:"Outlet Puebla Premiere, Autop. México - Puebla Km. 115-local F-11, 72686 San Francisco Ocotlán, Pue.", phone:"T. +52 222 169 4400", hours:"Lun — Dom · 11:00 — 22:00", mapsUrl:"https://maps.app.goo.gl/Ko3SpmFYaXs8av4TA", photos: ['assets/Out gral.webp','assets/Out 1.webp','assets/Out 2.webp','assets/Out 3.webp','assets/Out 4.webp','assets/Out 5.webp'] },
+    { name:"ANGELÓPOLIS",     city:"Angelópolis",              addr:"Próximamente", phone:"", hours:"", mapsUrl:"#", photos: [], comingSoon: true }
   ];
 
   // Preload all branch photos in the background for instant rendering
@@ -1175,7 +1215,7 @@
   });
 
   // Pills más largas para nombres cortos que se enciman con el gatito
-  const pillMinWidth = { "UPAEP": "260px", "SONATA": "260px", "ZÓCALO": "310px" };
+  const pillMinWidth = { "UPAEP": "260px", "SONATA": "260px", "ZÓCALO": "310px", "ANGELÓPOLIS": "310px" };
 
   const list = document.getElementById('sucList');
   branches.forEach((b, i) => {
@@ -1229,15 +1269,31 @@
       el.classList.toggle('active', j===i);
       el.style.minWidth = (j===i && el.dataset.minWidth) ? el.dataset.minWidth : '';
     });
-    document.getElementById('dAddr').textContent = b.addr;
-    document.getElementById('dPhone').textContent = b.phone;
+    document.getElementById('dAddr').textContent = b.comingSoon ? '' : b.addr;
+    document.getElementById('dPhone').textContent = b.comingSoon ? '' : b.phone;
     const mapsLink = document.getElementById('dMapsLink');
     if(mapsLink) mapsLink.href = b.mapsUrl;
+    const mobileInfo = document.querySelector('.suc-info-mobile');
+    if(mobileInfo) mobileInfo.style.display = b.comingSoon ? 'none' : '';
 
     const collage = document.getElementById('sucCollage') || document.querySelector('.suc-collage');
 
-    // Clear photos and info boxes from previous selection
-    collage.querySelectorAll('.suc-photo, .suc-box-links, .suc-box-addr').forEach(el => el.remove());
+    // Clear photos, info boxes and coming-soon from previous selection
+    collage.querySelectorAll('.suc-photo, .suc-box-links, .suc-box-addr, .suc-coming-soon').forEach(el => el.remove());
+
+    // Coming soon mode
+    if (b.comingSoon) {
+      collage.className = 'suc-collage collage-1';
+      const cs = document.createElement('div');
+      cs.className = 'suc-coming-soon';
+      cs.textContent = 'PRÓXIMAMENTE';
+      collage.appendChild(cs);
+      initSucCarousel();
+      const activeEl = items[i];
+      positionGatito(activeEl);
+      requestAnimationFrame(() => { gatito.classList.add('visible'); });
+      return;
+    }
 
     const photos = (b.photos && b.photos.length > 0) ? b.photos : [];
     const count = Math.max(photos.length, 2);
@@ -1289,7 +1345,7 @@
     if (window.innerWidth > 900) {
       const blBox = document.createElement('div');
       blBox.className = 'suc-box-links';
-      blBox.innerHTML = `<a href="${b.mapsUrl}" target="_blank" rel="noopener">GOOGLE MAPS</a><a href="https://pide.rockandwok.com" target="_blank" rel="noopener">PIDE EN LÍNEA</a>`;
+      blBox.innerHTML = `<a href="${b.mapsUrl}" target="_blank" rel="noopener">📍 GOOGLE MAPS</a><a href="https://pide.rockandwok.com" target="_blank" rel="noopener">PIDE EN LÍNEA</a>`;
       const baBox = document.createElement('div');
       baBox.className = 'suc-box-addr';
       baBox.innerHTML = `<p class="addr-text">${b.addr}</p><p class="addr-phone">${b.phone}</p>`;
@@ -1297,7 +1353,7 @@
       // Posición de inserción varía por sucursal
       // n = al final, 1 = después de foto 1, Math.ceil(n/2) = a la mitad
       const n = itemsArray.length;
-      const insertPositions = [n, 1, Math.ceil(n/2), n, n, n, n, 1];
+      const insertPositions = [n, 1, Math.ceil(n/2), n, n, n, n, 1, n];
       const insertAt = insertPositions[i] ?? n;
       itemsArray.splice(insertAt, 0, blBox, baBox);
     }
@@ -1540,6 +1596,40 @@
       }
     });
   });
+
+  // ── Instagram Follower Counter ──────────────────────────────
+  // Requiere un access token de Instagram Graph API (Business/Creator)
+  // Reemplaza IG_ACCESS_TOKEN con tu token real
+  (function(){
+    const IG_ACCESS_TOKEN = '';  // ← Pega aquí tu access token
+    const el = document.getElementById('igFollowers');
+    if (!el) return;
+
+    // TODO: Reemplazar por API real cuando la app de Meta esté lista
+    el.textContent = '10.4K';
+
+    if (!IG_ACCESS_TOKEN) return;
+
+    function formatCount(n) {
+      if (n >= 1000000) return (n/1000000).toFixed(1).replace(/\.0$/,'') + 'M';
+      if (n >= 1000) return (n/1000).toFixed(1).replace(/\.0$/,'') + 'K';
+      return n.toLocaleString('es-MX');
+    }
+
+    function fetchFollowers() {
+      fetch('https://graph.instagram.com/me?fields=followers_count&access_token=' + IG_ACCESS_TOKEN)
+        .then(function(r){ return r.json(); })
+        .then(function(data){
+          if (data.followers_count != null) {
+            el.textContent = formatCount(data.followers_count);
+          }
+        })
+        .catch(function(){});
+    }
+
+    fetchFollowers();
+    setInterval(fetchFollowers, 60000); // Actualiza cada 60 segundos
+  })();
 </script>
 
 </body>
