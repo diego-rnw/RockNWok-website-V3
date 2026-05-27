@@ -250,14 +250,14 @@
   /* Gatito animado */
   .suc-gatito-wrap{
     position:absolute;
-    width:55px;
+    width:70px;
     overflow:hidden;        /* todo lo que quede abajo queda cortado */
     pointer-events:none;
     z-index:0;
   }
   .suc-gatito{
     display:block;
-    width:55px;
+    width:70px;
     transform:translateY(100%);  /* empieza oculto dentro del wrap */
     transition:transform .38s cubic-bezier(.2,.8,.2,1);
   }
@@ -777,7 +777,7 @@
     }
     .fav-maneki{
       position:absolute;left:50%;transform:translateX(-50%);
-      top:160px;
+      top:120px;
       width:220px;z-index:-1;
       animation:manekiFloat 3.2s ease-in-out infinite;
     }
@@ -881,7 +881,7 @@
       </ul>
     <div class="nav-center">
       <a href="https://pide.rockandwok.com" target="_blank" rel="noopener">
-        <img src="assets/maneki-pide-3d.webp" alt="Pide Aquí" />
+        <img src="assets/maneki-pide-3d-2.webp" alt="Pide Aquí" />
       </a>
     </div>
       <button class="nav-hamburger" aria-label="Abrir menú" aria-expanded="false">
@@ -903,7 +903,7 @@
   </nav>
   <div class="mm-bottom">
     <a href="https://pide.rockandwok.com" target="_blank" rel="noopener" class="mm-maneki">
-      <img src="assets/maneki-pide-3d.webp" alt="Pide Aquí" />
+      <img src="assets/maneki-pide-3d-2.webp" alt="Pide Aquí" />
     </a>
     <div class="mm-socials">
       <a href="#" aria-label="Facebook" class="mm-social-link"><svg viewBox="0 0 24 24" fill="currentColor" width="22" height="22"><path d="M13 22v-8h3l.5-4H13V7.5c0-1.2.3-2 2-2h2V2.1c-.4-.1-1.5-.2-2.8-.2C11.4 1.9 9 4 9 7v3H6v4h3v8h4z"/></svg></a>
@@ -989,7 +989,7 @@
       </div>
     </div>
     <div class="fav-card">
-      <img src="assets/maneki-cute-3d.webp" alt="Maneki" class="fav-maneki" loading="lazy" />
+      <img src="assets/maneki-cute-3d-2.webp" alt="Maneki" class="fav-maneki" loading="lazy" />
       <div class="fav-card-inner">
         <div class="fav-card-front">
           <img src="assets/3.webp" alt="Postres" loading="lazy" />
@@ -1015,7 +1015,7 @@
     </div>
     <!-- Gatito: wrapper clipa todo lo que quede por debajo de la pill -->
     <div class="suc-gatito-wrap" id="sucGatitoWrap">
-      <img src="assets/gatito-3d.webp" alt="" class="suc-gatito" id="sucGatito" loading="lazy" />
+      <img src="assets/gatito-3d-2.webp" alt="" class="suc-gatito" id="sucGatito" loading="lazy" />
     </div>
     <!-- COLUMNA DERECHA: collage + info -->
     <div class="suc-right">
@@ -1407,7 +1407,6 @@
     const SLIDE_W = 255;
     const GAP     = 10;
     const SLOT    = SLIDE_W + GAP;
-    const wW      = wrapEl.offsetWidth || 380;
 
     var origSlides = Array.from(collageEl.querySelectorAll('.suc-photo:not(.suc-photo-clone)'));
     var n = origSlides.length;
@@ -1443,12 +1442,14 @@
     var idx = n; // primera foto original
 
     function posTo(index, anim) {
-      var offset = (wW - SLIDE_W) / 2 - index * SLOT;
+      // suc-right margin:0 -20px + suc-layout padding:20px = wrapper ocupa viewport completo
+      var w = window.innerWidth;
+      var offset = (w - SLIDE_W) / 2 - index * SLOT;
       collageEl.style.transition = anim ? 'transform 0.4s cubic-bezier(0.25,0.46,0.45,0.94)' : 'none';
       collageEl.style.transform  = 'translateX(' + offset + 'px)';
     }
 
-    // Posicionar inmediatamente — síncrono, sin requestAnimationFrame
+    // Posicionar inmediatamente
     posTo(idx, false);
 
     function goTo(newIdx) {
