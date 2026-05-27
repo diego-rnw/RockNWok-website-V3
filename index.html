@@ -207,7 +207,7 @@
     background:var(--yellow);color:#000;border-block:2px solid #000;
     overflow:hidden;position:relative;
   }
-  .marquee-track{display:flex;width:max-content;padding:14px 0;white-space:nowrap;font-family:"Archivo Black",sans-serif;font-size:22px;letter-spacing:.06em;animation:scroll 28s linear infinite}
+  .marquee-track{display:flex;width:max-content;padding:8px 0;white-space:nowrap;font-family:"Archivo Black",sans-serif;font-size:22px;letter-spacing:.06em;animation:scroll 28s linear infinite}
   .marquee-track span{display:inline-flex;align-items:center;gap:54px;padding-right:54px}
   .marquee-track svg{width:18px;height:18px}
   @keyframes scroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
@@ -505,29 +505,31 @@
   /* ============ FOOTER ============ */
   footer{background:#000;overflow:hidden}
   .foot-main{
-    display:grid;grid-template-columns:1fr 1fr;
-    align-items:flex-end;
-    padding:48px 72px;
+    display:grid;grid-template-columns:1fr 1fr 1fr;
+    align-items:center;
+    padding:32px 72px;
+    gap:32px;
   }
   .foot-left{padding-bottom:0}
-  .foot-feliz{width:clamp(280px,38vw,560px);display:block}
-  .foot-right{padding-bottom:40px;text-align:right}
-  .foot-social-label{font-family:"Gotham",sans-serif;font-weight:900;font-style:normal;font-size:clamp(18px,2vw,28px);color:#fff;margin:0 0 16px;line-height:1.3}
+  .foot-feliz{width:clamp(200px,26vw,380px);display:block}
+  .foot-right{text-align:center}
+  .foot-social-label{font-family:"Gotham",sans-serif;font-weight:900;font-style:normal;font-size:clamp(20px,2.2vw,32px);color:#fff;margin:0 0 14px;line-height:1.2}
   .foot-social-label span{color:var(--yellow)}
-  .socials{display:flex;gap:12px;margin-bottom:20px;justify-content:flex-end}
+  .socials{display:flex;gap:12px;margin-bottom:14px;justify-content:center}
   .socials a{width:42px;height:42px;border-radius:99px;border:1px solid rgba(255,255,255,.25);display:grid;place-items:center;transition:all .2s ease}
   .socials a:hover{background:var(--yellow);border-color:var(--yellow);color:#000}
   .socials svg{width:18px;height:18px}
-  .ig-counter{display:inline-flex;align-items:center;gap:10px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.15);border-radius:99px;padding:8px 18px 8px 12px;margin-bottom:20px;transition:all .2s ease}
+  .ig-counter{display:inline-flex;align-items:center;gap:10px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.15);border-radius:99px;padding:8px 18px 8px 12px;transition:all .2s ease}
   .ig-counter:hover{background:rgba(255,255,255,.14);border-color:var(--yellow)}
   .ig-counter-icon{width:22px;height:22px;color:var(--yellow);flex-shrink:0}
   .ig-counter-info{display:flex;flex-direction:column;line-height:1.1}
   .ig-counter-number{font-family:"Monument Extended",sans-serif;font-weight:900;font-size:clamp(16px,1.6vw,22px);color:var(--yellow);letter-spacing:.02em}
   .ig-counter-label{font-family:"Gotham",sans-serif;font-weight:500;font-size:clamp(9px,.8vw,12px);color:rgba(255,255,255,.6);letter-spacing:.08em;text-transform:uppercase}
-  .foot-legal{font-size:12px;color:#7e7e7e;line-height:1.8;margin:0}
+  .foot-col-3{text-align:right;display:flex;flex-direction:column;justify-content:center;gap:6px}
+  .foot-legal{font-size:13px;color:#7e7e7e;line-height:1.9;margin:0}
   .foot-legal a{color:#bdbdbd;text-decoration:underline;text-underline-offset:3px}
   .foot-marquee{background:var(--yellow);color:#000;border-block-start:2px solid #000;overflow:hidden}
-  .foot-marquee .marquee-track{font-size:18px;padding:12px 0}
+  .foot-marquee .marquee-track{font-size:18px;padding:8px 0}
 
   /* ============ HAMBURGER + MOBILE MENU ============ */
   .nav-hamburger{
@@ -580,7 +582,7 @@
     .suc-layout{grid-template-columns:1fr 1.6fr;padding:64px 28px 64px}
     .fav-layout{padding:48px 28px 28px}
     .fav-cards{width:88%}
-    .foot-main{padding:40px 40px}
+    .foot-main{padding:28px 40px;gap:24px}
   }
 
   /* Tablet portrait */
@@ -816,12 +818,13 @@
     .contact-illus img{max-width:80vw;margin:0 auto !important;margin-left:-50px !important}
 
     /* Footer */
-    .foot-main{grid-template-columns:1fr;gap:32px;padding:40px 28px;text-align:center}
+    .foot-main{grid-template-columns:1fr;gap:28px;padding:36px 28px;text-align:center}
     .foot-left{display:flex;justify-content:center}
     .ig-counter{justify-content:center}
     .foot-right{text-align:center}
+    .foot-col-3{text-align:center;align-items:center}
     .socials{justify-content:center}
-    .foot-feliz{width:clamp(220px,65vw,380px)}
+    .foot-feliz{width:clamp(180px,60vw,320px)}
   }
 
   /* Mobile grande */
@@ -1096,10 +1099,13 @@
           <span class="ig-counter-label">seguidores</span>
         </div>
       </div>
+    </div>
+    <div class="foot-col-3">
       <p class="foot-legal">
-        <a href="#">Aviso de Privacidad</a><br/>
-        Copyright 2026 Rock N' Wok<br/>
-        Todos los derechos reservados.
+        <a href="aviso-de-privacidad.html">Aviso de Privacidad</a><br/>
+        © 2026 Rock N' Wok.<br/>
+        Todos los derechos reservados.<br/>
+        UNEF OPERACIONES SA DE CV
       </p>
     </div>
   </div>
@@ -1173,7 +1179,7 @@
     currentSlide = index;
     slides[currentSlide].classList.add('active');
     dots[currentSlide].classList.add('active');
-    heroInner.classList.toggle('hidden', index !== 0);
+    heroInner.classList.toggle('hidden', index === 1);
     resetInterval();
   }
 
