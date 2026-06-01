@@ -1513,9 +1513,14 @@
       collage.appendChild(cs);
       initSucCarousel();
       const activeEl = items[i];
-      gatito.src = b.maneki || 'assets/gatito-3d-2.webp';
-      positionGatito(activeEl, b);
-      requestAnimationFrame(() => { gatito.classList.add('visible'); if(b.float) gatito.classList.add('float'); });
+      const manekiSrc = b.maneki || 'assets/gatito-3d-2.webp';
+      const preload = new Image();
+      preload.onload = preload.onerror = () => {
+        gatito.src = manekiSrc;
+        positionGatito(activeEl, b);
+        requestAnimationFrame(() => { gatito.classList.add('visible'); if(b.float) gatito.classList.add('float'); });
+      };
+      preload.src = manekiSrc;
       return;
     }
 
@@ -1590,12 +1595,17 @@
     initSucCarousel();
 
     const activeEl = items[i];
-    gatito.src = b.maneki || 'assets/gatito-3d-2.webp';
-    positionGatito(activeEl, b);
-    requestAnimationFrame(() => {
-      gatito.classList.add('visible');
-      if(b.float) gatito.classList.add('float');
-    });
+    const manekiSrc = b.maneki || 'assets/gatito-3d-2.webp';
+    const preload = new Image();
+    preload.onload = preload.onerror = () => {
+      gatito.src = manekiSrc;
+      positionGatito(activeEl, b);
+      requestAnimationFrame(() => {
+        gatito.classList.add('visible');
+        if(b.float) gatito.classList.add('float');
+      });
+    };
+    preload.src = manekiSrc;
   }
 
   // ── Carrusel infinito sucursales (mobile) ──────────────────────────────
