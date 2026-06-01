@@ -258,11 +258,21 @@
   .suc-gatito{
     display:block;
     width:70px;
+    aspect-ratio:1;
+    object-fit:contain;
+    object-position:bottom center;
     transform:translateY(100%);  /* empieza oculto dentro del wrap */
     transition:transform .38s cubic-bezier(.2,.8,.2,1);
   }
   .suc-gatito.visible{
     transform:translateY(0);
+  }
+  .suc-gatito.visible.float{
+    animation:gatitoFloat 2.8s ease-in-out infinite;
+  }
+  @keyframes gatitoFloat{
+    0%,100%{transform:translateY(0)}
+    50%{transform:translateY(-10px)}
   }
 
   /* Collage derecho */
@@ -931,9 +941,11 @@
   /* 3K / ultrawide (≥ 3200px) */
   @media (min-width: 3200px) {
     .wrap                        { max-width: 2860px; }
-    .suc-layout                  { max-width: 3160px; padding: 210px 100px 420px 100px; gap: 100px; }
-    .suc-title                   { font-size: 108px; }
+    .suc-layout                  { max-width: 3160px; padding: 210px 100px 420px 100px; gap: 100px; grid-template-columns: 1fr 2.4fr; }
+    .suc-title                   { font-size: 108px; margin-bottom: 56px; }
     .suc-item                    { font-size: 40px; }
+    .suc-item.active             { padding: 8px 40px; min-width: 240px; }
+    .suc-list                    { gap: 6px; }
     .suc-right                   { top: 200px; }
     .suc-box-links a             { font-size: 26px; }
     .suc-box-addr .addr-text     { font-size: 22px; }
@@ -955,12 +967,29 @@
     .nav .brand img              { height: 72px; }
   }
 
+  /* 3.5K (≥ 3500px) */
+  @media (min-width: 3500px) {
+    .suc-layout                  { max-width: 3460px; padding: 230px 110px 460px 110px; gap: 110px; grid-template-columns: 1fr 2.3fr; }
+    .suc-title                   { font-size: 118px; margin-bottom: 64px; }
+    .suc-item                    { font-size: 44px; }
+    .suc-item.active             { padding: 9px 44px; min-width: 260px; }
+    .suc-list                    { gap: 8px; }
+    .suc-right                   { top: 220px; }
+    .suc-box-links a             { font-size: 28px; }
+    .suc-box-addr .addr-text     { font-size: 24px; }
+    .suc-box-addr .addr-phone    { font-size: 28px; }
+    .suc-gatito-wrap, .suc-gatito{ width: 164px; }
+    .suc-collage                 { gap: 9px; border-radius: 40px; }
+  }
+
   /* 4K UHD (≥ 3840px) */
   @media (min-width: 3840px) {
     .wrap                        { max-width: 3440px; }
-    .suc-layout                  { max-width: 3800px; padding: 260px 120px 520px 120px; gap: 120px; }
-    .suc-title                   { font-size: 130px; }
+    .suc-layout                  { max-width: 3800px; padding: 260px 120px 520px 120px; gap: 120px; grid-template-columns: 1fr 2.2fr; }
+    .suc-title                   { font-size: 130px; margin-bottom: 72px; }
     .suc-item                    { font-size: 50px; }
+    .suc-item.active             { padding: 10px 48px; min-width: 290px; }
+    .suc-list                    { gap: 10px; }
     .suc-right                   { top: 240px; }
     .suc-box-links               { padding: 24px 32px; }
     .suc-box-links a             { font-size: 32px; }
@@ -990,9 +1019,11 @@
   /* 4.5K / 5K (≥ 4480px) */
   @media (min-width: 4480px) {
     .wrap                        { max-width: 4000px; }
-    .suc-layout                  { max-width: 4440px; padding: 300px 140px 600px 140px; gap: 140px; }
-    .suc-title                   { font-size: 152px; }
+    .suc-layout                  { max-width: 4440px; padding: 300px 140px 600px 140px; gap: 140px; grid-template-columns: 1fr 2.1fr; }
+    .suc-title                   { font-size: 152px; margin-bottom: 88px; }
     .suc-item                    { font-size: 60px; }
+    .suc-item.active             { padding: 12px 56px; min-width: 340px; }
+    .suc-list                    { gap: 12px; }
     .suc-right                   { top: 280px; }
     .suc-box-links a             { font-size: 38px; }
     .suc-box-addr .addr-text     { font-size: 32px; }
@@ -1376,15 +1407,15 @@
 
   // Branches data
   const branches = [
-    { name:"PARQUE PUEBLA",   city:"Corredor Industrial",      addr:"Parque Puebla. Calzada Ignacio Zaragoza 410, Corredor Industrial la Ciénega, 72220 Heroica Puebla de Zaragoza, Pue.", phone:"T. +52 222 710 7136", hours:"Lun — Dom · 11:00 — 22:30", mapsUrl:"https://maps.app.goo.gl/LAnAdMcS6VmKyGm3A", photos: ['assets/Pp 1.webp','assets/Pp 2.webp','assets/Pp 3.webp','assets/Pp 4.webp','assets/Pp 5.webp','assets/Pp 6.webp','assets/Pp 7.webp'] },
-    { name:"UPAEP",           city:"Centro · Universitario",   addr:"Calle 21 Sur 1112-A, La Paz, 72160 Heroica Puebla de Zaragoza, Pue.", phone:"T. +52 222 229 9400", hours:"Lun — Dom · 10:30 — 22:00", mapsUrl:"https://maps.app.goo.gl/iEvsgnqaAAqNkuJd8", photos: ['assets/Upa 1.webp','assets/Upa 2.webp','assets/Upa 3.webp'] },
-    { name:"EXPLANADA",       city:"Lomas de Angelópolis",     addr:"Calle Alejandra 512. Local E25, Santiago Momoxpan, Alvaro Obregón, 72775 Pue.", phone:"T. +52 222 431 7700", hours:"Lun — Dom · 11:00 — 22:30", mapsUrl:"https://maps.app.goo.gl/yAtc3ppQAn26zpka6", photos: ['assets/Exp gral.webp','assets/exp 1.webp','assets/Exp 2.webp','assets/Exp 3.webp','assets/Exp 4.webp','assets/Exp 5.webp','assets/Exp 6.webp'] },
+    { name:"PARQUE PUEBLA",   city:"Corredor Industrial",      addr:"Parque Puebla. Calzada Ignacio Zaragoza 410, Corredor Industrial la Ciénega, 72220 Heroica Puebla de Zaragoza, Pue.", phone:"T. +52 222 710 7136", hours:"Lun — Dom · 11:00 — 22:30", mapsUrl:"https://maps.app.goo.gl/LAnAdMcS6VmKyGm3A", photos: ['assets/Pp 1.webp','assets/Pp 2.webp','assets/Pp 3.webp','assets/Pp 4.webp','assets/Pp 5.webp','assets/Pp 6.webp','assets/Pp 7.webp'], maneki:'assets/PARQUE PUEBLA.webp' },
+    { name:"UPAEP",           city:"Centro · Universitario",   addr:"Calle 21 Sur 1112-A, La Paz, 72160 Heroica Puebla de Zaragoza, Pue.", phone:"T. +52 222 229 9400", hours:"Lun — Dom · 10:30 — 22:00", mapsUrl:"https://maps.app.goo.gl/iEvsgnqaAAqNkuJd8", photos: ['assets/Upa 1.webp','assets/Upa 2.webp','assets/Upa 3.webp'], maneki:'assets/UPAEP.webp' },
+    { name:"EXPLANADA",       city:"Lomas de Angelópolis",     addr:"Calle Alejandra 512. Local E25, Santiago Momoxpan, Alvaro Obregón, 72775 Pue.", phone:"T. +52 222 431 7700", hours:"Lun — Dom · 11:00 — 22:30", mapsUrl:"https://maps.app.goo.gl/yAtc3ppQAn26zpka6", photos: ['assets/Exp gral.webp','assets/exp 1.webp','assets/Exp 2.webp','assets/Exp 3.webp','assets/Exp 4.webp','assets/Exp 5.webp','assets/Exp 6.webp'], maneki:'assets/EXPLANADA.webp', float:true },
     { name:"VÍA SAN ÁNGEL",  city:"Angelópolis",              addr:"Vía Atlixcáyotl 1504. Local FF3 Col, Reserva Territorial Atlixcáyotl, 72810 San Bernardino Tlaxcalancingo, Pue.", phone:"T. +52 222 432 8800", hours:"Lun — Dom · 11:00 — 23:00", mapsUrl:"https://maps.app.goo.gl/yT6PueCAEKv5sCAG9", photos: ['assets/Vsa 1.webp','assets/Vsa 3.webp'] },
     { name:"SONATA",          city:"Lomas de Angelópolis",     addr:"Vía Atlixcáyotl 1504. Local FF3 Col, Reserva Territorial Atlixcáyotl, 72810 San Bernardino Tlaxcalancingo, Pue.", phone:"T. +52 222 169 2200", hours:"Lun — Dom · 11:00 — 22:30", mapsUrl:"https://maps.app.goo.gl/csgMHwQ3zaVyH2fv8", photos: ['assets/Son gral.webp','assets/Son 1.webp','assets/Son 3.webp','assets/Son 4.webp','assets/Son 5.webp'], photoPositions: ['center 20%', null, 'center 40%'] },
-    { name:"GALERÍAS SERDÁN", city:"Centro Comercial",         addr:"Vía Atlixcáyotl 1504. Local FF3 Col, Reserva Territorial Atlixcáyotl, 72810 San Bernardino Tlaxcalancingo, Pue.", phone:"T. +52 222 226 1800", hours:"Lun — Dom · 11:00 — 22:00", mapsUrl:"https://maps.app.goo.gl/eDHYA8M6kEkeYhxK6", photos: ['assets/Gal 1.webp','assets/Gal 2.webp'] },
-    { name:"ZÓCALO",          city:"Centro Histórico",         addr:"Portal Hidalgo 6-Primer piso, Centro histórico de Puebla, 72090 Heroica Puebla de Zaragoza, Pue.", phone:"T. +52 222 232 0011", hours:"Lun — Dom · 10:00 — 22:00", mapsUrl:"https://maps.app.goo.gl/2ZHsMBUEaLGYeGHQ9", photos: ['assets/Zoc 1.webp','assets/Zoc 5.webp','assets/Zoc 6.webp'] },
-    { name:"OUTLET",          city:"Angelópolis",              addr:"Outlet Puebla Premiere, Autop. México - Puebla Km. 115-local F-11, 72686 San Francisco Ocotlán, Pue.", phone:"T. +52 222 169 4400", hours:"Lun — Dom · 11:00 — 22:00", mapsUrl:"https://maps.app.goo.gl/Ko3SpmFYaXs8av4TA", photos: ['assets/Out gral.webp','assets/Out 1.webp','assets/Out 2.webp','assets/Out 3.webp','assets/Out 4.webp','assets/Out 5.webp'] },
-    { name:"ANGELÓPOLIS",     city:"Angelópolis",              addr:"Próximamente", phone:"", hours:"", mapsUrl:"#", photos: [], comingSoon: true }
+    { name:"GALERÍAS SERDÁN", city:"Centro Comercial",         addr:"Vía Atlixcáyotl 1504. Local FF3 Col, Reserva Territorial Atlixcáyotl, 72810 San Bernardino Tlaxcalancingo, Pue.", phone:"T. +52 222 226 1800", hours:"Lun — Dom · 11:00 — 22:00", mapsUrl:"https://maps.app.goo.gl/eDHYA8M6kEkeYhxK6", photos: ['assets/Gal 1.webp','assets/Gal 2.webp'], maneki:'assets/Galerias.webp', liftUp:true },
+    { name:"ZÓCALO",          city:"Centro Histórico",         addr:"Portal Hidalgo 6-Primer piso, Centro histórico de Puebla, 72090 Heroica Puebla de Zaragoza, Pue.", phone:"T. +52 222 232 0011", hours:"Lun — Dom · 10:00 — 22:00", mapsUrl:"https://maps.app.goo.gl/2ZHsMBUEaLGYeGHQ9", photos: ['assets/Zoc 1.webp','assets/Zoc 5.webp','assets/Zoc 6.webp'], maneki:'assets/ZOCALO.webp' },
+    { name:"OUTLET",          city:"Angelópolis",              addr:"Outlet Puebla Premiere, Autop. México - Puebla Km. 115-local F-11, 72686 San Francisco Ocotlán, Pue.", phone:"T. +52 222 169 4400", hours:"Lun — Dom · 11:00 — 22:00", mapsUrl:"https://maps.app.goo.gl/Ko3SpmFYaXs8av4TA", photos: ['assets/Out gral.webp','assets/Out 1.webp','assets/Out 2.webp','assets/Out 3.webp','assets/Out 4.webp','assets/Out 5.webp'], maneki:'assets/OUTLET.webp', liftUp:true, manekiScale:1.3 },
+    { name:"ANGELÓPOLIS",     city:"Angelópolis",              addr:"Próximamente", phone:"", hours:"", mapsUrl:"#", photos: [], comingSoon: true, maneki:'assets/ANGELOPOLIS.webp' }
   ];
 
   // Preload all branch photos in the background for instant rendering
@@ -1402,7 +1433,7 @@
   });
 
   // Pills más largas para nombres cortos que se enciman con el gatito
-  const pillMinWidth = { "UPAEP": "260px", "SONATA": "260px", "ZÓCALO": "310px", "ANGELÓPOLIS": "310px" };
+  const pillMinWidth = { "UPAEP": "290px", "SONATA": "260px", "ZÓCALO": "310px", "ANGELÓPOLIS": "215px", "OUTLET": "230px" };
 
   const list = document.getElementById('sucList');
   branches.forEach((b, i) => {
@@ -1419,18 +1450,23 @@
   const gatitoWrap = document.getElementById('sucGatitoWrap');
   let currentIdx = -1;
 
-  function positionGatito(itemEl) {
+  function positionGatito(itemEl, b) {
     const suc = document.querySelector('.sucursales');
     const rect = itemEl.getBoundingClientRect();
     const secRect = suc.getBoundingClientRect();
-    const gH = gatito.offsetHeight || 55;
-    const gW = gatitoWrap.offsetWidth || 55;
+    const gW = gatitoWrap.offsetWidth || 70;
 
-    // El wrap tiene overflow:hidden y su altura = altura del gatito
-    // Su borde inferior queda exactamente en el top de la pill
-    const halfH = gH * 0.68;
+    const scale = (b && b.manekiScale) || 1;
+    gatitoWrap.style.width = '';
+    gatito.style.width = '';
+    const baseW = gatitoWrap.offsetWidth || 70;
+    const effW = baseW * scale;
+    const halfH = effW * (b && b.float ? 0.95 : b && b.liftUp ? 0.8 : 0.68);
+    const leftOff = b && b.float ? 1.2 : 1.5;
+    gatitoWrap.style.width  = effW + 'px';
+    gatito.style.width      = effW + 'px';
     gatitoWrap.style.height = halfH + 'px';
-    gatitoWrap.style.left   = (rect.right - secRect.left - gW * 1.5) + 'px';
+    gatitoWrap.style.left   = (rect.right - secRect.left - effW * leftOff) + 'px';
     gatitoWrap.style.top    = (rect.top - secRect.top - halfH) + 'px';
   }
 
@@ -1441,7 +1477,7 @@
 
     // Si hay uno activo, primero ocultar el gatito y luego cambiar
     if (currentIdx >= 0 && gatito.classList.contains('visible')) {
-      gatito.classList.remove('visible');
+      gatito.classList.remove('visible','float');
       setTimeout(() => {
         doSelect(i, items, b);
       }, 360);
@@ -1477,8 +1513,9 @@
       collage.appendChild(cs);
       initSucCarousel();
       const activeEl = items[i];
-      positionGatito(activeEl);
-      requestAnimationFrame(() => { gatito.classList.add('visible'); });
+      gatito.src = b.maneki || 'assets/gatito-3d-2.webp';
+      positionGatito(activeEl, b);
+      requestAnimationFrame(() => { gatito.classList.add('visible'); if(b.float) gatito.classList.add('float'); });
       return;
     }
 
@@ -1553,9 +1590,11 @@
     initSucCarousel();
 
     const activeEl = items[i];
-    positionGatito(activeEl);
+    gatito.src = b.maneki || 'assets/gatito-3d-2.webp';
+    positionGatito(activeEl, b);
     requestAnimationFrame(() => {
       gatito.classList.add('visible');
+      if(b.float) gatito.classList.add('float');
     });
   }
 
