@@ -23,6 +23,7 @@
 <link rel="icon" type="image/png" sizes="16x16" href="dist/favicon-16x16.png" />
 <link rel="apple-touch-icon" sizes="180x180" href="dist/apple-touch-icon.png" />
 <!-- Preloads críticos: hero + fuentes above-the-fold -->
+<link rel="preload" as="image" href="assets/ImageHero_02.webp" fetchpriority="high" />
 <link rel="preload" as="image" href="assets/mexrock1.webp" fetchpriority="high" />
 <link rel="preload" as="font" type="font/woff2" href="dist/fonts/monument/MonumentExtended-Black.woff2" crossorigin />
 <link rel="preload" as="font" type="font/woff2" href="dist/fonts/monument/MonumentExtended-Ultrabold.woff2" crossorigin />
@@ -271,7 +272,7 @@
   }
   @keyframes gatitoFloat{
     0%,100%{transform:translateY(0)}
-    50%{transform:translateY(-1px)}
+    50%{transform:translateY(6px)}
   }
 
   /* Collage derecho */
@@ -406,8 +407,8 @@
     position:relative;
   }
   .fav-cards{
-    display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(48px,6vw,96px);
-    width:90%;margin:0 auto;
+    display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(16px,2.5vw,40px);
+    width:92%;margin:0 auto;
   }
   .fav-title{
     position:absolute;top:150px;left:calc(48px + (100% - 96px) * 0.05);
@@ -448,7 +449,6 @@
     backface-visibility:hidden;
     border-radius:20px;
     overflow:hidden;
-    box-shadow:none;
   }
   .fav-card-front{
     position:relative;
@@ -623,7 +623,7 @@
       display:block;
       position:relative;
       overflow:hidden;
-      height:clamp(170px, 55vw, 260px);
+      height:210px;
       touch-action:none;
     }
 
@@ -634,34 +634,25 @@
       display:flex !important;
       flex-direction:row !important;
       overflow:visible !important;
-      gap:clamp(8px, 2.5vw, 12px) !important;
+      gap:10px !important;
       padding:0 !important;
       border-radius:0 !important;
       aspect-ratio:auto !important;
-      height:clamp(170px, 55vw, 260px) !important;
+      height:210px !important;
       max-height:none !important;
       background:transparent !important;
       will-change:transform;
     }
     .suc-hover-overlay{display:none !important}
 
-    /* Coming soon: centrado en mobile */
-    .suc-coming-soon{
-      flex:1 0 100% !important;
-      width:100% !important;
-      height:clamp(170px, 55vw, 260px) !important;
-      border-radius:clamp(8px, 2.5vw, 12px) !important;
-      font-size:clamp(18px, 5vw, 28px);
-    }
-
-    /* Cada slide: escala proporcionalmente con viewport */
+    /* Cada slide: 255px × 210px */
     .suc-collage .suc-photo{
-      flex:0 0 clamp(210px, 67vw, 310px) !important;
-      width:clamp(210px, 67vw, 310px) !important;
-      height:clamp(170px, 55vw, 260px) !important;
+      flex:0 0 255px !important;
+      width:255px !important;
+      height:210px !important;
       grid-column:auto !important;
       grid-row:auto !important;
-      border-radius:clamp(8px, 2.5vw, 12px) !important;
+      border-radius:10px !important;
       overflow:hidden;
       background:#111;
       position:relative;
@@ -690,10 +681,11 @@
     .suc-info-mobile{
       display:flex;
       flex-direction:column;
-      gap:clamp(6px, 2vw, 10px);
-      padding:clamp(8px, 2.5vw, 12px) 20px 0;
+      gap:8px;
+      padding:10px 20px 0;
       box-sizing:border-box;
-      width:100%;
+      /* ancho explícito = viewport 380px */
+      width:380px;
       max-width:100vw;
     }
     /* Botones negros */
@@ -702,7 +694,7 @@
       align-items:stretch;
       background:#000;
       color:var(--yellow);
-      border-radius:clamp(10px, 3vw, 14px);
+      border-radius:12px;
       overflow:hidden;
     }
     .suc-btn{
@@ -710,18 +702,18 @@
       display:flex;
       align-items:center;
       justify-content:center;
-      gap:clamp(4px, 1.5vw, 8px);
-      padding:clamp(10px, 3.5vw, 16px) 8px;
+      gap:6px;
+      padding:14px 8px;
       color:var(--yellow) !important;
       font-family:"Gotham","Archivo Black",sans-serif;
       font-weight:900;
-      font-size:clamp(10px, 2.8vw, 13px);
+      font-size:11px;
       text-transform:uppercase;
       letter-spacing:.03em;
       white-space:nowrap;
       min-width:0;
     }
-    .suc-btn svg{width:clamp(11px, 3.2vw, 15px);height:clamp(11px, 3.2vw, 15px);stroke:var(--yellow) !important;fill:none;flex-shrink:0}
+    .suc-btn svg{width:13px;height:13px;stroke:var(--yellow) !important;fill:none;flex-shrink:0}
     .suc-btn-divider{
       width:1px;
       background:rgba(255,255,255,0.2);
@@ -731,14 +723,14 @@
     /* Tarjeta dirección */
     .suc-info-addr{
       background:var(--yellow);
-      border-radius:clamp(10px, 3vw, 14px);
-      padding:clamp(10px, 3.5vw, 16px) clamp(12px, 4vw, 18px);
+      border-radius:12px;
+      padding:14px 16px;
       display:flex;
       flex-direction:column;
       gap:4px;
     }
     .suc-info-addr .addr-text{
-      font-size:clamp(10px, 2.8vw, 13px);
+      font-size:11px;
       line-height:1.5;
       color:#000;
       font-weight:500;
@@ -746,7 +738,7 @@
     .suc-info-addr .addr-phone{
       font-family:"Gotham","Archivo Black",sans-serif;
       font-weight:900;
-      font-size:clamp(11px, 3vw, 14px);
+      font-size:12px;
       color:#000;
       margin-top:2px;
     }
@@ -760,8 +752,8 @@
       overflow-y:hidden;
       -webkit-overflow-scrolling:touch;
       overscroll-behavior-x:contain;
-      gap:clamp(6px, 2vw, 10px);
-      padding:4px 0 clamp(12px, 4vw, 18px);
+      gap:8px;
+      padding:4px 0 16px;
       max-height:none;
       max-width:100vw;
       justify-content:flex-start;
@@ -771,15 +763,11 @@
     .suc-list::-webkit-scrollbar{display:none}
     .suc-item{
       flex-shrink:0;
-      font-size:clamp(12px,3.5vw,16px);
+      font-size:clamp(13px,3.8vw,16px);
       white-space:nowrap;
       border:2px solid #000;
       border-radius:99px;
-      padding:clamp(7px, 2.2vw, 11px) clamp(14px, 5vw, 22px);
-      touch-action:manipulation;
-      -webkit-tap-highlight-color:rgba(0,0,0,.1);
-      user-select:none;
-      -webkit-user-select:none;
+      padding:9px 20px;
     }
     .suc-item.active{
       min-width:auto !important;
@@ -936,7 +924,7 @@
     .favoritos                   { padding: 340px 80px 200px; }
     .fav-title                   { font-size: 76px; top: 240px; }
     .fav-maneki                  { width: 460px; }
-    .fav-cards                   { gap: clamp(80px, 5vw, 148px); }
+    .fav-cards                   { gap: clamp(28px, 3vw, 56px); }
     .contact h2                  { font-size: 152px; }
     .contact .lede               { font-size: 36px; }
     .hero-cta                    { font-size: 20px; padding: 24px 44px; }
@@ -1014,7 +1002,7 @@
     .favoritos                   { padding: 520px 120px 300px; }
     .fav-title                   { font-size: 116px; top: 380px; }
     .fav-maneki                  { width: 700px; }
-    .fav-cards                   { gap: clamp(120px, 5vw, 220px); }
+    .fav-cards                   { gap: clamp(40px, 3vw, 80px); }
     .contact h2                  { font-size: 232px; }
     .contact .lede               { font-size: 56px; }
     .hero-cta                    { font-size: 32px; padding: 38px 70px; }
@@ -1126,7 +1114,7 @@
     </a>
     <div class="mm-socials">
       <a href="#" aria-label="Facebook" class="mm-social-link"><svg viewBox="0 0 24 24" fill="currentColor" width="22" height="22"><path d="M13 22v-8h3l.5-4H13V7.5c0-1.2.3-2 2-2h2V2.1c-.4-.1-1.5-.2-2.8-.2C11.4 1.9 9 4 9 7v3H6v4h3v8h4z"/></svg></a>
-      <a href="#" aria-label="Instagram" class="mm-social-link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" width="22" height="22"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg></a>
+      <a href="#" ar/loginia-label="Instagram" class="mm-social-link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" width="22" height="22"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg></a>
     </div>
   </div>
 </div>
@@ -1134,7 +1122,8 @@
 <!-- ============ HERO ============ -->
 <header class="hero" id="top" data-screen-label="01 Hero">
   <div class="bg">
-    <div class="bg-slide active" style="background-image:url('assets/mexrock_hero_page.webp')"></div>
+    <div class="bg-slide active" style="background-image:url('assets/ImageHero_02.webp')"></div>
+    <div class="bg-slide" style="background-image:url('assets/mexrock_hero_page.webp')"></div>
     <div class="bg-slide" style="background-image:url('assets/mexrock1.webp')"></div>
     <div class="bg-slide" style="background-image:url('assets/mexrock2.webp')"></div>
     <div class="bg-slide" style="background-image:url('assets/mexrock3.webp')"></div>
@@ -1189,7 +1178,7 @@
     <div class="fav-card">
       <div class="fav-card-inner">
         <div class="fav-card-front">
-          <img src="assets/01-orange.webp" alt="Orange Chicken" loading="lazy" />
+          <img src="assets/card_frosteas_RNW.webp" alt="Frosteas RNW" loading="lazy" />
         </div>
         <div class="fav-card-back">
           <a href="https://pide.rockandwok.com" target="_blank" rel="noopener" class="pide-btn-circle">PIDE EN<br>LÍNEA</a>
@@ -1199,7 +1188,7 @@
     <div class="fav-card">
       <div class="fav-card-inner">
         <div class="fav-card-front">
-          <img src="assets/2.webp" alt="Rock Trío" loading="lazy" />
+          <img src="assets/card_combo_mexico_rockea.webp" alt="Combo México Rockea" loading="lazy" />
         </div>
         <div class="fav-card-back">
           <a href="https://pide.rockandwok.com" target="_blank" rel="noopener" class="pide-btn-circle">PIDE EN<br>LÍNEA</a>
@@ -1207,10 +1196,20 @@
       </div>
     </div>
     <div class="fav-card">
-      <img src="assets/maneki-cute-3d-3.0.webp" alt="Maneki" class="fav-maneki" loading="lazy" />
       <div class="fav-card-inner">
         <div class="fav-card-front">
-          <img src="assets/3.webp" alt="Postres" loading="lazy" />
+          <img src="assets/card_refresher_mango.webp" alt="Refresher Mango" loading="lazy" />
+        </div>
+        <div class="fav-card-back">
+          <a href="https://pide.rockandwok.com" target="_blank" rel="noopener" class="pide-btn-circle">PIDE EN<br>LÍNEA</a>
+        </div>
+      </div>
+    </div>
+    <div class="fav-card">
+      <img src="assets/maneki-cute-3d-2.webp" alt="Maneki" class="fav-maneki" loading="lazy" />
+      <div class="fav-card-inner">
+        <div class="fav-card-front">
+          <img src="assets/card_rockbites.webp" alt="Rock Bites" loading="lazy" />
         </div>
         <div class="fav-card-back">
           <a href="https://pide.rockandwok.com" target="_blank" rel="noopener" class="pide-btn-circle">PIDE EN<br>LÍNEA</a>
@@ -1420,12 +1419,12 @@
   const branches = [
     { name:"PARQUE PUEBLA",   city:"Corredor Industrial",      addr:"Parque Puebla. Calzada Ignacio Zaragoza 410, Corredor Industrial la Ciénega, 72220 Heroica Puebla de Zaragoza, Pue.", phone:"T. +52 222 710 7136", hours:"Lun — Dom · 11:00 — 22:30", mapsUrl:"https://maps.app.goo.gl/LAnAdMcS6VmKyGm3A", photos: ['assets/Pp 1.webp','assets/Pp 2.webp','assets/Pp 3.webp','assets/Pp 4.webp','assets/Pp 5.webp','assets/Pp 6.webp','assets/Pp 7.webp'], maneki:'assets/suc_maneki/parque.webp' },
     { name:"UPAEP",           city:"Centro · Universitario",   addr:"Calle 21 Sur 1112-A, La Paz, 72160 Heroica Puebla de Zaragoza, Pue.", phone:"T. +52 222 229 9400", hours:"Lun — Dom · 10:30 — 22:00", mapsUrl:"https://maps.app.goo.gl/iEvsgnqaAAqNkuJd8", photos: ['assets/Upa 1.webp','assets/Upa 2.webp','assets/Upa 3.webp'], maneki:'assets/suc_maneki/upaep.webp' },
-    { name:"EXPLANADA",       city:"Lomas de Angelópolis",     addr:"Calle Alejandra 512. Local E25, Santiago Momoxpan, Alvaro Obregón, 72775 Pue.", phone:"T. +52 222 431 7700", hours:"Lun — Dom · 11:00 — 22:30", mapsUrl:"https://maps.app.goo.gl/yAtc3ppQAn26zpka6", photos: ['assets/Exp gral.webp','assets/exp 1.webp','assets/Exp 2.webp','assets/Exp 3.webp','assets/Exp 4.webp','assets/Exp 5.webp','assets/Exp 6.webp'], maneki:'assets/suc_maneki/explanada.webp', float:true },
-    { name:"VÍA SAN ÁNGEL",  city:"Angelópolis",              addr:"Vía Atlixcáyotl 1504. Local FF3 Col, Reserva Territorial Atlixcáyotl, 72810 San Bernardino Tlaxcalancingo, Pue.", phone:"T. +52 222 432 8800", hours:"Lun — Dom · 11:00 — 23:00", mapsUrl:"https://maps.app.goo.gl/yT6PueCAEKv5sCAG9", photos: ['assets/Vsa 1.webp','assets/Vsa 3.webp'], maneki:'assets/suc_maneki/ange.webp' },
+    { name:"EXPLANADA",       city:"Lomas de Angelópolis",     addr:"Calle Alejandra 512. Local E25, Santiago Momoxpan, Alvaro Obregón, 72775 Pue.", phone:"T. +52 222 431 7700", hours:"Lun — Dom · 11:00 — 22:30", mapsUrl:"https://maps.app.goo.gl/yAtc3ppQAn26zpka6", photos: ['assets/Exp gral.webp','assets/exp 1.webp','assets/Exp 2.webp','assets/Exp 3.webp','assets/Exp 4.webp','assets/Exp 5.webp','assets/Exp 6.webp'], maneki:'assets/suc_maneki/explanada.webp', float:true, floatLow:true },
+    { name:"VÍA SAN ÁNGEL",  city:"Angelópolis",              addr:"Vía Atlixcáyotl 1504. Local FF3 Col, Reserva Territorial Atlixcáyotl, 72810 San Bernardino Tlaxcalancingo, Pue.", phone:"T. +52 222 432 8800", hours:"Lun — Dom · 11:00 — 23:00", mapsUrl:"https://maps.app.goo.gl/yT6PueCAEKv5sCAG9", photos: ['assets/Vsa 1.webp','assets/Vsa 3.webp'] },
     { name:"SONATA",          city:"Lomas de Angelópolis",     addr:"Vía Atlixcáyotl 1504. Local FF3 Col, Reserva Territorial Atlixcáyotl, 72810 San Bernardino Tlaxcalancingo, Pue.", phone:"T. +52 222 169 2200", hours:"Lun — Dom · 11:00 — 22:30", mapsUrl:"https://maps.app.goo.gl/csgMHwQ3zaVyH2fv8", photos: ['assets/Son gral.webp','assets/Son 1.webp','assets/Son 3.webp','assets/Son 4.webp','assets/Son 5.webp'], photoPositions: ['center 20%', null, 'center 40%'] },
-    { name:"GALERÍAS SERDÁN", city:"Centro Comercial",         addr:"Vía Atlixcáyotl 1504. Local FF3 Col, Reserva Territorial Atlixcáyotl, 72810 San Bernardino Tlaxcalancingo, Pue.", phone:"T. +52 222 226 1800", hours:"Lun — Dom · 11:00 — 22:00", mapsUrl:"https://maps.app.goo.gl/eDHYA8M6kEkeYhxK6", photos: ['assets/Gal 1.webp','assets/Gal 2.webp'], maneki:'assets/suc_maneki/galerias.webp', liftUp:true },
+    { name:"GALERÍAS SERDÁN", city:"Centro Comercial",         addr:"Vía Atlixcáyotl 1504. Local FF3 Col, Reserva Territorial Atlixcáyotl, 72810 San Bernardino Tlaxcalancingo, Pue.", phone:"T. +52 222 226 1800", hours:"Lun — Dom · 11:00 — 22:00", mapsUrl:"https://maps.app.goo.gl/eDHYA8M6kEkeYhxK6", photos: ['assets/Gal 1.webp','assets/Gal 2.webp'], maneki:'assets/suc_maneki/galerias.webp', liftDown:true },
     { name:"ZÓCALO",          city:"Centro Histórico",         addr:"Portal Hidalgo 6-Primer piso, Centro histórico de Puebla, 72090 Heroica Puebla de Zaragoza, Pue.", phone:"T. +52 222 232 0011", hours:"Lun — Dom · 10:00 — 22:00", mapsUrl:"https://maps.app.goo.gl/2ZHsMBUEaLGYeGHQ9", photos: ['assets/Zoc 1.webp','assets/Zoc 5.webp','assets/Zoc 6.webp'], maneki:'assets/suc_maneki/zocalo.webp' },
-    { name:"OUTLET",          city:"Angelópolis",              addr:"Outlet Puebla Premiere, Autop. México - Puebla Km. 115-local F-11, 72686 San Francisco Ocotlán, Pue.", phone:"T. +52 222 169 4400", hours:"Lun — Dom · 11:00 — 22:00", mapsUrl:"https://maps.app.goo.gl/Ko3SpmFYaXs8av4TA", photos: ['assets/Out gral.webp','assets/Out 1.webp','assets/Out 2.webp','assets/Out 3.webp','assets/Out 4.webp','assets/Out 5.webp'], maneki:'assets/suc_maneki/outlet.webp', liftUp:0.55, manekiScale:1.3 },
+    { name:"OUTLET",          city:"Angelópolis",              addr:"Outlet Puebla Premiere, Autop. México - Puebla Km. 115-local F-11, 72686 San Francisco Ocotlán, Pue.", phone:"T. +52 222 169 4400", hours:"Lun — Dom · 11:00 — 22:00", mapsUrl:"https://maps.app.goo.gl/Ko3SpmFYaXs8av4TA", photos: ['assets/Out gral.webp','assets/Out 1.webp','assets/Out 2.webp','assets/Out 3.webp','assets/Out 4.webp','assets/Out 5.webp'], maneki:'assets/suc_maneki/outlet.webp', liftDown:true, manekiScale:1.3 },
     { name:"ANGELÓPOLIS",     city:"Angelópolis",              addr:"Próximamente", phone:"", hours:"", mapsUrl:"#", photos: [], comingSoon: true, maneki:'assets/suc_maneki/ange.webp' }
   ];
 
@@ -1449,24 +1448,7 @@
     el.className = 'suc-item' + (i === 0 ? ' active' : '');
     el.dataset.idx = i;
     el.textContent = b.name;
-    el.addEventListener('click', (e) => { e.preventDefault(); e.stopPropagation(); selectBranch(i); });
-    // Mobile: robust touch handling — detects tap vs scroll inside overflow container
-    let pillTx = 0, pillTy = 0;
-    el.addEventListener('touchstart', (e) => {
-      pillTx = e.touches[0].clientX;
-      pillTy = e.touches[0].clientY;
-    }, { passive: true });
-    el.addEventListener('touchend', (e) => {
-      if (!e.changedTouches[0]) return;
-      const dx = Math.abs(e.changedTouches[0].clientX - pillTx);
-      const dy = Math.abs(e.changedTouches[0].clientY - pillTy);
-      // Only treat as tap if finger didn't move much (not a scroll gesture)
-      if (dx < 15 && dy < 15) {
-        e.preventDefault();
-        e.stopPropagation();
-        selectBranch(i);
-      }
-    });
+    el.addEventListener('click', () => selectBranch(i));
     list.appendChild(el);
   });
 
@@ -1485,13 +1467,14 @@
     gatito.style.width = '';
     const baseW = gatitoWrap.offsetWidth || 70;
     const effW = baseW * scale;
-    const halfH = effW * (b && b.float ? 0.95 : b && b.liftUp ? (typeof b.liftUp === 'number' ? b.liftUp : 0.65) : 0.68);
+    const floatPad = (b && b.float) ? 12 : 0;
+    const halfH = effW * (b && b.liftDown ? 0.62 : b && b.floatLow ? 0.82 : b && b.float ? 0.95 : b && b.liftUp ? 0.8 : 0.68) + floatPad;
     const leftOff = b && b.float ? 1.2 : 1.5;
     gatitoWrap.style.width  = effW + 'px';
     gatito.style.width      = effW + 'px';
     gatitoWrap.style.height = halfH + 'px';
     gatitoWrap.style.left   = (rect.right - secRect.left - effW * leftOff) + 'px';
-    gatitoWrap.style.top    = (rect.top - secRect.top - halfH) + 'px';
+    gatitoWrap.style.top    = (rect.top - secRect.top - halfH + floatPad) + 'px';
   }
 
   function selectBranch(i) {
@@ -1514,6 +1497,7 @@
     currentIdx = i;
     items.forEach((el,j) => {
       el.classList.toggle('active', j===i);
+      el.style.minWidth = '';
     });
     document.getElementById('dAddr').textContent = b.comingSoon ? '' : b.addr;
     document.getElementById('dPhone').textContent = b.comingSoon ? '' : b.phone;
@@ -1655,11 +1639,9 @@
 
     if (!isMobile) return;
 
-    // Leer dimensiones reales del CSS (clamp responsive) en vez de hardcodear
-    var firstPhoto = collageEl.querySelector('.suc-photo');
-    var SLIDE_W = firstPhoto ? firstPhoto.offsetWidth : 255;
-    var GAP     = parseFloat(getComputedStyle(collageEl).gap) || 10;
-    var SLOT    = SLIDE_W + GAP;
+    const SLIDE_W = 255;
+    const GAP     = 10;
+    const SLOT    = SLIDE_W + GAP;
 
     var origSlides = Array.from(collageEl.querySelectorAll('.suc-photo:not(.suc-photo-clone)'));
     var n = origSlides.length;
@@ -1769,8 +1751,8 @@
     if (!isMobile) {
       document.querySelector('.fav-arrows')?.remove();
       // Maneki de vuelta al tercer card
-      if (maneki && origCards[2] && maneki.parentElement !== origCards[2]) {
-        origCards[2].insertBefore(maneki, origCards[2].firstChild);
+      if (maneki && origCards[n-1] && maneki.parentElement !== origCards[n-1]) {
+        origCards[n-1].insertBefore(maneki, origCards[n-1].firstChild);
       }
       return;
     }
