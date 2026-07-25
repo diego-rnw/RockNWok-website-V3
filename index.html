@@ -22,21 +22,11 @@
 <link rel="icon" type="image/png" sizes="32x32" href="dist/favicon-32x32.png" />
 <link rel="icon" type="image/png" sizes="16x16" href="dist/favicon-16x16.png" />
 <link rel="apple-touch-icon" sizes="180x180" href="dist/apple-touch-icon.png" />
-<!-- Preloads críticos: hero + fuentes above-the-fold -->
-<link rel="preload" as="image" href="assets/ImageHero_02.webp" fetchpriority="high" />
-<link rel="preload" as="image" href="assets/mexrock1.webp" fetchpriority="high" />
+<!-- Preloads críticos: primera imagen del hero (LCP) + fuentes above-the-fold -->
+<link rel="preload" as="image" href="assets/exp gral.webp" fetchpriority="high" />
 <link rel="preload" as="font" type="font/woff2" href="dist/fonts/monument/MonumentExtended-Black.woff2" crossorigin />
 <link rel="preload" as="font" type="font/woff2" href="dist/fonts/monument/MonumentExtended-Ultrabold.woff2" crossorigin />
 <link rel="preload" as="font" type="font/woff2" href="dist/fonts/gotham/GothamNarrow-Black.woff2" crossorigin />
-
-<!-- Preload fotos de sucursal principal (Parque Puebla) para renderizado inmediato -->
-<link rel="preload" as="image" href="assets/Pp 1.webp" />
-<link rel="preload" as="image" href="assets/Pp 2.webp" />
-<link rel="preload" as="image" href="assets/Pp 3.webp" />
-<link rel="preload" as="image" href="assets/Pp 4.webp" />
-<link rel="preload" as="image" href="assets/Pp 5.webp" />
-<link rel="preload" as="image" href="assets/Pp 6.webp" />
-<link rel="preload" as="image" href="assets/Pp 7.webp" />
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Archivo:wght@400;500;600;700;800;900&family=Bowlby+One&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
@@ -94,7 +84,7 @@
   }
 
   .nav .brand{display:flex;align-items:center;margin-left:0;justify-self:start}
-  .nav .brand img{height:68px;width:auto;display:block}
+  .nav .brand img{height:48px;width:auto;display:block}
 
   .nav ul{list-style:none;display:flex;justify-content:center;gap:72px;align-items:center;margin:0;padding:0;font-family:"Gotham","Archivo",sans-serif;font-weight:900;font-size:22px;letter-spacing:.12em;justify-self:center}
 
@@ -1123,10 +1113,10 @@
 <header class="hero" id="top" data-screen-label="01 Hero">
   <div class="bg">
     <div class="bg-slide active" style="background-image:url('assets/exp gral.webp')"></div>
-    <div class="bg-slide" style="background-image:url('assets/Gal 1.webp')"></div>
-    <div class="bg-slide" style="background-image:url('assets/hero-interior.webp')"></div>
-    <div class="bg-slide" style="background-image:url('assets/Out gral.webp')"></div>
-    <div class="bg-slide" style="background-image:url('assets/Son gral.webp')"></div>
+    <div class="bg-slide" data-bg="assets/Gal 1.webp"></div>
+    <div class="bg-slide" data-bg="assets/hero-interior.webp"></div>
+    <div class="bg-slide" data-bg="assets/Out gral.webp"></div>
+    <div class="bg-slide" data-bg="assets/Son gral.webp"></div>
   </div>
   <div class="hero-inner">
     <h1>
@@ -1375,10 +1365,25 @@
 
   const heroInner = document.querySelector('.hero-inner');
 
+  // Carga diferida de los slides secundarios (solo el primero carga de inmediato)
+  function loadSlideBg(slide) {
+    if (slide && slide.dataset.bg) {
+      slide.style.backgroundImage = `url('${slide.dataset.bg}')`;
+      delete slide.dataset.bg;
+    }
+  }
+  // Tras el load inicial, precarga el resto sin competir con el LCP
+  window.addEventListener('load', () => {
+    const preloadRest = () => slides.forEach(loadSlideBg);
+    if ('requestIdleCallback' in window) requestIdleCallback(preloadRest);
+    else setTimeout(preloadRest, 400);
+  });
+
   function goToSlide(index) {
     slides[currentSlide].classList.remove('active');
     dots[currentSlide].classList.remove('active');
     currentSlide = index;
+    loadSlideBg(slides[currentSlide]);          // asegura la imagen antes de mostrarla
     slides[currentSlide].classList.add('active');
     dots[currentSlide].classList.add('active');
     heroInner.classList.remove('hidden');
