@@ -407,7 +407,7 @@
     position:relative;
   }
   .fav-cards{
-    display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(16px,2.5vw,40px);
+    display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(16px,2.5vw,40px);
     width:92%;margin:0 auto;
   }
   .fav-title{
@@ -1122,12 +1122,11 @@
 <!-- ============ HERO ============ -->
 <header class="hero" id="top" data-screen-label="01 Hero">
   <div class="bg">
-    <div class="bg-slide active" style="background-image:url('assets/mexrock_hero_page.webp')"></div>
-    <div class="bg-slide" style="background-image:url('assets/mexrock1.webp')"></div>
-    <div class="bg-slide" style="background-image:url('assets/mexrock2.webp')"></div>
-    <div class="bg-slide" style="background-image:url('assets/mexrock3.webp')"></div>
-    <div class="bg-slide" style="background-image:url('assets/mexrock4.webp')"></div>
-    <div class="bg-slide" style="background-image:url('assets/mexrock5.webp')"></div>
+    <div class="bg-slide active" style="background-image:url('assets/exp gral.webp')"></div>
+    <div class="bg-slide" style="background-image:url('assets/Gal 1.webp')"></div>
+    <div class="bg-slide" style="background-image:url('assets/hero-interior.webp')"></div>
+    <div class="bg-slide" style="background-image:url('assets/Out gral.webp')"></div>
+    <div class="bg-slide" style="background-image:url('assets/Son gral.webp')"></div>
   </div>
   <div class="hero-inner">
     <h1>
@@ -1174,16 +1173,6 @@
 <section class="favoritos" id="menu" data-screen-label="03 Favoritos">
   <h2 class="fav-title">LAS NOVEDADES DE MANEKI</h2>
   <div class="fav-cards">
-    <div class="fav-card">
-      <div class="fav-card-inner">
-        <div class="fav-card-front">
-          <img src="assets/card_combo_mexico_rockea.webp" alt="Combo México Rockea" loading="lazy" />
-        </div>
-        <div class="fav-card-back">
-          <a href="https://pide.rockandwok.com" target="_blank" rel="noopener" class="pide-btn-circle">PIDE EN<br>LÍNEA</a>
-        </div>
-      </div>
-    </div>
     <div class="fav-card">
       <div class="fav-card-inner">
         <div class="fav-card-front">
@@ -1392,7 +1381,7 @@
     currentSlide = index;
     slides[currentSlide].classList.add('active');
     dots[currentSlide].classList.add('active');
-    heroInner.classList.toggle('hidden', index === 1);
+    heroInner.classList.remove('hidden');
     resetInterval();
   }
 
