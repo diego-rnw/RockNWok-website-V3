@@ -597,6 +597,12 @@
 
     /* Hero */
     .hero-cta{right:auto;bottom:320px;font-size:13px;padding:14px 24px}
+    /* Encuadre por slide en mobile (cover recorta los lados) */
+    /* Slides 1 y 2: mover el encuadre para que se aprecie el logo Rock N' Wok */
+    .hero .bg-slide:nth-child(1),
+    .hero .bg-slide:nth-child(2){ background-position: left center; }
+    /* Slide 4: zoom para que el logo de la parte superior quede fuera de cuadro */
+    .hero .bg-slide:nth-child(4){ background-size: auto 135%; background-position: center bottom; }
 
     /* Sucursales — clip no crea scroll container, permite scroll horizontal en hijos */
     .sucursales{height:auto;min-height:100vh;overflow-x:clip;overflow-y:visible}
