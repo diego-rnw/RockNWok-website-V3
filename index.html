@@ -11,7 +11,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Rock N' Wok — Wok Your Spirit | Comida China Puebla</title>
-<meta name="description" content="Comida rápida china y asiática en Puebla. 8 sucursales: Parque Puebla, UPAEP, Explanada, Vía San Ángel, Sonata, Galerías Serdán, Zócalo y Outlet. Pide en línea." />
+<meta name="description" content="Comida rápida china y asiática en Puebla: orange chicken, wok y más. 9 sucursales, pide en línea o en Rappi y Uber Eats." />
 <link rel="canonical" href="https://www.rockandwok.com/" />
 <meta name="keywords" content="comida asiática, wok, Puebla, restaurante, delivery, orange chicken, rock trío, pide en línea" />
 <meta name="author" content="Rock N' Wok" />
@@ -29,23 +29,700 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
-  "@type": "Restaurant",
-  "name": "Rock N' Wok",
-  "description": "Comida rápida china y asiática en Puebla. 8 sucursales. Pide en línea o encuéntranos en Rappi y Uber Eats.",
-  "url": "https://www.rockandwok.com/",
-  "logo": "https://www.rockandwok.com/dist/apple-touch-icon.png",
-  "image": "https://www.rockandwok.com/assets/hero-image.png",
-  "servesCuisine": ["Comida china", "Comida asiática", "Wok"],
-  "priceRange": "$$",
-  "acceptsReservations": "False",
-  "hasMenu": "https://pide.rockandwok.com",
-  "areaServed": { "@type": "City", "name": "Puebla" },
-  "address": {
-    "@type": "PostalAddress",
-    "addressLocality": "Puebla",
-    "addressRegion": "Puebla",
-    "addressCountry": "MX"
-  }
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://www.rockandwok.com/#organization",
+      "name": "Rock n' Wok",
+      "url": "https://www.rockandwok.com/",
+      "logo": "https://www.rockandwok.com/dist/apple-touch-icon.png",
+      "description": "Comida rápida china y asiática con 9 sucursales en Puebla."
+    },
+    {
+      "@type": "Restaurant",
+      "@id": "https://www.rockandwok.com/#parque-puebla",
+      "name": "Rock n' Wok Parque Puebla",
+      "image": "https://www.rockandwok.com/assets/hero-image.png",
+      "url": "https://www.rockandwok.com/",
+      "telephone": "+52 222 123 5770",
+      "priceRange": "$$",
+      "servesCuisine": [
+        "Comida china",
+        "Comida asiática",
+        "Wok"
+      ],
+      "acceptsReservations": "False",
+      "parentOrganization": {
+        "@id": "https://www.rockandwok.com/#organization"
+      },
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Parque Puebla. Calzada Ignacio Zaragoza 410, Corredor Industrial la Ciénega",
+        "addressLocality": "Heroica Puebla de Zaragoza",
+        "addressRegion": "Puebla",
+        "postalCode": "72220",
+        "addressCountry": "MX"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": "19.069291",
+        "longitude": "-98.1720262"
+      },
+      "hasMap": "https://maps.google.com/?cid=18016394497294922956",
+      "openingHoursSpecification": [
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": "https://schema.org/Sunday",
+          "opens": "11:00",
+          "closes": "22:00"
+        },
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": "https://schema.org/Monday",
+          "opens": "11:00",
+          "closes": "21:00"
+        },
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": "https://schema.org/Tuesday",
+          "opens": "11:00",
+          "closes": "21:00"
+        },
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": "https://schema.org/Wednesday",
+          "opens": "11:00",
+          "closes": "21:00"
+        },
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": "https://schema.org/Thursday",
+          "opens": "11:00",
+          "closes": "21:00"
+        },
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": "https://schema.org/Friday",
+          "opens": "11:00",
+          "closes": "22:00"
+        },
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": "https://schema.org/Saturday",
+          "opens": "11:00",
+          "closes": "22:00"
+        }
+      ]
+    },
+    {
+      "@type": "Restaurant",
+      "@id": "https://www.rockandwok.com/#upaep",
+      "name": "Rock n' Wok UPAEP",
+      "image": "https://www.rockandwok.com/assets/hero-image.png",
+      "url": "https://www.rockandwok.com/",
+      "telephone": "+52 222 123 5770",
+      "priceRange": "$$",
+      "servesCuisine": [
+        "Comida china",
+        "Comida asiática",
+        "Wok"
+      ],
+      "acceptsReservations": "False",
+      "parentOrganization": {
+        "@id": "https://www.rockandwok.com/#organization"
+      },
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Calle 21 Sur 1112-A, La Paz",
+        "addressLocality": "Heroica Puebla de Zaragoza",
+        "addressRegion": "Puebla",
+        "postalCode": "72160",
+        "addressCountry": "MX"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": "19.0476332",
+        "longitude": "-98.2160219"
+      },
+      "hasMap": "https://maps.google.com/?cid=15257699943906939928",
+      "openingHoursSpecification": [
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": "https://schema.org/Sunday",
+          "opens": "12:00",
+          "closes": "19:30"
+        },
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": "https://schema.org/Monday",
+          "opens": "09:00",
+          "closes": "21:00"
+        },
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": "https://schema.org/Tuesday",
+          "opens": "09:00",
+          "closes": "21:00"
+        },
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": "https://schema.org/Wednesday",
+          "opens": "09:00",
+          "closes": "21:00"
+        },
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": "https://schema.org/Thursday",
+          "opens": "09:00",
+          "closes": "21:00"
+        },
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": "https://schema.org/Friday",
+          "opens": "09:00",
+          "closes": "21:00"
+        },
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": "https://schema.org/Saturday",
+          "opens": "10:00",
+          "closes": "21:00"
+        }
+      ]
+    },
+    {
+      "@type": "Restaurant",
+      "@id": "https://www.rockandwok.com/#explanada",
+      "name": "Rock n' Wok Explanada",
+      "image": "https://www.rockandwok.com/assets/hero-image.png",
+      "url": "https://www.rockandwok.com/",
+      "telephone": "+52 222 123 5770",
+      "priceRange": "$$",
+      "servesCuisine": [
+        "Comida china",
+        "Comida asiática",
+        "Wok"
+      ],
+      "acceptsReservations": "False",
+      "parentOrganization": {
+        "@id": "https://www.rockandwok.com/#organization"
+      },
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Calle Alejandra 512. Local E25, Santiago Momoxpan, Alvaro Obregón",
+        "addressLocality": "San Pedro Cholula",
+        "addressRegion": "Puebla",
+        "postalCode": "72775",
+        "addressCountry": "MX"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": "19.0733684",
+        "longitude": "-98.2757256"
+      },
+      "hasMap": "https://maps.google.com/?cid=12673160902883793543",
+      "openingHoursSpecification": [
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": "https://schema.org/Sunday",
+          "opens": "11:00",
+          "closes": "21:00"
+        },
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": "https://schema.org/Monday",
+          "opens": "11:00",
+          "closes": "21:00"
+        },
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": "https://schema.org/Tuesday",
+          "opens": "11:00",
+          "closes": "21:00"
+        },
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": "https://schema.org/Wednesday",
+          "opens": "11:00",
+          "closes": "21:00"
+        },
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": "https://schema.org/Thursday",
+          "opens": "11:00",
+          "closes": "21:00"
+        },
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": "https://schema.org/Friday",
+          "opens": "11:00",
+          "closes": "21:30"
+        },
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": "https://schema.org/Saturday",
+          "opens": "11:00",
+          "closes": "21:30"
+        }
+      ]
+    },
+    {
+      "@type": "Restaurant",
+      "@id": "https://www.rockandwok.com/#via-san-angel",
+      "name": "Rock n' Wok Vía San Ángel",
+      "image": "https://www.rockandwok.com/assets/hero-image.png",
+      "url": "https://www.rockandwok.com/",
+      "telephone": "+52 222 123 5770",
+      "priceRange": "$$",
+      "servesCuisine": [
+        "Comida china",
+        "Comida asiática",
+        "Wok"
+      ],
+      "acceptsReservations": "False",
+      "parentOrganization": {
+        "@id": "https://www.rockandwok.com/#organization"
+      },
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Vía Atlixcáyotl 1504. Local FF3 Col, Reserva Territorial Atlixcáyotl, Centros Comerciales Desarrollo Atlixcayotl",
+        "addressLocality": "San Bernardino Tlaxcalancingo",
+        "addressRegion": "Puebla",
+        "postalCode": "72810",
+        "addressCountry": "MX"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": "19.0271528",
+        "longitude": "-98.2378819"
+      },
+      "hasMap": "https://maps.google.com/?cid=16074568705309351923",
+      "openingHoursSpecification": [
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": "https://schema.org/Sunday",
+          "opens": "11:30",
+          "closes": "21:00"
+        },
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": "https://schema.org/Monday",
+          "opens": "11:30",
+          "closes": "21:00"
+        },
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": "https://schema.org/Tuesday",
+          "opens": "11:30",
+          "closes": "21:00"
+        },
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": "https://schema.org/Wednesday",
+          "opens": "11:30",
+          "closes": "21:00"
+        },
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": "https://schema.org/Thursday",
+          "opens": "11:30",
+          "closes": "21:00"
+        },
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": "https://schema.org/Friday",
+          "opens": "11:30",
+          "closes": "21:00"
+        },
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": "https://schema.org/Saturday",
+          "opens": "11:30",
+          "closes": "21:00"
+        }
+      ]
+    },
+    {
+      "@type": "Restaurant",
+      "@id": "https://www.rockandwok.com/#sonata",
+      "name": "Rock n' Wok Sonata",
+      "image": "https://www.rockandwok.com/assets/hero-image.png",
+      "url": "https://www.rockandwok.com/",
+      "telephone": "+52 222 123 5770",
+      "priceRange": "$$",
+      "servesCuisine": [
+        "Comida china",
+        "Comida asiática",
+        "Wok"
+      ],
+      "acceptsReservations": "False",
+      "parentOrganization": {
+        "@id": "https://www.rockandwok.com/#organization"
+      },
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Paseo Ópera 11, Plaza Adagio Col, Lomas de Angelópolis",
+        "addressLocality": "San Bernardino Tlaxcalancingo",
+        "addressRegion": "Puebla",
+        "postalCode": "72830",
+        "addressCountry": "MX"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": "18.9938497",
+        "longitude": "-98.2767436"
+      },
+      "hasMap": "https://maps.google.com/?cid=5275481133888058587",
+      "openingHoursSpecification": [
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": "https://schema.org/Sunday",
+          "opens": "12:00",
+          "closes": "22:00"
+        },
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": "https://schema.org/Monday",
+          "opens": "12:00",
+          "closes": "22:00"
+        },
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": "https://schema.org/Tuesday",
+          "opens": "12:00",
+          "closes": "22:00"
+        },
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": "https://schema.org/Wednesday",
+          "opens": "12:00",
+          "closes": "22:00"
+        },
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": "https://schema.org/Thursday",
+          "opens": "12:00",
+          "closes": "22:00"
+        },
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": "https://schema.org/Friday",
+          "opens": "12:00",
+          "closes": "22:00"
+        },
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": "https://schema.org/Saturday",
+          "opens": "12:00",
+          "closes": "22:00"
+        }
+      ]
+    },
+    {
+      "@type": "Restaurant",
+      "@id": "https://www.rockandwok.com/#galerias-serdan",
+      "name": "Rock n' Wok Galerías Serdán",
+      "image": "https://www.rockandwok.com/assets/hero-image.png",
+      "url": "https://www.rockandwok.com/",
+      "telephone": "+52 222 123 5770",
+      "priceRange": "$$",
+      "servesCuisine": [
+        "Comida china",
+        "Comida asiática",
+        "Wok"
+      ],
+      "acceptsReservations": "False",
+      "parentOrganization": {
+        "@id": "https://www.rockandwok.com/#organization"
+      },
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Blvd. Hermanos Serdán 270-Loc 323, Colonia Rancho, Posadas",
+        "addressLocality": "Heroica Puebla de Zaragoza",
+        "addressRegion": "Puebla",
+        "postalCode": "72060",
+        "addressCountry": "MX"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": "19.0715862",
+        "longitude": "-98.2250575"
+      },
+      "hasMap": "https://maps.google.com/?cid=13967251368048037525",
+      "openingHoursSpecification": [
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": "https://schema.org/Sunday",
+          "opens": "11:00",
+          "closes": "21:00"
+        },
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": "https://schema.org/Monday",
+          "opens": "11:00",
+          "closes": "21:00"
+        },
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": "https://schema.org/Tuesday",
+          "opens": "11:00",
+          "closes": "21:00"
+        },
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": "https://schema.org/Wednesday",
+          "opens": "11:00",
+          "closes": "21:00"
+        },
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": "https://schema.org/Thursday",
+          "opens": "11:00",
+          "closes": "21:00"
+        },
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": "https://schema.org/Friday",
+          "opens": "11:00",
+          "closes": "21:00"
+        },
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": "https://schema.org/Saturday",
+          "opens": "11:00",
+          "closes": "21:00"
+        }
+      ]
+    },
+    {
+      "@type": "Restaurant",
+      "@id": "https://www.rockandwok.com/#zocalo",
+      "name": "Rock n' Wok Zócalo",
+      "image": "https://www.rockandwok.com/assets/hero-image.png",
+      "url": "https://www.rockandwok.com/",
+      "telephone": "+52 222 123 5770",
+      "priceRange": "$$",
+      "servesCuisine": [
+        "Comida china",
+        "Comida asiática",
+        "Wok"
+      ],
+      "acceptsReservations": "False",
+      "parentOrganization": {
+        "@id": "https://www.rockandwok.com/#organization"
+      },
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Portal Hidalgo 6-Primer piso, Centro histórico de Puebla",
+        "addressLocality": "Heroica Puebla de Zaragoza",
+        "addressRegion": "Puebla",
+        "postalCode": "72090",
+        "addressCountry": "MX"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": "19.0445104",
+        "longitude": "-98.1981677"
+      },
+      "hasMap": "https://maps.google.com/?cid=12856540318834741059",
+      "openingHoursSpecification": [
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": "https://schema.org/Sunday",
+          "opens": "11:00",
+          "closes": "22:00"
+        },
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": "https://schema.org/Monday",
+          "opens": "11:00",
+          "closes": "21:00"
+        },
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": "https://schema.org/Tuesday",
+          "opens": "11:00",
+          "closes": "21:00"
+        },
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": "https://schema.org/Wednesday",
+          "opens": "11:00",
+          "closes": "21:00"
+        },
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": "https://schema.org/Thursday",
+          "opens": "11:00",
+          "closes": "21:00"
+        },
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": "https://schema.org/Friday",
+          "opens": "11:00",
+          "closes": "22:00"
+        },
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": "https://schema.org/Saturday",
+          "opens": "11:00",
+          "closes": "22:00"
+        }
+      ]
+    },
+    {
+      "@type": "Restaurant",
+      "@id": "https://www.rockandwok.com/#outlet-premier",
+      "name": "Rock n' Wok Outlet Premier",
+      "image": "https://www.rockandwok.com/assets/hero-image.png",
+      "url": "https://www.rockandwok.com/",
+      "telephone": "+52 222 123 5770",
+      "priceRange": "$$",
+      "servesCuisine": [
+        "Comida china",
+        "Comida asiática",
+        "Wok"
+      ],
+      "acceptsReservations": "False",
+      "parentOrganization": {
+        "@id": "https://www.rockandwok.com/#organization"
+      },
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Outlet Puebla Premiere, Autop. México - Puebla Km. 115-Loc F-11",
+        "addressLocality": "San Francisco Ocotlán",
+        "addressRegion": "Puebla",
+        "postalCode": "72686",
+        "addressCountry": "MX"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": "19.131871",
+        "longitude": "-98.2662594"
+      },
+      "hasMap": "https://maps.google.com/?cid=16933909262637788901",
+      "openingHoursSpecification": [
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": "https://schema.org/Sunday",
+          "opens": "11:00",
+          "closes": "20:00"
+        },
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": "https://schema.org/Monday",
+          "opens": "11:00",
+          "closes": "20:00"
+        },
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": "https://schema.org/Tuesday",
+          "opens": "11:00",
+          "closes": "20:00"
+        },
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": "https://schema.org/Wednesday",
+          "opens": "11:00",
+          "closes": "20:00"
+        },
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": "https://schema.org/Thursday",
+          "opens": "11:00",
+          "closes": "20:00"
+        },
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": "https://schema.org/Friday",
+          "opens": "11:00",
+          "closes": "21:00"
+        },
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": "https://schema.org/Saturday",
+          "opens": "11:00",
+          "closes": "21:00"
+        }
+      ]
+    },
+    {
+      "@type": "Restaurant",
+      "@id": "https://www.rockandwok.com/#angelopolis",
+      "name": "Rock n' Wok Angelópolis",
+      "image": "https://www.rockandwok.com/assets/hero-image.png",
+      "url": "https://www.rockandwok.com/",
+      "telephone": "+52 222 123 5770",
+      "priceRange": "$$",
+      "servesCuisine": [
+        "Comida china",
+        "Comida asiática",
+        "Wok"
+      ],
+      "acceptsReservations": "False",
+      "parentOrganization": {
+        "@id": "https://www.rockandwok.com/#organization"
+      },
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Blvd. del Niño Poblano 2510-Local FF4, Reserva Territorial Atlixcáyotl, Centro Comercial Angelopolis",
+        "addressLocality": "Heroica Puebla de Zaragoza",
+        "addressRegion": "Puebla",
+        "postalCode": "72193",
+        "addressCountry": "MX"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": "19.0318342",
+        "longitude": "-98.2327756"
+      },
+      "hasMap": "https://maps.google.com/?cid=17698013053754236121",
+      "openingHoursSpecification": [
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": "https://schema.org/Sunday",
+          "opens": "11:00",
+          "closes": "22:00"
+        },
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": "https://schema.org/Monday",
+          "opens": "11:00",
+          "closes": "22:00"
+        },
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": "https://schema.org/Tuesday",
+          "opens": "11:00",
+          "closes": "22:00"
+        },
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": "https://schema.org/Wednesday",
+          "opens": "11:00",
+          "closes": "22:00"
+        },
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": "https://schema.org/Thursday",
+          "opens": "11:00",
+          "closes": "22:00"
+        },
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": "https://schema.org/Friday",
+          "opens": "11:00",
+          "closes": "22:00"
+        },
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": "https://schema.org/Saturday",
+          "opens": "11:00",
+          "closes": "22:00"
+        }
+      ]
+    }
+  ]
 }
 </script>
 <link rel="icon" type="image/x-icon" href="dist/favicon.ico" />
