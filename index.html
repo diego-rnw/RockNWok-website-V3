@@ -1238,6 +1238,14 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   .contact-info-label{font-weight:700;color:var(--yellow);margin:0 0 8px;font-size:15px}
   .contact-info p{margin:0 0 6px;font-size:16px;color:#ccc;line-height:1.6}
   .contact-info a{color:var(--yellow);font-weight:700;text-underline-offset:3px;text-decoration:underline}
+  .contact-cta{
+    display:inline-flex;align-items:center;gap:10px;margin-top:28px;padding:16px 30px;border-radius:99px;
+    background:var(--yellow);color:#000;font-family:"Gotham","Archivo",sans-serif;font-weight:900;
+    letter-spacing:.14em;font-size:14px;text-transform:uppercase;text-decoration:none;
+    box-shadow:0 10px 30px rgba(255,214,10,.3);
+    transition:transform .2s ease, box-shadow .2s ease;
+  }
+  .contact-cta:hover{transform:translateY(-2px);box-shadow:0 14px 36px rgba(255,214,10,.5)}
 
   /* ============ FOOTER ============ */
   footer{background:#000;overflow:hidden}
@@ -2011,6 +2019,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           <p>¿Dudas, quejas o sugerencias?<br>Envíanos un correo a:<br>
           <a href="mailto:contacto@rockandwok.com">contacto@rockandwok.com</a></p>
         </div>
+        <a href="https://api.whatsapp.com/send?phone=522226751331&text=%C2%A1Hola,%20quiero%20trabajar%20con%20ustedes" target="_blank" rel="noopener" class="contact-cta">Trabaja con nosotros</a>
       </div>
       <div class="contact-illus">
         <img src="assets/maneki_phone.webp" alt="Maneki contestando el teléfono" loading="lazy" />
